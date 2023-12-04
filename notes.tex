@@ -1,0 +1,1690 @@
+\documentclass[reqno,12pt]{article}
+
+
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+
+\usepackage{fullpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[all]{xy}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{color}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bG}{\mathbb{G}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bN}{\mathbb{N}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cX}{\mathcal{X}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\wt}{\widetilde}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ol}{\overline}
+\newcommand{\nd}{\noindent}
+\newcommand{\iso}{\simeq}
+%\renewcommand{\proof}{\nd \textbf{Beweis}.\,\,}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Spec}{\text{Spec}\,}
+\newcommand{\Id}{\text{Id}\,}
+\newcommand{\id}{\text{id}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\Sm}{\text{Sm}}
+\newcommand{\Stacks}{\underline{Stacks}}
+\newcommand{\Set}{\underline{Set}}
+\newcommand{\Sch}{\underline{Sch}}
+\newcommand{\Cat}{\underline{Cat}}
+\newcommand{\Grpd}{\underline{Grpd}}
+
+
+\newcommand{\trdeg}{\text{trdeg}}
+\newcommand{\Div}{\text{Div}}
+\newcommand{\Pic}{\text{Pic}}
+\newcommand{\Cl}{\text{Cl}}
+\newcommand{\Alg}{\text{Alg}}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\Rep}{\text{Rep}}
+\newcommand{\Sym}{\text{Sym}}
+\newcommand{\Coh}{\text{Coh}}
+\newcommand{\PsCoh}{\text{PsCoh}}
+\newcommand{\Perf}{\text{Perf}}
+\newcommand{\LocFree}{\text{LocFree}}
+%\renewcommand{\det}{\text{det}\,}
+
+\renewcommand{\k}{\kappa}
+
+\newcommand{\Ker}{\text{Ker }}
+\renewcommand{\Im}{\text{Im }}
+
+
+\newcommand{\slope}{\text{slope}}
+
+\newcommand{\dt}{\overset{L}{\otimes}}
+\newcommand{\D}{\Delta}
+
+\newcommand{\edit}[1]{{\color{blue} #1}}
+\newcommand{\fnote}[1]{\footnote{\color{red} #1}}
+\newcommand{\red}[1]{\color{red} #1}
+\newcommand{\blue}[1]{\color{blue} #1}
+
+\usepackage{wasysym}
+
+\usepackage{hyperref}
+
+
+
+\usepackage{amsmath, amsfonts,epsfig, amssymb,amsbsy,eucal,mathrsfs,float, amsthm,mathtools, stmaryrd}
+
+\setcounter{MaxMatrixCols}{20}
+
+
+\theoremstyle{plain}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{proposition}[thm]{Satz}
+\newtheorem{cor}[thm]{Korollar}
+\newtheorem{conj}[thm]{Conjecture}
+
+
+\theoremstyle{definition}
+
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{example}[thm]{Beispiel}
+\newtheorem{remark}[thm]{Bemerkung}
+\newtheorem{notation}[thm]{Notation}
+
+
+
+
+\newcommand{\blank}{{-}}
+
+\newcommand{\End}{\operatorname{End}}
+
+\renewcommand{\Ker}{\operatorname{Ker}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Coker}{\operatorname{Coker}}
+\newcommand{\Coim}{\operatorname{Coim}}
+
+\mathchardef\mhyphen="2D
+\newcommand{\Mod}{\text{Mod}}
+
+\hypersetup{
+%colorlinks=false,
+colorlinks=true,
+urlcolor=cyan
+}
+
+
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\
+\vspace{100pt}
+
+\begin{center}
+{\huge \bf Kommutative Algebra} \\
+\vspace{10pt}
+{\Large Maxim Smirnov} \\
+\vspace{10pt}
+{\large Universität Augsburg, Wintersemester 2023/2024 \\
+für Bachelor und Lehramt \\
+}
+\vspace{10pt}
+Draft \today
+\end{center}
+
+
+
+\newpage
+
+{\footnotesize
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+
+
+\newpage
+
+Hauptreferenz: \cite{AM}.
+
+
+\newpage
+
+\section{Ringe}
+
+\subsection{Ringe und Homomorphismen}
+
+
+
+\begin{definition}
+Ein {\sf Ring} ist ein Tupel $(R, + , \cdot, 0, 1)$ bestehend aus einer Menge $R$, zweistelligen Verknüpfungen $+$ (Addition) und $\cdot$ (Multiplikation) und Elementen $0,1 \in R$ mit den folgenden Eigenschaften:
+\begin{enumerate}
+\item[{\bf R1}]   $(R, + , 0)$ ist eine abelsche Gruppe (d.h. die Addition ist assoziativ, die Null ist das neutrale Element diesbezüglich, und jedes $x \in R$ hat ein Inverses $-x$).
+\item[{\bf R2}]   Die Multiplikation $\cdot \colon R \times R \to R$ ist assoziativ
+\begin{align*}
+  a \cdot  (b \cdot c) = (a \cdot b) \cdot c  \quad \forall a,b,c, \in R.
+\end{align*}
+\item[{\bf R3}] Das Element $1 \in R$, genannt {\sf die Eins}, ist ein neutrales Element bezüglich der Multiplikation
+\begin{align*}
+  x \cdot 1 = 1 \cdot x = x \quad \forall x \in R.
+\end{align*}
+Dieses ist eindeutig definiert.
+
+\item[{\bf R4}]   Distributivität: für alle $a,b,c \in R$ gilt
+\begin{align*}
+ a \cdot (b+c) = a \cdot b + a \cdot c, \\
+ (b+c) \cdot a = b \cdot a + c \cdot a.
+\end{align*}
+
+\item[{\bf R5}] Ein Ring heißt {\sf kommutativ}, wenn die Multiplikation kommutativ ist, d.h.
+$$
+x \cdot y = y \cdot x \quad \forall x,y \in R.
+$$
+\end{enumerate}
+
+\end{definition}
+
+\begin{remark}
+\
+\begin{enumerate}
+  \item Wir werden fast ausschließlich  kommutative Ringe betrachten, deswegen haben wir die Kommutativität in die Definition mit integriert.
+  \item Die obige Definition des Ringes schließt die Möglichkeit $1=0$ nicht aus. In diesem Fall folgt sofort, dass gilt $R=\{0\}$. Dieser Ring wird der {\sf Nullring} genannt.
+\end{enumerate}
+\end{remark}
+
+
+
+
+\begin{example}
+\
+\begin{enumerate}
+  \item $\bZ$.
+  \item Jeder Körper ist ein Ring (z.B. $\bQ$, $\bR$, $\bC$).
+  \item Polynomringe (später).
+  \item Funktionen auf einer Menge $X$ mit Werten in $\bR$ mit der üblichen punktweisen Addition und Multiplikation.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+Seien $R$ und $S$ zwei Ringe. Eine Abbildung $ f \colon R \to S$ heißt {\sf Ringhomomorphismus}, wenn $f$ mit den vorhandenen Strukturen verträglich ist, d.h.
+\begin{align*}
+  & f(a+b)= f(a) + f(b) \\
+  % & f(0) = 0 \\
+  % & f(-a) = -f(a) \\
+  & f(ab) = f(a)f(b) \\
+  & f(1) = 1
+\end{align*}
+\end{definition}
+
+
+
+\begin{example}
+\
+\begin{enumerate}
+\item Für jeden Ring $R$ es gibt einen eindeutigen Ringhomomorphismus in den Nullring.
+\item Für jeden Ring $R$ es gibt einen eindeutigen Ringhomomorphismus von $\bZ$ nach $R$.
+\item Seien $A$ der Ring der $\bR$-wertigen Funktionen auf einer Menge $X$ und $P\in X$ ein Punkt. Dann definiert man den Auswertungshomomorphismus
+\begin{align*}
+&   \varphi \colon A \to \bR \\
+&   f \mapsto  f(P).
+\end{align*}
+\end{enumerate}
+\end{example}
+
+
+
+
+\subsection{Polynomringe}
+
+Sei $A$ ein Ring.
+
+\medskip
+
+1)  Ein Polynom in der Variablen $x$ mit Koeffizienten in $A$ ist ein Ausdruck der Form
+\begin{align*}
+  a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0,
+\end{align*}
+wobei $a_i \in A$. Die Addition und die Multiplikation definiert man auf die übliche Weise. Die Menge $A[x]$ aller Polynome in $x$ mit Koeffizienten in $A$ wird somit ein Ring.
+
+Beachten Sie, dass die Polynome a priori keine Funktionen sind. Gegeben ein Polynom $P(x) \in A[x]$ kann man eine Funktion definieren
+\begin{align*}
+& \wt{P} \colon A \to A \\
+&  \wt{P}(a):= P(a).
+\end{align*}
+Es kann aber passieren, dass zwei unterschiedliche Polynome dieselbe Funktion definieren.
+
+\medskip
+
+2) Ein Polynom in den Variablen $x_1, \dots, x_n$ mit Koeffizienten in $A$ ist eine endliche Summe der Form
+\begin{align*}
+  \sum_{i_1, \dots, i_n}  a_{i_1, \dots, i_n} x_1^{i_1} \dots x_n^{i_n}
+\end{align*}
+Mit der üblichen Addition und Multiplikation ist die Menge $A[x_1, \dots, x_n]$ aller Polynome ein Ring.
+
+
+
+\subsection{Ringe der formalen Potenzreihen}
+
+Eine formale Potenzreihe in $x$ über einem Ring $A$ ist ein Ausdruck der Form
+\begin{align*}
+\sum_{i=0}^{\infty} a_i x^i = a_0 + a_1x+a_2x^2 \dots ,
+\end{align*}
+wobei $a_i \in A$. Die Addition wird definiert als
+\begin{align*}
+  \Big(\sum_{i=0}^{\infty} a_i x^i \Big) + \Big(\sum_{i=0}^{\infty} b_i x^i\Big) = \sum_{i=0}^{\infty} (a_i+b_i) x^i.
+\end{align*}
+Die Multiplikation wird definiert als
+\begin{align*}
+  \Big(\sum_{i=0}^{\infty} a_i x^i \Big) \cdot \Big(\sum_{i=0}^{\infty} b_i x^i\Big) = a_0b_0 + (a_1b_0 + a_0b_1)x + (a_2b_0 + a_1b_1 + a_0b_2)x^2 + \dots.
+\end{align*}
+Mit diesen Verknüpfungen ist $A[[x]]$ ein kommutativer Ring.
+
+
+
+\subsection{Ideale und Faktorringe}
+
+\begin{definition}
+Sei $R$ ein Ring und $S \subset R$ eine Untergruppe von $R$ bezüglich der Addition.
+
+\begin{enumerate}
+  \item $S$ heißt ein {\sf Unterring}, wenn $S \cdot S \subset S$ und $1 \in S$ (d.h. $S$ ist ein Ring bezüglich der induzierten Multiplikation).
+
+  \item $S$ heißt ein {\sf Ideal}, wenn $S \cdot R \subset S$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\
+\begin{enumerate}
+  \item Zu jeder Familie $(a_i)_{i \in I}$ von Elementen $a_i \in R$ hat man das von den $a_i$ erzeugte Ideal
+  \begin{align*}
+    ( a_i \mid i \in I ).
+  \end{align*}
+  Das ist das kleinste Ideal, welches alle $a_i$ enthält. Man sieht leicht, dass es aus allen Linearkombinationen
+  \begin{align*}
+    r_1a_{i_1} + \dots + r_na_{i_n} \, , \qquad r_j \in R \, , i_k \in I
+  \end{align*}
+  besteht.
+
+  \item Ein Ideal $J$ heißt endlich erzeugt, wenn es endlich viele Elemente $a_1, \dots a_n$ gibt, sodass gilt
+  \begin{align*}
+    J = (a_1, \dots , a_n).
+  \end{align*}
+
+  \item Eine besondere Rolle spielen die Ideale, die nur einen Erzeuger haben, d.h.
+  \begin{align*}
+    J = (x)= Rx.
+  \end{align*}
+   Diese heißen {\sf Hauptideale}.
+\end{enumerate}
+
+
+
+\end{definition}
+
+\begin{example}
+\
+\begin{enumerate}
+  \item $\bZ \subset \bQ$ ist ein Unterring, aber kein Ideal.
+  \item $2\bZ \subset \bZ$ ist kein Unterring, da $1 \notin 2 \bZ$, aber ein Ideal.
+  \item Alle Ideal von $\bZ$ sind Hauptideale (Übungsblatt 1).
+\end{enumerate}
+\end{example}
+
+
+\begin{lemma}
+Sei $f \colon R \to S$ ein Ringhomomorphismus, dann ist das {\sf Bild} von $f$
+\begin{align*}
+  \Im f := \{y \in S \mid \exists x \in R \colon f(x)=y \}
+\end{align*}
+ein Unterring von $S$ und der {\sf Kern} von $f$
+\begin{align*}
+  \Ker f := \{x \in R \mid  f(x)=0 \}
+\end{align*}
+ist ein Ideal von $R$.
+\end{lemma}
+
+\begin{proof}
+Gemacht in der Vorlesung.
+\end{proof}
+
+\begin{lemma}
+Ein Ringhomomorphismus $f \colon R \to S$ ist genau dann injektiv, wenn gilt $\Ker f =0$.
+\end{lemma}
+
+\begin{proof}
+Übungsblatt 1.
+\end{proof}
+
+
+
+Jetzt werden wir sehen, dass jedes Ideal als Kern eines Ringhomomorphismus entsteht.
+
+\begin{definition}
+Sei $R$ ein Ring und $I \subset R$ ein Ideal.
+
+Erst betrachten wir $R$ als eine abelsche Gruppe bezüglich der Addition und $I \subset R$ als eine Untergruppe. Dann ist $I \subset R$ automatisch ein Normalteiler und man kann die Faktorgruppe $R/I$ bilden. Die Elemente von $R/I$ sind Nebenklassen $x+I$ mit $x \in R$ und die Addition wird als
+\begin{align*}
+  (x+I) + (y+I) = (x+y) + I
+\end{align*}
+definiert. Dadurch bekommen wir eine neue abelsche Gruppe $R/I$. Die Null in $R/I$ ist die Nebenklasse $0+I$.
+
+Da $R$ eigentlich ein Ring ist und $I \subset R$ ein Ideal ist, können wir die Faktorgruppe $R/I$ mit einer Multiplikation ausstatten
+\begin{align*}
+& (a + I) \cdot (b + I) := ab + I \\
+& 1_{R/I} := 1 + I.
+\end{align*}
+Die Wohldefiniertheit folgt daraus, dass $I$ ein Ideal ist.
+
+Es gibt einen natürlichen Ringhomomorphismus
+\begin{align*}
+&  \pi \colon R \to R/I \\
+& \quad  x \mapsto x + I,
+\end{align*}
+und man sieht leicht, dass $\pi$ surjektiv ist und es gilt
+\begin{align*}
+&  \Ker \pi = I.
+\end{align*}
+Der Ring $R/I$ wird {\sf Faktorring} genannt. Den Homomorphismus $\pi \colon R \to R/I$ nennt man {\sf kanonische Projektion}.
+\end{definition}
+
+\begin{proposition}[Homomorphiesatz]
+Sei $R \to S$ ein Ringhomomorphismus. Dann gibt es einen natürlichen Isomorphismus
+\begin{align*}
+  R/\Ker f \overset{\simeq}{\to} \Im f
+\end{align*}
+\end{proposition}
+
+\begin{proof}
+Betrachten wir das kommutative Diagramm
+\begin{align*}
+  \xymatrix{
+  R \ar[r]^f \ar[d]^{\pi}& S \\
+  R/\Ker f \ar@{-->}[ur]_{\ol{f}}
+  }
+\end{align*}
+Es gibt einen eindeutigen wohldefinierten Homomorphismus $\ol{f}$, da folgendes wegen der Kommutativität gelten muss: $\ol{f}(a+I) = f(a)$.
+
+Nach Konstruktion ist $\ol{f}$ injektiv. Das Bild von $\ol{f}$ ist gleich dem Bild von $f$. Dadurch erhalten wir die Aussage.
+\end{proof}
+
+
+\begin{proposition}[Korrespondenzsatz für Ideale]
+  Sei $R$ ein Ring und $I \subset R$ ein Ideal. Dann induziert die kanonische Projektion $\pi \colon R \to R/I$ eine Bijektion zwischen Idealen in $R/I$ und Idealen in $R$, die $I$ enthalten.
+\end{proposition}
+
+\begin{proof}
+Die Bijektion ist gegeben durch
+\begin{align*}
+  \alpha \mapsto \pi^{-1} (\alpha). \hspace{50pt} (*)
+\end{align*}
+Die Injektivität von $(*)$ folgt sofort aus: $\pi(\pi^{-1} (\alpha)) = \alpha$. Die Surjektivität folgt aus der Tatsache, dass für ein Ideal $J \subset R$, das $I$ enthält, die Faktorgruppe $J/I$ ein Ideal in $R/I$ ist.
+\end{proof}
+
+
+
+
+
+
+
+
+\subsection{Nullteiler. Nilpotente. Einheiten.}
+
+
+\begin{definition}
+Ein Element $x \in R$ heißt {\sf Nullteiler}, wenn in $R$ ein $y \neq 0$ existiert, sodass $xy=0$. Ein Ring $R \neq 0$ ohne Nullteiler ($\neq 0$) heißt {\sf Integritätsbereich}.
+\end{definition}
+Z.B. sind $\bZ$ und $k[x_1, \dots, x_n]$ (hier ist $k$ ein Körper) Integritätsbereiche.
+
+
+\begin{definition}
+Ein Element $x \in R$ heißt {\sf nilpotent}, wenn es ein $n>0$ gibt, sodass gilt $x^n=0$.
+\end{definition}
+
+Jedes nilpotente Element ist ein Nullteiler (wenn $R \neq 0$). Die Umkehrung ist aber falsch (Übungsblatt 1).
+
+
+\begin{definition}
+Ein Element $x \in R$ heißt {\sf Einheit}, wenn es bezüglich der Multiplikation invertierbar ist, d.h. es existiert ein $y$  in $R$, sodass  $xy=1$. Das Element $y$ ist in diesem Fall eindeutig definiert und wird mit $x^{-1}$ bezeichnet.
+\end{definition}
+
+\begin{lemma}
+  Eine formale Potenzreihe $\sum_{i=0}^{\infty} a_i x^i \in A[[x]]$ ist genau dann invertierbar, wenn $a_0 \in A$ invertierbar ist.
+\end{lemma}
+\begin{proof}
+Übungsblatt 1.
+\end{proof}
+
+\begin{example}
+\begin{align*}
+  \frac{1}{1-x} = 1 + x + x^2 + \dots = \sum_{i=0}^{\infty} x^i
+\end{align*}
+\end{example}
+
+
+
+
+\begin{definition}
+Ein Ring $R \neq 0$ heißt {\sf Körper}, wenn jedes $x \in R \setminus \{0\}$ eine Einheit ist.
+\end{definition}
+
+
+\begin{proposition}
+Sei $R$ ein Ring $\neq 0$. Die folgenden Aussagen sind äquivalent:
+\begin{enumerate}
+  \item $R$ ist ein Körper;
+  \item die einzigen Ideale in $R$ sind $(0)$ und $(1)$;
+  \item jeder Homomorphismus $\varphi \colon R \to S$ mit $S \neq 0$ ist injektiv.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  $1) \Rightarrow 2)$ Sei $I \neq 0$ ein Ideal von $R$. Dann enthält $I$ ein Element $x \neq 0$. Da $x$ eine Einheit ist, gilt $I \supset (x) = R$. Somit gilt $I=R$.
+
+\smallskip
+
+  $2) \Rightarrow 3)$ Betrachten wir den Kern von $\varphi$. Da der Kern ein Ideal ist, haben wir $\Ker \varphi = (0)$ oder $\Ker \varphi = (1)$. Da die zweite Variante nur im Fall $S=0$ möglich ist, wird diese ausgeschlossen. Daraus folgt die Injektivität.
+
+\smallskip
+
+  $3) \Rightarrow 1)$ Sei $x \in R$ eine Nichteinheit. Dann gilt $(x) \neq (1)$ und somit ist $S=R/(x)$ kein Nullring. Dann ist die kanonische Projektion $R \to R/I$ injektiv. Daraus folgt $(x)=0$.
+\end{proof}
+
+
+
+\subsection{Primideale und maximale Ideale}
+
+\begin{definition}
+Sei $I \subset R$ ein echtes Ideal. Das Ideal $I$ heißt
+\begin{enumerate}
+  \item {\sf maximal} $\iff$ es existiert kein echtes Ideal $J$ mit $I \subset J$ und $I \neq J$.
+  \item {\sf Primideal} $\iff$ wenn gilt $xy \in I$, dann gilt $x \in I$ oder $y \in I$.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}\label{satz-characterisation-of-maxima/prime-ideals}
+Sei $I \subset R$ ein Ideal.
+\begin{enumerate}
+  \item $I$ ist maximal $\iff$ $R/I$ ist ein Körper.
+  \item $I$ ist ein Primideal $\iff$ $R/I$ ist ein Integritätsbereich.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+1)  Korrespondenzsatz für Ideale.
+
+\smallskip
+
+2) Folgt sofort aus der Definition: $[x][y]=0 \iff [x]=0 \text{ oder } [y]=0$.
+\end{proof}
+
+\begin{remark}
+Nach diesem Satz sind alle maximalen Ideale auch Primideale. Die Umkehrung ist aber falsch (z.B. $(0) \subset \bZ$).
+\end{remark}
+
+\begin{proposition}\label{satz-preimages-of-prime-ideals}
+Sei $f \colon R \to S$ ein Ringhomomorphismus und $I \subset S$ ein Primideal. Dann ist $f^{-1}(I) \subset R$ auch ein Primideal.
+\end{proposition}
+
+\begin{proof}
+Erstens ist das Urbild eines Ideals ein Ideal, d.h. $f^{-1}(I)$ ist ein Ideal von $R$. Zweitens betrachten wir das folgende kommutative Diagramm (Homomorphiesatz anwenden):
+\begin{align*}
+  \xymatrix{
+  R \ar[r]^f  \ar@/^2pc/[rr]^{\psi} \ar[d] & S \ar[r] & S/I \\
+  R/\Ker \psi \ar@{-->}[urr]_{\ol{\psi}}
+  }
+\end{align*}
+Laut Homomorphiesatz ist $\ol{\psi}$ injektiv. Da $\Ker \psi = f^{-1}(I)$, können wir $R/\Ker \psi = R/f^{-1}(I)$ als Unterring von $S/I$ betrachten. Laut Satz \ref{satz-characterisation-of-maxima/prime-ideals} ist $S/I$ ein Integritätsbereich und somit ist $R/f^{-1}(I)$ es auch. Fertig nach Satz \ref{satz-characterisation-of-maxima/prime-ideals}.
+\end{proof}
+
+\begin{remark}
+Die Aussage des Satzes gilt nicht für maximale Ideale (z.B. $\bZ \subset \bQ$).
+\end{remark}
+
+Primideale spielen eine besondere Rolle in der kommutativen Algebra und in der algebraischen Geometrie. Das folgende Resultat garantiert, dass jeder Ring ($\neq 0$) mindestens ein Primideal hat.
+
+\begin{thm}\label{theorem-maximal-ideals-exist}
+Jeder Ring $R \neq 0$ hat ein maximales Ideal.
+\end{thm}
+
+\begin{proof}
+Das Lemma von Zorn\footnote{Sei $P$ eine nichtleere partiell geordnete Menge, in der jede total geordnete Teilmenge (=eine Kette) eine obere Schranke hat. Dann enthält $P$ mindestens ein maximales Element.} auf das (nichtleere) partiell geordnete Menge von echten Idealen in $R$ anwenden. Gegeben eine aufsteigende Kette von solchen Idealen $\alpha_i$, deren obere Schranke ist gegeben durch $\cup_i \alpha_i$.
+\end{proof}
+
+
+\newpage
+\begin{remark}
+Für noethersche Ringe kann man das Theorem ohne Lemma von Zorn beweisen (später).
+\end{remark}
+
+\begin{cor}\label{cor-ideal-contained-in-maximal}
+  Für jedes Ideal $I \subset R$ mit $I \neq R$ existiert ein maximales Ideal, in welchem $I$ enthalten ist.
+\end{cor}
+
+\begin{proof}
+  Das Theorem auf den Ring $R/I$ anwenden und den Korrespondenzsatz für Ideale benutzen.
+\end{proof}
+
+\begin{cor}
+  Jede Nichteinheit ist in einem maximalen Ideal enthalten.
+\end{cor}
+
+\begin{proof}
+  Das Ideal $(x)$ betrachten und Korollar anwenden.
+\end{proof}
+
+\begin{definition}
+  Ein Ring $R$ heißt {\sf lokal}, wenn es in $R$ genau ein maximales Ideal gibt.
+\end{definition}
+
+\begin{example}
+  Jeder Körper ist lokal, $k[[x]]$ ist lokal, $k[x]/x^n$ ist lokal.
+\end{example}
+
+\begin{proposition}
+\
+  \begin{enumerate}
+    \item Sei $R$ ein Ring und $\mathfrak{m} \neq (1)$ ein Ideal, sodass jedes $x \in R \setminus \mathfrak{m}$ eine Einheit ist. Dann ist $R$ ein lokaler Ring mit dem maximalen Ideal $\mathfrak{m}$.
+
+    \item Sei $R$ ein Ring und $\mathfrak{m}$ ein maximales Ideal von $R$, sodass jedes Element von $1+\mathfrak{m}$ eine Einheit ist. Dann ist $R$ ein lokaler Ring.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  1) Elemente eines Ideals $\neq (1)$ sind immer Nichteinheiten. Somit müssen alle Ideale in $\mathfrak{m}$ enthalten sein.
+
+  2) Betrachten wir ein $x \in R \setminus \mathfrak{m}$ und zeigen, dass es eine Einheit sein muss. Da $x \notin \mathfrak{m}$ und $\mathfrak{m}$ ein maximales Ideal ist, erzeugen (als Ideal) $\mathfrak{m}$ und $x$ den ganzen Ring $R$. Somit gilt $1 = xy + t$ für $y \in R$ und $t \in \mathfrak{m}$. Daraus folgt $xy \in 1 + \mathfrak{m}$ und ist somit eine Einheit. Somit ist auch $x$ eine Einheit. Jetzt Teil 1 anwenden.
+\end{proof}
+
+
+
+\begin{lemma}
+  In einem Hauptidealbereich ist jedes Primideal entweder $(0)$ oder ein maximales Ideal.
+\end{lemma}
+
+\begin{proof}
+  Da $R$ ein Integritätsbereich ist, ist $(0)$ ein Primideal (Satz \ref{satz-characterisation-of-maxima/prime-ideals}).
+
+  Sei jetzt $\mathfrak{p}=(x)$ ein Primideal $\neq 0$ und $(y) \supset (x)$ ein echtes Ideal, welches $(x)$ enthält. Dann haben wir: $x = ya \Rightarrow a \in (x) \Rightarrow  a = xb \, \Rightarrow \, x = yxb \, \Rightarrow \, x (1-yb) = 0 \, \Rightarrow \, yb = 1 \, \Rightarrow \, (y)=R$.
+\end{proof}
+
+\begin{example}
+  $\bZ$ und $k[x]$ sind Hauptidealbereiche.
+\end{example}
+
+
+\subsection{Nilradikal}
+
+\begin{proposition}
+  Die Menge $\mathfrak{N}$ aller nilpotenten Elemente in einem Ring $R$ ist ein Ideal. Der Faktorring $R/\mathfrak{N}$ hat keine Nilpotente außer $0$.
+\end{proposition}
+
+\begin{proof}
+  Sei $x$ ein Nilpotent. Dann ist das Element $ax$ auch nilpotent für jedes $a \in R$. Seien $x,y$ zwei Nilpotente: $x^m = 0$ und $y^n=0$. Dann ist auch $(x+y)^{m+n} = 0$. Somit ist $\mathfrak{N}$ ein Ideal.
+
+  Sei $\ol{x}=x+\mathfrak{N} \in R/\mathfrak{N}$ ein Nilpotent, d.h. $\ol{x}^n = 0$ für ein $n$. Somit gilt $x^n \in \mathfrak{N}$. Dann ist $x$ auch ein Nilpotent in $R$, und somit in $\mathfrak{N}$ enthalten ist. Daraus folgt $\ol{x}=0$.
+\end{proof}
+
+
+\newpage
+\begin{proposition}\label{satz-nilradical}
+  Sei $R$ ein Ring $\neq 0$. Es gilt
+  \begin{align*}
+    \mathfrak{N} = \bigcap_{\mathfrak{p} \in \text{Primideale von R}}   \mathfrak{p}.
+  \end{align*}
+\end{proposition}
+
+
+
+\begin{proof}
+Sei $f \in R$ ein Nilpotent und $\mathfrak{p}$ ein Primideal. Wir haben: $f^n = 0\in \mathfrak{p} \Rightarrow f \in \mathfrak{p}$. Somit ist $f$ in allen Primidealen enthalten.
+
+Sei jetzt $f \in R$ kein Nilpotent. Wir möchten zeigen, dass es ein Primideal gibt, in welchem $f$ nicht enthalten ist. Sei $\Sigma$ die Menge aller Ideale $\alpha$ mit der Eigenschaft
+$$
+n > 0 \Rightarrow f^n \notin \alpha.
+$$
+Da $(0) \in \Sigma$ gilt, ist diese Menge nicht leer. Wie in Theorem \ref{theorem-maximal-ideals-exist} können wir hier auch das Lemma von Zorn anwenden und ein maximales Element von $\Sigma$ erhalten, das wir mit $\mathfrak{p}$ bezeichnen. Wir zeigen jetzt, dass $\mathfrak{p}$ ein Primideal ist. Seien $x,y \notin \mathfrak{p}$. Dann sind die Ideale $(x) + \mathfrak{p}$ und $(y) + \mathfrak{p}$ echt größer als $\mathfrak{p}$, und sind somit nicht in $\Sigma$ enthalten. Also gilt
+$$
+f^m \in (x) + \mathfrak{p} \quad \text{und} \quad f^n \in (y) + \mathfrak{p}
+$$
+für gewisse $m,n > 0$. Daraus folgt $f^{m+n} \in (xy) + \mathfrak{p}$. Somit ist $(xy) + \mathfrak{p}$ nicht in $\Sigma$ und~$xy \notin \mathfrak{p}$.
+\end{proof}
+
+
+
+\subsection{Operationen mit Ringen und Idealen}
+
+\begin{definition}
+1) Seien $I,J$ zwei Ideale. Die {\sf Summe} von $I$ und $J$ ist ein Ideal von $R$, definiert als
+\begin{align*}
+  I+J = \{ x+y \mid x \in I, y \in J \}.
+\end{align*}
+Das Ideal $I+J$ ist das kleinste Ideal, welches $I$ und $J$ enthält. Analog kann man die Summe einer beliebigen Familie $\{I_s\}_{s \in S}$ von Idealen definieren.
+
+\smallskip
+
+2) Seien $I,J$ zwei Ideale. Man definiert das {\sf Produkt} als das Ideal erzeugt von den Produkten $xy$ mit $x \in I$ und $y \in J$. Es gilt
+\begin{align*}
+  IJ = \big \{ \sum_{i=1}^n x_iy_i \mid x_i \in I, y_i \in J, n\in \mathbb{N} \big \}.
+\end{align*}
+Analog kann man das Produkt einer endlichen Familie $\{I_1, \dots, I_n\}$ von Idealen definieren. Insbesondere können wir über Potenzen $I^n = I \dots I$ sprechen.
+
+\smallskip
+
+3) Der {\sf Schnitt} $\cap_{s \in S} I_s$ einer beliebigen Familie $\{I_s\}_{s \in S}$ von Idealen ist ein Ideal.
+\end{definition}
+
+
+\begin{example}
+  Sei $R=\bZ$. Dann gilt
+  \begin{align*}
+    & (a) + (b) = gcd (a,b) \\
+    & (a) \cap (b) = lcm (a,b) \\
+    & (a)(b) = (ab)
+  \end{align*}
+\end{example}
+
+
+\begin{definition}
+  Sei $I \subset R$ ein Ideal. Das Ideal
+  \begin{align*}
+    r(I) = \{x \in R \mid \exists n : x^n \in I \}
+  \end{align*}
+  nennt man {\sf Radikal} von $I$.
+\end{definition}
+
+\begin{example}
+Sei $R=\bZ$ und $I = (18)$. Dann gilt $r(I) = (6)$.
+\end{example}
+
+\begin{proposition}
+Das Radikal von $I$ ist der Schnitt aller Primideale, die $I$ enthalten.
+\end{proposition}
+
+\begin{proof}
+  Satz \ref{satz-nilradical} auf $R/I$ anwenden (Übungsblatt 2).
+\end{proof}
+
+\begin{definition}
+  Seien $R$ und $S$ Ringe. Das {\sf direkte Produkt} ist definiert als
+  $$
+  R \times S = \{ (x,y) \mid x \in R, y \in S \}
+  $$
+  mit der komponentenweisen Addition und Multiplikation. Die Null ist $(0,0)$ und die Eins ist~$(1,1)$.
+
+  Das direkte Produkt ist mit den  kanonischen Projektionen
+  \begin{align*}
+  & p_1 \colon R \times S \to R \\
+  & p_1(r,s)=r \\
+  & p_2 \colon R \times S \to S \\
+  & p_2(r,s)=s
+  \end{align*}
+  ausgestattet, und besitzt folgende {\sf universelle Eigenschaft}: Für jeden Ring $T$ und beliebige Ringhomomorphismen $f \colon T \to R$ und $g \colon T \to S$ gibt es einen eindeutigen Ringhomomorphismus $\psi \colon T \to R\times S$, sodass das folgende Diagramm kommutiert
+  \begin{align*}
+    \xymatrix{
+     T \ar@{-->}[rr]^{\exists ! \psi } \ar[dr]_f \ar[drrr]_g &&   R \times S \ar[dl] \ar[dr]\\
+     & R & & S
+    }
+  \end{align*}
+Man kann zeigen, dass diese universelle Eigenschaft das direkte Produkt eindeutig definiert (Übungsblatt 3).
+
+Analog kann man das Produkt einer beliebigen (auch unendlichen) Familie von Ringen definieren.
+\end{definition}
+
+\begin{example}
+Es gilt $\bZ / (6) = \bZ/(2) \times \bZ/(3)$.
+\end{example}
+
+Allgemeiner gilt folgendes Lemma.
+
+\begin{lemma}
+  Sei $R$ ein Ring, $I_1, \dots, I_n$ Ideale und $\psi$ der kanonische Homomorphismus
+  $$
+  R \to R/I_1 \times \dots \times R/I_n.
+  $$
+  Dann gilt:
+  \begin{enumerate}
+    \item $I_a$ und $I_b$ sind koprim für $a \neq b$ $\Rightarrow$ $\prod_s I_s =  \cap_s I_s$
+    \item $\psi$ ist surjektiv $\iff$ $I_a$ und $I_b$ sind koprim für $a \neq b$
+    \item $\psi$ ist injektiv $\iff$ $\cap_s I_s = (0)$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  Übungsblatt 3.
+\end{proof}
+
+
+
+\subsection{Spektrum eines Ringes}\label{subsection-Spektrum}
+
+\begin{definition}
+Sei $R$ ein Ring. Die Menge aller Primideale wird {\sf Spektrum} von $R$ genannt und mit $\Spec R$ bezeichnet.
+\end{definition}
+Vorerst ist $\Spec R$ nur eine Menge. Als Nächstes definieren wir eine Topologie darauf.
+
+\begin{definition}
+  Eine {\sf Topologie} auf einer Menge $X$ ist ein Mengensystem $T$ bestehend aus Teilmengen von $X$, den sogenannten {\sf offene Teilmengen}, die die folgenden Eigenschaften erfüllen:
+  \begin{enumerate}
+    \item $\emptyset$ und $X$ sind offen;
+    \item die Vereinigung beliebig vieler offener Teilmengen ist offen;
+    \item der Schnitt endlich vieler offener Teilmengen ist offen.
+  \end{enumerate}
+
+  Eine Teilmenge $A \subset X$ heißt {\sf abgeschlossen}, wenn das Komplement $X \setminus A$ offen ist.
+
+  \medskip
+
+  Ein {\sf topologischer Raum} ist eine Menge $X$ ausgestattet mit einer Topologie $T$.
+\end{definition}
+
+%\begin{example}
+%Keines gegeben. Siehe Beispiel \ref{example-spectra-of-rings}.
+%\end{example}
+
+\begin{remark}
+  Äquivalent kann man abgeschlossene Teilmengen benutzen, um eine Topologie zu definieren. Für diese soll gelten:
+  \begin{enumerate}
+    \item $\emptyset$ und $X$ sind abgeschlossen;
+    \item die Vereinigung endlich vieler abgeschlossener Teilmengen ist abgeschlossen;
+    \item der Schnitt beliebig vieler abgeschlossener Teilmengen ist abgeschlossen.
+  \end{enumerate}
+
+
+\end{remark}
+
+
+\noindent Jetzt sind wir bereit um eine Topologie auf $\Spec R$ zu definieren.
+
+\begin{definition}
+  Sei $R$ ein Ring und $E \subset R$ eine Teilmenge. Die Menge aller Primideale von $R$, die $E$ enthalten, bezeichnen wir mit $V(E)$. Diese wird {\sf Verschwindungsmenge} von $E$ genannt. Es ist leicht zu sehen, dass gilt $V(E) = V (\langle E \rangle)$. Somit genügt es $V(I)$, wobei $I \subset R$ ein Ideal ist, anzuschauen.
+\end{definition}
+
+\begin{lemma}\label{lemma-V(I)-define-topology}
+Es gelten folgende Eigenschaften:
+\begin{align*}
+  & V(0) = \Spec R \quad \text{und}\quad V(R) = \emptyset \\
+  & \cap_s V(I_i)  = V (\sum_s I_s) \\
+  & V(I) \cup V(J) = V(IJ) \\
+  & V (I) = V ( r(I) ) \\
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+Die ersten zwei Punkte wurden in der Vorlesung bewiesen. Die letzten
+beiden werden auf Übungsblatt 4 gestellt.
+\end{proof}
+
+\begin{definition}
+Nach Lemma \ref{lemma-V(I)-define-topology} erfüllen die Mengen $V(I)$ die Eigenschaften der abgeschlossen Teilmengen einer Topologie auf $\Spec R$. Diese Topologie wird \href{https://en.wikipedia.org/wiki/Zariski_topology}{\sf Zariski-Topologie} genannt.
+\end{definition}
+
+\begin{example}
+\label{example-spectra-of-rings}
+\
+  \begin{enumerate}
+    \item Sei $R=K$ ein Körper. Das Nullideal ist das einzige Primideal. Somit hat die Menge $\Spec K$ nur einen Punkt. Die Topologie ist eindeutig.
+
+    \item Sei $R=\bZ$. Die Primideale sind der Form $(p)$ mit $p$ einer Primzahl oder das Nullideal~$(0)$. Die abgeschlossenen Teilmengen sind der Form $V(n) = \{\text{Primteiler von $n$} \}$, die ganze Menge $\Spec \, \bZ$ und die leere Teilmenge $\emptyset$.
+
+    Eine amüsante Eigenschaft dieser Topologie ist Folgendes: Die Punkte der Form $(p)$ mit einer Primzahl sind abgeschlossen. Im Gegensatz dazu ist der Punkt $(0)$ nicht abgeschlossen: Die kleinste abgeschlossene Teilmenge von $\Spec \, \bZ$, die $(0)$ enthält ist $\Spec \, \bZ$ selbst, d.h. der Punkt $(0)$ ist dicht in $\Spec \, \bZ$. Solche Punkte nennt man \href{https://en.wikipedia.org/wiki/Generic_point}{\sf generische Punkte}.
+
+    \item Sei $R=\bC[x]$. Die Primideale sind von der Form $(x-a)$ mit $a \in \bC$ oder das Nullideal $(0)$. Die abgeschlossenen Teilmengen sind von der Form $V(f(x)) = \{\text{Nullstellen von $f(x)$} \}$. Auch in diesem Fall ist der Punkt $(0)$ ein generischer Punkt.
+  \end{enumerate}
+\end{example}
+
+\medskip
+\noindent \textbf{Motivation:} In der modernen algebraischen Geometrie ordnet man einem Ring $R$ ein geometrisches Objekt zu: Sein Spektrum $\Spec R$ ausgestattet mit der Zariski-Topologie und einer Garbe von Funktionen darauf (kommt später). Solche geometrischen Objekte nennt man affine Schemata. Ein allgemeines Schema wird dann als eine Verklebung von affinen Schemata definiert.
+
+
+
+\begin{definition}\label{definition-induced-map-on-spectra}
+Sei $f \colon R \to S$ ein Ringhomomorphismus. Dieser induziert eine natürliche Abbildung von Spektren
+\begin{align}\label{eq.-induced-map-on-spectra}
+  & \wt{f} \colon \Spec S \to \Spec R \\ \notag
+  &  \qquad \mathfrak{p} \mapsto f^{-1}(\mathfrak{p})
+\end{align}
+(wohldefiniert nach Satz \ref{satz-preimages-of-prime-ideals}).
+\end{definition}
+
+
+\begin{definition}
+  Eine Abbildung $\psi \colon X \to Y$ von topologischen Räumen heißt {\sf stetig}, wenn für jedes offenes $U \subset Y$ das Urbild $\psi^{-1}(U) \subset X$ auch offen ist.
+\end{definition}
+
+
+\begin{lemma}
+Die Abbildung \eqref{eq.-induced-map-on-spectra} ist stetig.
+\end{lemma}
+
+
+
+\begin{proof}
+Sei $I \subset R$ ein Ideal. Es gilt (Übungsblatt 4)
+\begin{align*}
+\wt{f}^{-1}\big( V(I) \big) = V(f(I)).
+\end{align*}
+Somit sind die Urbilder von abgeschlossenen Teilmengen abgeschlossen. Dann sind auch die Urbilder von offen Teilmengen offen.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Moduln}
+
+\subsection{Moduln und Homomorphismen}
+
+\begin{definition}
+Sei $R$ ein Ring. Ein $R$-Modul ist eine abelsche Gruppe $M$ (additiv geschrieben) ausgestattet mit einer \glqq Wirkung\grqq\, von $R$
+\begin{align*}
+  & \mu \colon R \times M \to M \\
+  & \quad  (a,m) \mapsto \mu(a,m) = a \cdot m
+\end{align*}
+die die folgenden Eigenschaften haben soll:
+\begin{align*}
+  & (a+b) \cdot x = a \cdot x + b \cdot x \\
+  & a \cdot (x+y) = a \cdot x + a \cdot y \\
+  & (a \cdot b) \cdot x = a \cdot (b \cdot x) \\
+  & 1 \cdot x = x
+\end{align*}
+für alle $a,b \in R$ und $x,y \in M$.
+\end{definition}
+
+
+Der Begriff eines Moduls verallgemeinert mehrere bekannte Begriffe.
+
+\begin{example}
+\
+
+\noindent Kommutative Beispiele:
+  \begin{enumerate}
+    \item Moduln über einem Körper $K$ sind $K$-Vektorräume.
+    \item Moduln über $\bZ$ sind abelsche Gruppen.
+    \item Jeder Ring $R$ ist ein $R$-Modul. Jedes Ideal $I \subset R$ ist ein $R$-Modul.
+    \item Für jeden Ring $R$ ist das direkte Produkt $R^n$ auch ein $R$-Modul.
+    \item Sei $f \colon R \to S$ ein Ringhomomorphismus. Dann können wir $S$ mit einer $R$-Modulstruktur ausstatten: $r \cdot m := f(r)m$ für $r \in R$ und $m \in S$.
+    \item Sei $K$ ein Körper und $R=K[x]$. Ein Modul über $R$ ist ein $K$-Vektorraum $V$ mit einer $K$-linearen Abbildung $V \to V$.
+  \end{enumerate}
+\end{example}
+
+\noindent {\bf Geometrische Motivation:} Sei $X$ ein Raum (topologischer Raum, glatte Mannigfaltigkeit, komplexe Mannigfaltigkeit, algebraische Varietät etc), $\cO(X)$ der Ring von globalen Funktionen auf $X$, und $E \to X$ ein Vektorbündel. Dann ist die Menge $E(X)$ der globalen Schnitte von $E$ ein Modul über $\cO(X)$.
+
+\newpage
+
+\begin{definition}
+\
+\begin{enumerate}
+  \item Eine Abbildung $f \colon M \to N$ von $R$-Moduln heißt ein {\sf Homomorphismus von $R$-Moduln} (oder $R$-linear), wenn gilt
+  \begin{align*}
+    & f(x+y) = f(x) + f(y) \\
+    & f(a \cdot x) = a \cdot f(x)
+  \end{align*}
+  für alle $x,y \in M$ und $a \in R$.
+
+  \item Die Menge aller $R$-linearen Homomorphismen $f \colon M \to N$ bezeichnen wir mit
+  $$
+  \Hom_R(M,N).
+  $$
+  Das ist auch ein $R$-Modul (mit der punktweisen Addition und Wirkung von $R$).
+
+  \item Die {\sf Endomorphismen}
+  $$
+  \End_R(M):= \Hom_R(M,M)
+  $$
+  bilden einen (nichtkommutativen!) Ring.
+
+  \item Wie früher: ein Mono(Epi-, Iso-)morphismus ist ein injektiver (surjektiver, bijektiver) Homomorphismus.
+\end{enumerate}
+
+\end{definition}
+
+
+\begin{example}
+\
+\begin{enumerate}
+  \item Sei $R$ ein Ring, $M$ ein $R$-Modul und $a \in R$ ein Element. Dann ist die Abbildung $m \mapsto am$ ein Homomorphismus.
+
+  \item Ein $f \in \Hom_R(R , M)$ ist eindeutig durch $f(1)$ definiert. Dadurch erhalten wir einen Isomorphismus von $R$-Moduln
+  \begin{align*}
+    \Hom_R(R , M) &\to  M \\
+      \qquad f \qquad &\mapsto  f(1)
+  \end{align*}
+
+  \item Homomorphismen $R^n \to R^m$ sind durch $n \times m$-Matrizen gegeben.
+  \item Sei $R$ ein Integritätsring und $I \subset R$ ein Ideal. Dann gilt $\Hom_R(R/I, R) = 0$.
+\end{enumerate}
+\end{example}
+
+
+
+
+
+
+
+\newpage
+\subsection{Untermoduln und Faktormoduln}
+
+\begin{definition}
+\
+\begin{enumerate}
+  \item Sei $M$ ein $R$-Modul. Eine Untergruppe $N \subset M$ heißt {\sf Untermodul}, wenn diese bezüglich der Multiplikation mit $R$ abgeschlossen ist.
+
+  \item Sei $N \subset M$ ein Untermodul. Die Faktorgruppe $M/N$ hat eine natürliche $R$-Modul-Struktur: $a(m + N) = am + N$. Dieser Modul wird {\sf Faktormodul} genannt. Die natürliche Abbildung $M \to M/N$ ist ein Homomorphismus von $R$-Moduln.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Sei $f \colon M \to N$ ein Homomorphismus von $R$-Moduln, dann sind der {\sf Kern} und  das {\sf Bild}
+\begin{align*}
+&  \Ker f := \{x \in M \mid  f(x)=0 \} \\
+&  \Im f := \{y \in N \mid \exists x \in M \colon f(x)=y \}
+\end{align*}
+Untermoduln von $M$ bzw. $N$.
+\end{definition}
+
+
+\begin{proposition}[Homomorphiesatz]
+Sei $f \colon M \to N$ ein Homomorphismus von $R$-Moduln. Dann gibt es einen natürlichen Isomorphismus
+\begin{align*}
+  M/\Ker f \overset{\simeq}{\to} \Im f
+\end{align*}
+\end{proposition}
+
+\begin{proof}
+Übung.
+\end{proof}
+
+
+\begin{proposition}[Korrespondenzsatz]
+  Sei $M$ ein $R$-Modul und $N \subset M$ ein Untermodul. Dann induziert die kanonische Projektion $\pi \colon M \to M/N$ eine Bijektion zwischen Untermoduln von $M/N$ und Untermoduln von $M$, die $N$ enthalten.
+\end{proposition}
+
+\begin{proof}
+Übung.
+\end{proof}
+
+
+\begin{definition}
+Sei $M$ ein $R$-Modul und $(M_i)_{i \in I}$ eine Familie von Untermoduln von $M$.
+\begin{enumerate}
+  \item Die {\sf Summe} $\sum_i M_i$ ist die Menge aller endlichen Summen $\sum_i x_i$ mit $x_i \in M_i$. Diese ist der kleinste Untermodul von $M$, welcher alle $M_i$ enthält.
+
+  \item Der {\sf Schnitt} $\bigcap_{i \in I} M_i$ ist auch ein Untermodul von $M$.
+\end{enumerate}
+
+\end{definition}
+
+\begin{proposition}
+\
+\begin{enumerate}
+  \item Seien $M \supset M' \supset M''$ Moduln über $R$. Dann gilt
+  \begin{align*}
+  & (M/M'')/(M'/M'') \iso M/M'
+  \end{align*}
+
+  \item Seien $M_{1,2} \subset M$ Untermoduln. Dann gilt
+  \begin{align*}
+   \left( M_1 + M_2 \right) /M_1 \iso M_2/(M_1 \cap M_2).
+  \end{align*}
+\end{enumerate}
+
+\end{proposition}
+
+\begin{proof}
+Übungsblatt 5.
+\end{proof}
+
+
+
+
+
+
+
+\subsection{Direkte Summe und direktes Produkt}
+
+\begin{definition}
+Sei $(M_i)_{i \in I}$ eine Familie von $R$-Moduln.
+\begin{enumerate}
+  \item Die {\sf direkte Summe} $\bigoplus_{i \in I} M_i$ wird definiert als
+  \begin{align*}
+  \bigoplus_{i \in I} M_i = \big \{ (m_i)_{i \in I} \mid m_i \in M_i, \text{ endliche viele $m_i \neq 0$} \big \}.
+  \end{align*}
+
+  \item Das {\sf direkte Produkt} $\prod_{i \in I} M_i$ wird definiert als
+  \begin{align*}
+  \prod_{i \in I} M_i = \big \{ (m_i)_{i \in I} \mid m_i \in M_i \big \}.
+  \end{align*}
+\end{enumerate}
+Die beiden sind wieder $R$-Moduln mit den komponentenweisen Operationen. Ähnlich zu Ringen kann man die beiden auch durch universelle Eigenschaften definieren (später).
+\end{definition}
+
+
+
+\subsection{Freie Moduln. Endlich Erzeugte Moduln. Torsion.}
+
+
+
+\begin{lemma}
+  Sei $R \neq 0$ ein Ring und $R^n \iso R^m$ als $R$-Moduln. Dann gilt $m=n$.
+\end{lemma}
+
+\begin{proof}
+  Seien $\mathfrak{m} \subset R$ ein maximales Ideal, $M=R^m$ und $N=R^n$. Ein Isomorphismus $M \iso N$ induziert einen Isomorphismus von Untermoduln\footnote{Für einen $R$-Modul $M$ und ein Ideal $\alpha \subset R$ definiert man den Untermodul $$\alpha M := \{ \sum_i a_im_i \mid  a_i \in \alpha, m_i \in M\}.$$} $\mathfrak{m} M \iso \mathfrak{m} N$. Somit erhalten wir einen Isomorphismus $M/ \mathfrak{m} M \iso N/ \mathfrak{m} N$. Also es gilt $(R/\mathfrak{m})^m \iso (R/\mathfrak{m})^n$ als $R$-Moduln. Daraus folgt, dass $(R / \mathfrak{m})^m \iso (R/ \mathfrak{m})^n$ auch als $R / \mathfrak{m}$-Vektorräume isomorph sind und wir erhalten $m=n$.
+\end{proof}
+
+
+
+\begin{definition}
+Sei $M$ ein $R$-Modul.
+\begin{enumerate}
+  \item $M$ heißt {\sf frei} $\iff$  $\exists$ ein Isomorphismus $M \iso \bigoplus_{i \in I} R$.
+
+  \item $M$ heißt {\sf frei vom Rang $n$} $\iff$ $card(I)=n$ ist endlich.\footnote{Wohldefiniert nach dem Lemma.}
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Eine Familie von Elementen $\{e_1, \dots, e_n \}$ von $M$ heißt {\sf Basis}, wenn jedes $m \in M$ eindeutig als Linearkombination $\sum_i a_i m_i$ mit $a_i \in R$ geschrieben werden kann.
+
+\medskip
+
+\noindent $M=R^n$: Man sieht leicht, dass die Elemente
+\begin{align*}
+& e_1 = (1,0, \dots, 0) \\
+& e_2 = (0,1, \dots, 0) \\
+& \dots \\
+& e_n = (0, \dots, 0,1)
+\end{align*}
+von $R^n$ eine Basis bilden. Diese Basis werden wir {\sf Standardbasis} von $R^n$ nennen.
+\end{example}
+
+
+\begin{lemma}
+Ein $R$-Modul $M$ ist frei vom Rang $n$ $\iff$ es gibt eine Basis von $M$ mit $n$ Elementen.
+\end{lemma}
+
+\begin{proof}
+Übung.
+\end{proof}
+
+\begin{lemma}
+  Sei $M$ ein $R$-Modul und $f \colon M \to R^n$ ein surjektiver Homomorphismus. Dann existiert eine Spaltung\footnote{D.h. $f \circ g = \id_{R^n}$.} $g \colon R^n \to M$ und ein Isomorphismus
+  \begin{align*}
+  h \colon M \to R^n \oplus \Ker f.
+  \end{align*}
+\end{lemma}
+
+\begin{proof}
+  Sei $R^n = R e_1 \oplus \dots \oplus R e_n$. Wähle $m_i \in M$ mit $f(m_i) = e_i$ und definiere $g \colon R^n \to M$ als
+  \begin{align*}
+  g(c_1e_1 + \dots + c_n e_n) = c_1 m_1 + \dots + c_n m_n.
+  \end{align*}
+  Es gilt  $f \circ g = \id_{R^n}$. Nun definiere $h \colon M \to R^n \oplus \Ker f$ als
+  \begin{align*}
+  h(m) = (f(m), g(f(m)) - m).
+  \end{align*}
+  Das ist ein Isomorphismus (Übungsblatt 5).
+\end{proof}
+
+\begin{remark}
+  Nach Homomorphiesatz induziert jeder surjektive Homomorphismus $M \to N$ einen Isomorphismus $M/\Ker f \iso N$. Es ist aber sehr selten, dass es eine Zerlegung $M \iso N \oplus \Ker f$ gibt. Z.B. geht es für die kanonische Projektion $\bZ \to \bZ/2\bZ$ nicht (Übungsblatt~5).
+\end{remark}
+
+
+
+
+
+\begin{definition}
+  Ein $R$-Modul $M$ heißt {\sf endlich erzeugt}, wenn es einen surjektiven Homomorphismus $R^n \to M$ gibt. Äquivalent: ein $R$-Modul $M$ ist endlich erzeugt, wenn es endlich viele Elemente $m_1 , \dots, m_n \in M$ gibt, sodass jedes $m \in M$ als $R$-Linearkombination von $m_i$'s geschrieben werden kann. Solche Elemente werden {\sf Erzeuger} von $M$ genannt (die Zahl $n$ ist nicht festgelegt).
+\end{definition}
+
+\begin{definition}
+Sei $M$ ein $R$-Modul. Ein Element $m \in M$ heißt {\sf Torsionselement}, wenn es ein $a \neq 0$ in $R$ gibt, sodass gilt $am=0$. Ein Modul ohne Torsionselemente $\neq 0$ heißt {\sf torsionsfrei}.
+\end{definition}
+
+\begin{lemma}
+Sei $R$ ein Integritätsbereich und $M$ ein $R$-Modul.
+\begin{enumerate}
+  \item Die Menge $M_{tors} \subset M$ aller Torsionselemente ist ein Untermodul von $M$.
+  \item Der Faktormodul $M/M_{tors}$ ist torsionsfrei.
+\end{enumerate}
+\end{lemma}
+
+
+
+
+\begin{lemma}
+Sei $M$ ein endlich erzeugter torsionsfreier Modul über einem Integritätsbereich $R$. Dann existiert eine Einbettung\footnote{Einbettung = injektiver Homomorphismus.} $M \to R^d$.
+\end{lemma}
+
+\begin{proof}
+Sei $K$ der Quotientenkörper von $R$ und $x_1, \dots, x_n$ Erzeuger von $M$.
+
+\begin{enumerate}
+  \item {\it Es gibt höchstens $n$ linear unabhängige Elemente in $M$:} Sei $f \colon R^n \to M$ der Homomorphismus definiert durch $f(e_i) = x_i$. Seien $y_1, \dots ,y_k$ linear unabhängig, dann ist der Untermodul aufgespannt von den $y_i$'s isomorph zu $R^k$. Man kann schreiben $y_i = \sum_{j} a_{ij} x_j$ und dann zu $R^n$ liften: $v_i := \sum_{j} a_{ij} e_j$. Es gilt $f(v_i) = y_i$. Da $y_1, \dots ,y_k$ linear unabhängig in $M$ sind, sind $v_1, \dots ,v_k$ linear unabhängig in $R^n$. Somit sind diese auch in $K^n$ linear unabhängig über $K$.
+
+  \item Sei $t_1, \dots , t_d$ eine maximale (größtmögliche) Familie von linear unabhängigen Elementen. Dann gilt
+  $$
+  \sum_i R t_i \iso R^d.
+  $$
+  Für jedes $x \in M$ sind die Elemente $\{x, t_1, \dots, t_d\}$ linear abhängig. Somit gilt
+  $$
+  ax = \sum_i a_i t_i
+  $$
+  mit $a \neq 0$. D.h. $ax \in \sum_i R t_i$. Jetzt können wir $x$ über $\{ x_1, \dots, x_n \}$ variieren lassen und erhalten, dass es ein $a \in R \setminus \{0\}$ gibt, sodass
+  $$
+  ax_j \in \sum_i R t_i \qquad \forall j.
+  $$
+  Daraus folgt $aM \subset \sum_i R t_i$. Nun erhalten wir die gewünschte Einbettung als die Komposition
+  \begin{align*}
+  & M \overset{\iso}{\to} aM \subset \sum_i R t_i \overset{\iso}{\to} R^d \\
+  & m \mapsto am.
+  \end{align*}
+
+\end{enumerate}
+\end{proof}
+
+
+\subsection{Moduln über Hauptidealbereichen}
+
+\begin{thm}
+Sei $R$ ein Hauptidealbereich. Dann ist jeder Untermodul eines freies $R$-Moduls vom Rang $n$ auch frei vom Rang $\leq n$.
+\end{thm}
+
+\begin{proof}
+OBDA können wir direkt mit Untermoduln von $R^n$ arbeiten. Der Beweis des Theorems ist durch die Induktion nach dem Rang gegeben.
+
+\smallskip
+
+\noindent {\it Induktionsanfang: } Sei $n=1$, d.h. wir befassen uns mit Untermoduln von $R$. Die Untermoduln von $R$ sind genau die Ideale von $R$ (gilt für beliebige Ringe). Da $R$ ein Hauptidealbereich ist, sind alle Ideale frei vom Rang $1$. Um das zu sehen, betrachten wir den Homomorphismus
+\begin{align*}
+& R \to R \\
+& a \mapsto ax
+\end{align*}
+welcher injektiv ist, und dessen Bild das Ideal $(x)$ ist.
+
+\smallskip
+\noindent {\it Induktionsschritt: } Wir nehmen an, dass die Aussage für $R^n$ mit $n \geq 1$ bekannt ist. Zu zeigen ist, dass jeder Untermodul $M \subset R^{n+1}$ frei vom Rang $\leq n+1$ ist. Sei $\pi \colon M \to R^n$ der Homomorphismus gegeben als die Komposition $M \subset R^{n+1} = R \oplus R^n \to R^n$. Nach der Induktionsannahme ist das Bild $\pi (M) \subset R^n$ frei vom Rang $\leq n$. Somit erhalten wir nach Lemma 2.16 eine Zerlegung
+\begin{align*}
+M  \iso N \oplus \Ker \pi,
+\end{align*}
+wobei
+\begin{align*}
+\Ker \pi = M \cap (R \oplus 0).
+\end{align*}
+Insbesondere ist $\Ker \pi$ ein Untermodul von $(R \oplus 0)$. Da alle Untermoduln von $R = R \oplus 0$ frei vom Rang $\leq 1$ sind, sehen wir, dass $M$ frei vom Rang $\leq n+1$ ist.
+\end{proof}
+
+\begin{remark}
+Übungsblatt 5:
+\begin{enumerate}
+  \item Wenn $R$ kein Hauptidealbereich ist, es also ein Ideal $I \subset R$ gibt, das kein Hauptideal ist, dann ist $I$ kein freier $R$-Modul.
+  \item Wenn $R$ ein Hauptidealring ist, aber einen Nullteiler $x \neq 0$ hat, dann ist das Hauptideal $(x)$ kein freier $R$-Modul.
+\end{enumerate}
+\end{remark}
+
+\begin{cor}
+Endlich erzeugte torsionsfreie Moduln über einem Haupidealbereich sind frei.
+\end{cor}
+
+\begin{proof}
+Folgt sofort aus Lemma 2.21 und Theorem 2.22.
+\end{proof}
+
+\begin{cor}
+Jeder endlich erzeugte Modul $M$ über einem Haupidealbereich $R$ lässt sich als direkte Summe
+\begin{align*}
+M \iso   R^n  \oplus  M_{tors}
+\end{align*}
+schreiben.
+\end{cor}
+
+\begin{proof}
+Nach Korollar 2.24 ist $M/M_{tors}$ frei von endlichem Rang, d.h.\ $M/M_{tors} \iso R^n$. Jetzt kann man Lemma 2.16 auf die kanonische Projektion $M \to M/M_{tors}$ anwenden.
+\end{proof}
+
+
+\begin{thm}
+Jeder endlich erzeugte Torsionsmodul $M$ (d.h.\ $M=M_{tors}$) über einem Haupidealbereich $R$ lässt sich als direkte Summe
+\begin{align*}
+M \iso   \bigoplus_{i=1}^s  R/(a_i).
+\end{align*}
+schreiben.
+\end{thm}
+
+\begin{proof}
+Ohne Beweis.
+\end{proof}
+
+
+
+
+\subsection{Moduln über nichtkommutativen Ringen}
+
+In diesem Abschnitt sind Ringe nicht unbedingt kommutativ.
+
+
+\begin{definition}
+Sei $R$ ein Ring.
+\begin{itemize}
+  \item Ein {\sf $R$-Linksmodul} ist eine abelsche Gruppe $M$ (additiv geschrieben) ausgestattet mit einer linken \glqq Wirkung\grqq\, von $R$
+  \begin{align*}
+    & \mu \colon R \times M \to M \\
+    & \quad  (a,m) \mapsto \mu(a,m) = a \cdot m,
+  \end{align*}
+  die die folgenden Eigenschaften haben soll:
+  \begin{align*}
+    & (a+b) \cdot x = a \cdot x + b \cdot x \\
+    & a \cdot (x+y) = a \cdot x + a \cdot y \\
+    & (a \cdot b) \cdot x = a \cdot (b \cdot x) \\
+    & 1 \cdot x = x
+  \end{align*}
+  für alle $a,b \in R$ und $x,y \in M$.
+
+  \item Ein {\sf $R$-Rechtsmodul} ist eine abelsche Gruppe $M$ ausgestattet mit einer rechten \glqq Wirkung\grqq\, von $R$
+    \begin{align*}
+      & \mu \colon M \times R \to M \\
+      & \quad  (m,a) \mapsto \mu(m,a) = m \cdot a,
+    \end{align*}
+    die die folgenden Eigenschaften haben soll:
+    \begin{align*}
+      &   x \cdot (a+b) = x \cdot a + x \cdot b \\
+      & (x+y) \cdot a   = x \cdot a + y \cdot a \\
+      &  x \cdot (a \cdot b) = (x \cdot a) \cdot b \\
+      & x \cdot 1 = x
+    \end{align*}
+    für alle $a,b \in R$ und $x,y \in M$.
+\end{itemize}
+Homomorphismen, Untermoduln und Faktormoduln werden analog zum kommutativen Fall definiert.
+\end{definition}
+
+
+Jetzt werden wir drei Klassen von Beispielen einführen.
+
+\subsubsection{Gruppendarstellungen}
+
+Sei $G$ eine Gruppe (z.B.\ eine endliche Gruppe) und $k$ ein Körper.
+
+Eine {\sf Darstellung} von $G$ ist ein Gruppenhomomorphismus $\rho \colon G \to GL(V)$, wobei $V$ ein $k$-Vektorraum ist. Mit anderen Worten eine Darstellung ist eine lineare Wirkung von $G$ auf $V$. Ein Homomorphismus von $\rho_1 \colon G \to GL(V)$ nach $\rho_2 \colon G \to GL(W)$ ist eine $k$-lineare Abbildung $\psi \colon V \to W$, die mit der Wirkung von $G$ kommutiert, d.h. es gilt $\psi \circ \rho_1 = \rho_2$.
+
+Der {\sf Gruppenring} von $G$ über $k$ ist die Menge
+\begin{align*}
+  k[G]  =  \Big \{ \sum_{g \in G} a_g g \mid \text{ nur endliche viele $a_g$ sind $\neq 0$} \Big \}
+\end{align*}
+mit der koeffizientenweisen Addition und mit der Multiplikation der Form
+\begin{align*}
+  \big( \sum_{g \in G} a_g g \big) \cdot \big( \sum_{h \in G} b_h h \big) := \sum (a_g b_h) (gh).
+\end{align*}
+Der Gruppenring ist genau dann kommutativ, wenn die Gruppe $G$ abelsch ist.
+
+\medskip
+
+\noindent Darstellungen von $G$ = $k[G]$-Linksmoduln.
+
+
+\subsubsection{Köcherdarstellungen}
+
+Köcher, Köcherdarstellungen und Pfadalgebren wurden in der Vorlesung kurz eingeführt. Am besten schauen Sie noch diese Notizen von Michel Brion an.
+
+\subsubsection{$\cD$-Moduln}
+
+Polynomielle Differentialoperatoren endlicher Ordnung in einer Variable $x$ bilden einen nichtkommutativen Ring $\cD$. Als Menge setzen wir
+\begin{align}\label{Eq.: Weyl algebra}
+\cD = \Big \{ \sum_{i=0}^\infty a_i(x) \partial_x^i  \mid a_i(x) \in k[x] \text{ nur endlich viele $\neq 0$} \Big \}.
+\end{align}
+Die Addition:
+\begin{align*}
+\sum_{i=0}^\infty a_i(x) \partial_x^i + \sum_{i=0}^\infty b_i(x) \partial_x^i   = \sum_{i=0}^\infty (a_i(x) + b_i(x)) \partial_x^i.
+\end{align*}
+Die Multiplikation: erst formal ausmultiplizieren
+\begin{align*}
+\sum_{i=0}^\infty a_i(x) \partial_x^i \cdot \sum_{i=0}^\infty b_i(x) \partial_x^i = \sum a_i(x) \partial_x^i b_j(x) \partial_x^j
+\end{align*}
+und dann in die Form \eqref{Eq.: Weyl algebra} mit Hilfe von
+\begin{align*}
+[\partial_x, x] = \partial_x x - x \partial_x = 1
+\end{align*}
+bringen. Z.B.
+$$
+(x^2\partial_x + 1) \cdot x\partial_x = x^2 \partial_x x \partial_x + x\partial_x = x^2 (x \partial_x + 1) \partial_x + x\partial_x =x^3 \partial_x^2  + (x+x^2)\partial_x.
+$$
+
+
+\bigskip
+\noindent Moduln über dem Ring $\cD$ nennt man $\cD$-Moduln. Diese und deren Verallgemeinerungen (auf mehrere Variablen etc.) spielen eine wesentliche Rolle in der Mathematik. LINK Solche Begriffe wie z.B. Vektorbündel mit Zusammenhang lassen sich auch in der Sprache von $\cD$-Moduln auffassen.
+
+\begin{example}
+\
+\begin{enumerate}
+\item Der Polynomring $\cO = k[x]$ mit der üblichen Ableitung ist ein $\cD$-Linksmodul.
+
+\item Sei $P \in \cD$ ein Differentialoperator (z.B. $P = \partial_x^2 - 1$) und
+\begin{align}
+P y = 0
+\end{align}
+die dazugehörige Differentialgleichung (für $P = \partial_x^2 - 1$ heißt diese Airy--Gleichung). Man ordnet dem Operator $P$ einen $\cD$-Linksmodul zu
+\begin{align*}
+M = \cD/\cD P.
+\end{align*}
+Es ist leicht zu sehen, dass die Lösungen von (2.2) in 1-zu-1-Beziehung stehen mit Homomorphismen von $\cD$-Linksmoduln
+\begin{align*}
+\Hom_{\cD}(\cD/\cD P , \cO).
+\end{align*}
+\end{enumerate}
+\end{example}
+
+
+
+
+\newpage
+\section{Kategorientheorie}
+
+\subsection{Kategorien und Funktoren}
+
+\begin{definition}
+Eine {\sf Kategorie} $\cC$ ist folgendes Datum:
+\begin{enumerate}
+  \item {\sf Objekte}: Eine Klasse von Objekten $Obj \, \cC$ ist gegeben. Elemente von $Obj \, \cC$ werden wir mit großen lateinischen Buchstaben $X,Y,Z \dots$ bezeichnen.
+
+  \item {\sf Morphismen}: Für jedes Paar $X,Y \in Obj \, \cC$ ist eine Menge $\Hom(X,Y)$ gegeben. Elemente von $\Hom(X,Y)$ nennt man {\sf Morphismen} von $X$ nach $Y$. Für ein $f \in \Hom(X,Y)$ kann man alternativ schreiben $f \colon X \to Y$ oder $X \overset{f}{\to} Y$.
+
+  \item {\sf Komposition}: Für jedes Tripel $X,Y,Z \in  Obj \, \cC$ ist eine Kompositionsabbildung gegeben
+  \begin{align*}
+  & \Hom(X,Y) \times \Hom(Y,Z) \to \Hom(X,Z) \\
+  & \hspace{60pt} (f,g) \qquad  \mapsto \qquad g \circ f.
+  \end{align*}
+  Die Komposition muss assoziativ sein.
+
+  \item {\sf Identität}: Für jedes $X \in Obj \, \cC$ existiert $\id_X \in \Hom(X,X)$ mit der Eigenschaft
+  \begin{align*}
+  \id_X \circ f = f  \\
+  g \circ \id_X = g
+  \end{align*}
+  für alle Morphismen $f,g$.\footnote{Die Identität ist dadurch eindeutig definiert.}
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Hier sind ein paar Beispiele von Kategorien, die wir schon gesehen haben.
+\begin{enumerate}
+  \item $Sets$ --- die Kategorie der Mengen. Objekte sind Mengen, Morphismen sind Abbildungen.
+  \item $Groups$  --- die Kategorie der Gruppen. Objekte sind Gruppen, Morphismen sind Gruppenhomomorphismen.
+  \item $Ab$ --- die Kategorie der abelschen Gruppen. Objekte sind abelsche Gruppen, Morphismen sind Gruppenhomomorphismen.
+  \item $Rings$ --- die Kategorie der kommutativen Ringen. Objekte sind Ringe, Morphismen sind Ringhomomorphismen.
+  \item $Vect_k$ --- die Kategorie der $k$-Vektorräume. Objekte sind Vektorräume über $k$, Morphismen sind $k$-lineare Abbildungen.
+  \item $R \mhyphen \Mod$ --- die Kategorie der $R$-Moduln. Objekte sind $R$-Moduln, Morphismen sind Modulhomomorphismen.
+  \item $Top$ --- die Kategorie der topologischen Räume. Objekte sind topologische Räume, Morphismen sind stetige Abbildungen.
+  \item Sei $R$ ein Ring (nicht unbedingt kommutativ). Dann kann man $R \mhyphen \Mod$ und $\Mod \mhyphen R$ definieren.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+Sei $\cC$ eine Kategorie und $f \in \Hom(X,Y)$ ein Morphismus.
+\begin{enumerate}
+  \item $f$ heißt {\sf Monomorphismus} $\iff$ aus $f \circ g_1 = f \circ g_2$ folgt $g_1 = g_2$.
+  \item $f$ heißt {\sf Epimorphismus} $\iff$ aus $g_1 \circ f = g_2 \circ f$ folgt $g_1 = g_2$.
+  \item $f$ heißt {\sf Isomorphismus} $\iff$ $f$ ist invertierbar, d.h. es existiert $g \in \Hom(Y,X)$, sodass
+  \begin{align*}
+  g \circ f = id_X \text{  und  } f \circ g = \id_Y.
+  \end{align*}
+
+  \item $\End(X):= \Hom (X,X)$.
+  \item $Aut(X)=$  invertierbare Endomorphismen.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Es folgt sofort, dass ein Isomorphismus immer ein Monomorphismus und Epimorphismus ist. Die Umkehrung ist aber falsch ($\bZ \to \bQ$ in $Rings$).
+\end{remark}
+
+\begin{definition}
+Sei $\cC$ eine Kategorie und $X,Y \in Obj \, \cC$ zwei Objekte. Ein {\sf Produkt} von $X$ und $Y$ ist ein Objekt $T$ von $\cC$ ausgestattet mit zwei Morphismen $T \to X$ und $T \to Y$, sodass die folgende universelle Eigenschaft erfüllt ist: für jedes Objekt $Z$ ausgestattet mit Morphismen $Z \to X$ und $Z \to Y$ existiert ein eindeutiger Morphismus $\psi \colon Z \to T$, sodass das Diagramm
+\begin{align*}
+  \xymatrix{
+   Z \ar@{-->}[rr]^{\exists ! \psi } \ar[dr] \ar[drrr] &&   T \ar[dl] \ar[dr]\\
+   & X & & Y
+  }
+\end{align*}
+kommutiert.
+
+Wenn es existiert, ist ein Produkt eindeutig bis auf eine eindeutige Isomorphie definiert und wird mit $X \times Y$ bezeichnet.
+\end{definition}
+
+
+
+\begin{definition}
+Sei $\cC$ eine Kategorie und $X,Y \in Obj \, \cC$ zwei Objekte. Ein {\sf Koprodukt} von $X$ und $Y$ ist ein Objekt $T$ von $\cC$ ausgestattet mit Morphismen $X \to T$ und $Y \to T$, sodass die folgende universelle Eigenschaft erfüllt ist: für jedes Objekt $Z$ ausgestattet mit Morphismen $X \to Z$ und $Y \to Z$ existiert ein eindeutiger Morphismus $\psi \colon T \to Z$, sodass das Diagramm
+\begin{align*}
+  \xymatrix{
+   Z   &&   T  \ar@{-->}[ll]_{\exists ! \psi }  \\
+   & X \ar[lu] \ar[ur] & & Y \ar[ulll] \ar[ul]
+  }
+\end{align*}
+kommutiert.
+
+Wenn es existiert, ist ein Koprodukt eindeutig bis auf eine eindeutige Isomorphie definiert und wird mit $X \coprod Y$ bezeichnet.
+\end{definition}
+
+
+\begin{definition}
+Seien $\cC$ und $\cD$ zwei Kategorien. Ein {\sf kovarianter Funktor} $F \colon \cC \to \cD$ ist folgendes Datum:
+\begin{enumerate}
+\item Eine Abbildung $Obj\, \cC \to Obj\, \cD$, $X \mapsto F(X)$;
+\item Für jedes paar $X,Y \in Obj\, \cC$ eine Abbildung $\Hom_{\cC}(X,Y) \to \Hom_{\cD}(F(X),F(Y))$, sodass
+  \begin{align*}
+  & F(\id_X) = \id_{F(X)} \\
+  & F(\varphi \circ \psi) = F(\varphi) \circ F(\psi).
+  \end{align*}
+\end{enumerate}
+
+\noindent Ein {\sf kontravarianter Funktor} $F \colon \cC \to \cD$ ist folgendes Datum:
+\begin{enumerate}
+  \item Eine Abbildung $Obj \cC \to Obj \cD$, $X \mapsto F(X)$;
+  \item Für jedes paar $X,Y \in Obj \cC$ eine Abbildung $\Hom_{\cC}(X,Y) \to \Hom_{\cD}(F(Y),F(X))$, sodass
+  \begin{align*}
+  & F(\id_X) = \id_{F(X)} \\
+  & F(\varphi \circ \psi) =  F(\psi) \circ F(\varphi).
+  \end{align*}
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\
+\begin{enumerate}
+  \item $\Id_{\cC} \colon \cC \to \cC$
+  \item $\Hom(T,\blank)  \colon \cC \to Sets$
+
+  \item Vergissfunktoren: $Top \to Sets$, $R \mhyphen \Mod \to Ab \to Sets$
+
+  \item $GL_n \colon Rings \to Groups$
+  \item $SL_n \colon Rings \to Groups$
+  \item $V \mapsto V^*$ ist kontravariant.
+  \item $\Spec \colon Rings^{op} \to Top$
+\end{enumerate}
+\end{example}
+
+\begin{remark}
+Gegeben eine Kategorie $\cC$ definiert man die duale Kategorie $\cC^{op}$ wie folgt: $Obj\, \cC^{op} = Obj\, \cC$ und $\forall X,Y \in \cC^{op}$ definieren wir $\Hom_{\cC^{op}}(X,Y)=\Hom_{\cC}(Y,X)$.
+
+Es ist leicht zu sehen, dass es eine Bijektion zwischen kontravarianten Funktoren $\cC \to \cD$ und kovarianten Funktoren $\cC^{op} \to \cD$ gibt.
+\end{remark}
+
+
+\begin{definition}
+Seien $F,G \colon \cC \to \cD$ Funktoren. Eine natürliche Transformation (oder Morphismus von Funktoren) $\rho \colon F \to G$ ist folgendes Datum:
+\begin{enumerate}
+  \item Für jedes $X \in \cC$ ein Morphismus $F(X) \overset{\rho(X)}{\to} G(X)$;
+  \item Für jeden Morphismus $\varphi \colon X \to Y$ soll das Diagramm
+  \begin{align*}
+  \xymatrix{
+  F(X) \ar[r]^{\rho(X)} \ar[d]_{F(\varphi)} & G(X) \ar[d]^{G(\varphi)} \\
+  F(Y) \ar[r]^{\rho(Y)} & G(Y)
+  }
+  \end{align*}
+  kommutieren.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+$Funct(\cC, \cD)$ ist eine Kategorie (Übungsblatt 7).
+\end{remark}
+
+\begin{example}
+$SL_n \to GL_n \to GL_1$
+\end{example}
+
+Man kann von Isomorphismen von Kategorien sprechen, aber dieser Begriff ist nicht besonders nützlich. Stattdessen führt man Kategorienäquivalenzen ein, welche sehr oft benutzt werden.
+\begin{definition}
+Ein Funktor $F\colon \cC \to \cD$ heißt {\sf Äquivalenz}, wenn es einen Funktor $G \colon \cD \to \cC$ gibt, sodass
+\begin{align*}
+& F \circ G \iso \Id_{\cD} \\
+& G \circ F \iso \Id_{\cC} \\
+\end{align*}
+\end{definition}
+
+
+\begin{example}
+Sei $Vect_k^{n}$ die Kategorie der $n$-dimensionalen $k$-Vektorräume und sei $\cC$ die Kategorie mit einem einzelnen Objekt $k^n$ und linearen Abbildung $\Hom_k(k^n,k^n)$ als Morphismen. Der natürlich Inklusionsfunktor $\cC \to Vect_k^{n}$ ist eine Kategorienäquivalenz. \end{example}
+
+
+
+\subsection{Exakte Sequenzen}
+
+Sei $R$ ein Ring.
+
+\begin{definition}
+Eine Sequenz von $R$-Moduln und Homomorphismen
+\begin{align*}
+\dots \to M_{i-1} \overset{f}{\to} M_i \overset{g}{\to} M_{i+1} \to \dots
+\end{align*}
+heißt {\sf exakt am $M_i$}, wenn gilt $\Im f = \Ker g$. Die Sequenz heiß {\sf exakt}, wenn sie an jeder Stelle exakt ist.
+
+Insbesondere gilt:
+\begin{enumerate}
+  \item $0 \to M' \overset{f}{\to} M$ ist exakt $\iff$  $f$ ist injektiv
+  \item $M \overset{g}{\to} M'' \to 0$ ist exakt $\iff$  $g$ ist surjektiv
+  \item Eine Sequenz
+  $$
+  0 \to M' \overset{f}{\to} M \overset{g}{\to} M'' \to 0
+  $$
+  ist exakt $\iff$  $f$ ist injektiv, $g$ ist surjektiv und gilt
+  $$
+  \Coker(f)=M/\Im f \iso M''.
+  $$
+  Solche exakte Sequenzen nennt man {\sf kurze exakte Sequenzen}.\footnote{kurze exakte Sequenz = k.e.S.}
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\
+\begin{enumerate}
+\item Gegeben ein $R$-Modul $M$ und ein Untermodul $M' \subset M$, kann man immer die folgende k.e.S. betrachten
+$$
+0 \to M' \to M  \to M/M' \to 0.
+$$
+\item Gegeben zwei $R$-Moduln $M$ und $N$ kann man immer die folgende k.e.S. betrachten
+$$
+0 \to M \overset{f}{\to} M \oplus N \overset{g}{\to} N \to 0,
+$$
+wobei $f(m) = (m,0)$ und $g(m,n)=n$.
+
+\item Man sagt, dass eine kurze exakte Sequenz
+$$
+0 \to M' \overset{f}{\to} M \overset{g}{\to} M'' \to 0
+$$
+{\sf spaltet}, wenn $g$ einen Schnitt hat. D.h. es existiert $h \colon M'' \to M$ mit $g \circ h = \id_{M''}$. In diesem Fall ist die k.e.S. isomorph zu
+$$
+0 \to M' \overset{f}{\to} f(M') \oplus h(M'') \overset{g}{\to} M'' \to 0.
+$$
+
+\item Die k.e.S. $0 \to \bZ \to \bZ \to \bZ / 2 \bZ \to 0$ spaltet nicht.
+
+\item Sei $R$ ein Hauptidealbereich und $M$ ein endlich erzeugter $R$-Modul. Die folgende k.e.S.
+$$
+0 \to M_{tors} \to M \to M/M_{tors} \to 0
+$$
+spaltet immer, da nach Korollar 2.24 $M/M_{tors}$ frei ist (vgl. Lemma 2.16).
+\end{enumerate}
+\end{example}
+
+\begin{proposition}\label{prop.: hom-is-left-exact}
+Sei $N$ ein $R$-Modul und
+$$
+0 \to M' \overset{f}{\to} M \overset{g}{\to} M'' \to 0
+$$
+eine kurze exakte Sequenz. Dann sind die induzierten Sequenzen
+\begin{align*}
+&  0 \to \Hom(N,M') \to \Hom(N,M) \to \Hom(N,M'') \\
+&  0 \to \Hom(M'', N) \to \Hom(M,N) \to \Hom(M',N)
+\end{align*}
+exakt.
+\end{proposition}
+
+\begin{proof}
+Übung.
+\end{proof}
+
+
+\begin{remark}
+Aus Satz \ref{prop.: hom-is-left-exact} folgt, dass die Funktoren
+\begin{align*}
+& \Hom(N,\blank)  \colon R \mhyphen \Mod \to R \mhyphen \Mod \\
+& \Hom(\blank, N)  \colon (R \mhyphen \Mod)^{op} \to R \mhyphen \Mod
+\end{align*}
+linksexakt sind.
+\end{remark}
+
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{refs}
+
+
+\end{document}
