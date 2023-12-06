@@ -1682,6 +1682,104 @@ linksexakt sind.
 \end{remark}
 
 
+\subsection{Additive und abelsche Kategorien}
+
+\begin{definition}
+Eine Kategorie $\cC$ heißt {\sf additiv}, wenn sie die folgende Eigenschaften hat:
+\begin{enumerate}
+  \item $\forall$ $X,Y \in \cC$ ist die Menge $\Hom_{\cC}(X,Y)$ mit der Struktur einer abelschen Gruppe ausgestattet (insbesondere $\Hom_{\cC}(X,Y) \neq \emptyset$, da wir immer $0 \in \Hom_{\cC}(X,Y)$ haben), und $\forall$ $X,Y,Z \in \cC$ ist die Kompositionsabbildung
+  \begin{align*}
+  \Hom_{\cC}(X,Y) \times \Hom_{\cC}(Y,Z) \to \Hom_{\cC}(X,Z)
+  \end{align*}
+  {\sf biadditiv}, d.h. $\forall \,  f,g,h$ gilt $(f+g) \circ h  = f \circ h + g \circ h$ und $h \circ (f+g) = h \circ f + h \circ g$.
+
+  \item Es existiert ein Objekt $\textbf{0}$, Nullobjekt genannt, sodass $\Hom_{\cC}(X,\textbf{0}) = \{0\} = \Hom_{\cC}(\textbf{0},X)$ $\forall\, X$, d.h. es gibt genau einen Morphismus von/nach $\textbf{0}$.
+
+  \item $\forall$ $X,Y \in \cC$ existiert das Produkt $X \times Y$.
+\end{enumerate}
+\end{definition}
+
+
+
+\begin{example}
+$Ab, R \mhyphen \Mod, Vect_k$ sind additive Kategorien.
+\end{example}
+
+\medskip
+
+\noindent Sei $\cC$ eine additive Kategorie und $X, Y \in \cC$. Mit Hilfe der universellen Eigenschaft von $X \times Y$ kann man einen Morphismus $X \to X \times Y$ definieren (betrachte $X \overset{\id_X}{\to} X$ und $X \overset{0}{\to} Y$). Analog kann man $Y \to X \times Y$ definieren.
+
+
+\begin{lemma}
+Mit den obigen Morphismen $X \to X \times Y$ und $Y \to X \times Y$ hat $X \times Y$ die universelle Eigenschaft des Koprodukts.
+\end{lemma}
+
+\begin{proof}
+Übungsblatt 8.
+\end{proof}
+
+
+
+\begin{definition}
+Sei $\cA$ eine additive Kategorie und $f \colon X \to Y$ ein Morphismus.
+\begin{enumerate}
+  \item Ein Objekt $T$ ausgestattet mit einem Morphismus $h \colon T \to X$ mit $f\circ h = 0$ heißt {\sf Kern} von $f$, wenn die folgende universelle Eigenschaft erfüllt ist: für jedes $\varphi \colon  Z \to X$ mit $f\circ \varphi = 0$ existiert ein eindeutiger $\psi \colon Z \to T$ mit $\varphi = h \circ \psi$.
+  \begin{align*}
+  \xymatrix{
+  Z \ar[dr]^{\varphi} \ar@{-->}[d]_{\exists ! \psi} \\
+  T \ar[r]^h & X \ar[r]^f & Y
+  }
+  \end{align*}
+  Wenn ein Kern $T \overset{h}{\to} X$ existiert, ist dieser eindeutig bis auf eine eindeutige Isomorphie definiert und mit $\Ker(f)$ bezeichnet.
+
+
+  \item  Ein Objekt $T$ ausgestattet mit einem Morphismus $h \colon Y \to T$ mit $h \circ f = 0$, heißt {\sf Kokern} von $f$, wenn die folgende universelle Eigenschaft erfüllt ist: für jedes $\varphi \colon  Y \to Z$ mit $\varphi \circ f= 0$ existiert ein eindeutiger $\psi \colon T \to Z$ mit $\varphi = \psi \circ h$.
+  \begin{align*}
+  \xymatrix{
+  X \ar[r]^f & Y \ar[r]^h \ar[dr]_{\varphi} & T \ar@{-->}[d]^{\exists ! \psi} \\
+   &&Z
+  }
+  \end{align*}
+
+  Wenn ein Kokern $Y \overset{h}{\to} T$ existiert, ist dieser eindeutig bis auf eine eindeutige Isomorphie definiert und mit $\Coker(f)$ bezeichnet.
+
+
+  \item Das {\sf Bild} von $f$ wird als Kern vom Kokern definiert: $\Im f = \Ker(\Coker f)$.
+
+  \item Das {\sf Kobild} von $f$ wird als Kokern vom Kern definiert: $\Coim f = \Coker(\Ker f)$.
+  \end{enumerate}
+\end{definition}
+
+\bigskip
+
+\noindent Sei $\cA$ eine additive Kategorie und $\varphi \colon X \to Y$ ein Morphismus. Dann kann man die folgende Sequenz von Objekten und Morphismen betrachten
+\begin{align*}
+\Ker \varphi \overset{a}{\to} X \overset{b}{\to} \Coim \varphi \overset{c}{\to} \Im \varphi \overset{d}{\to} Y \overset{e}{\to} \Coker \varphi
+\end{align*}
+mit der Eigenschaft $d \circ c \circ b = \varphi$. Hier sind $a,b,d,e$ die Morphismen, die in den Definitionen von (Ko-)Kern und (Ko-)Bild vorkommen, und der Morphismus $\Coim \varphi \overset{c}{\to} \Im \varphi$ entsteht auf eine kanonische Weise (Übung). In solchen Kategorien wie $Ab$ oder $R \mhyphen \Mod$ ist $\Coim \varphi \overset{c}{\to} \Im \varphi$ immer ein Isomorphismus, aber nicht in beliebigen additiven Kategorien. Dies führt uns zur nächsten Definition.
+
+
+
+\begin{definition}
+Eine additive Kategorie $\cA$ heißt {\sf abelsch}, wenn:
+\begin{enumerate}
+  \item in $\cA$ beliebige Kerne und Kokerne existieren;
+  \item für jedes $\varphi$ der kanonische Morphismus $\Coim \varphi \overset{c}{\to} \Im \varphi$ ein Isomorphismus ist.
+\end{enumerate}
+
+
+
+
+\end{definition}
+
+\begin{example}
+\
+\begin{enumerate}
+  \item $Ab, R \mhyphen \Mod$ sind abelsch.
+  \item Die Kategorie der freien abelschen Gruppen ist nicht abelsch! Für den Morphismus $\bZ \overset{\cdot 2}{\to} \bZ$ existieren zwar der Kern und der Kokern, aber der kanonische Morphismus $\Coim \varphi \to \Im \varphi$ ist kein Isomorphismus!
+\end{enumerate}
+\end{example}
+
 \newpage
 \bibliographystyle{plain}
 \bibliography{refs}
