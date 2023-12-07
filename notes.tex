@@ -1780,6 +1780,168 @@ Eine additive Kategorie $\cA$ heißt {\sf abelsch}, wenn:
 \end{enumerate}
 \end{example}
 
+\begin{definition}
+Seien $\cA$ und $\cB$ additive Kategorien. Ein Funktor $F \colon \cA \to \cB$ heißt {\sf additiv}, wenn die Abbildung
+$\Hom_{\cA}(X,Y) \to \Hom_{\cB}(F(X), F(Y))$ ein Homomorphismus von abelschen Gruppen ist.
+\end{definition}
+
+\noindent Der Begriff von exakten Sequenzen lässt sich auf allgemeine abelsche Kategorien übertragen.
+
+\begin{definition}
+Seien $\cA$, $\cB$ abelsche Kategorien und $F \colon \cA \to \cB$ ein additiver Funktor.
+\begin{enumerate}
+  \item $F$ heißt {\sf exakt}, wenn für jede k.e.S.  $0 \to X \to Y \to Z \to 0$ in $\cA$
+ die induzierte Sequenz
+ $$
+ 0 \to F(X) \to F(Y) \to F(Z) \to 0
+ $$
+ exakt in $\cB$ ist.
+
+ \item $F$ heißt {\sf linksexakt}, wenn für jede k.e.S. $0 \to X \to Y \to Z \to 0$ in $\cA$
+ die induzierte Sequenz
+ $$
+ 0 \to F(X) \to F(Y) \to F(Z)
+ $$
+ exakt in $\cB$ ist.
+
+ \item $F$ heißt {\sf rechtsexakt}, wenn für jede k.e.S. $0 \to X \to Y \to Z \to 0$ in $\cA$
+ die induzierte Sequenz
+ $$
+ F(X) \to F(Y) \to F(Z) \to 0
+ $$
+ exakt in $\cB$ ist.
+\end{enumerate}
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{Tensorprodukt}
+
+\subsection{Definition und erste Eigenschaften}
+
+\begin{definition}
+Seien $M,N,P$ Moduln über einem Ring $R$. Eine Abbildung
+\begin{align*}
+f \colon M \times N \to P
+\end{align*}
+heißt {\sf bilinear}, wenn gilt
+\begin{align*}
+& f(x+y, z) = f(x,z) + f(y,z) \\
+& f(ax, z) = af(x,y) \\
+& f(z, x+y) = f(z, x) + f(z,y) \\
+& f(z,ax) = af(z,x).
+\end{align*}
+\end{definition}
+
+\begin{proposition}
+Seien $M,N$ zwei $R$-Moduln. Es existiert ein $R$-Modul $T$ und eine $R$-bilineare Abbildung $g \colon M \times N \to T$, sodass die folgende universelle Eigenschaft erfüllt ist: für jeden $R$-Modul $P$ und jede $R$-bilineare Abbildung $f \colon M \times N \to P$ existiert ein eindeutiger Homomorphismus von $R$-Moduln $\psi \colon T \to P$, sodass das Diagramm
+\begin{align*}
+\xymatrix{
+M \times N \ar[r]^g \ar[rd]_f & T  \ar@{-->}[d]^{\exists ! \psi} \\
+           & P
+}
+\end{align*}
+kommutiert. Das Paar $g \colon M \times N \to T$ ist eindeutig bis auf eindeutige Isomorphie definiert.
+\end{proposition}
+
+\begin{proof}
+Die Eindeutigkeit folgt sofort aus der universellen Eigenschaft.
+
+\smallskip
+
+\noindent {\it Existenz:} Wir geben eine explizite Konstruktion von $T$. Sei $C$ der freie $R$-Modul mit der Basis $(x,y)$ mit $x,y \in M \times N$, d.h.
+\begin{equation*}
+C := \bigoplus_{x,y \in M \times N} R (x,y).
+\end{equation*}
+Nun sei $D \subset C$ ein Untermodul von $C$ erzeugt durch
+\begin{align}\label{eq.: relations tensor product} \notag
+& (x+x',y) - (x,y) - (x',y) \\ \notag
+& (x,y+y') - (x,y) - (x,y') \\
+& (ax,y) - a(x,y) \\ \notag
+& (x,ay) - a(x,y).
+\end{align}
+Jetzt definiere
+\begin{align*}
+T:=C/D.
+\end{align*}
+Die natürliche Abbildung $g$
+\begin{align*}
+& M \times N \to C \to T\\
+& (x,y) \mapsto (x , y) \mapsto x \otimes y
+\end{align*}
+ist bilinear. Jetzt bleibt uns nur die universelle Eigenschaft für $g \colon M \times N \to T$ zu überprüfen.
+
+Sei $f \colon M \times N \to P$ eine bilineare Abbildung. Erst definieren wir einen Homomorphismus $C \to P$, indem wir jedes Basiselement $(x,y)$ nach $f(x,y)$ abbilden. Da $f$ bilinear ist, liegen die Elemente \eqref{eq.: relations tensor product} im Kern. Jetzt erhalten wir nach Homomorphiesatz $\psi \colon T \to P$.
+\end{proof}
+
+\begin{remark}
+\
+\begin{enumerate}
+\item Der Modul $T$ wird mit $M \otimes_R N$ bezeichnet und {\sf Tensorprodukt} von $M$ und $N$ über $R$ genannt. Die bilineare Abbildung $g$ ist ein Teil dieser Struktur. Die explizite Konstruktion aus dem Beweis $T=C/D$ werden wir nicht mehr brauchen.
+
+\item Das Bild von $(x,y) \in M \times N$ in $M \otimes_R N$ bezeichnen wir mit $x \otimes y$.
+
+\item Da die Abbildung $M \times N \to M \otimes_R N$ bilinear ist, gilt
+\begin{align*}
+& (x+x') \otimes y = x \otimes y + x' \otimes y \\
+& x \otimes (y+y') = x \otimes y + x \otimes y' \\
+& (ax) \otimes y = a (x \otimes y) \\
+& x \otimes (ay) = a (x \otimes y)
+\end{align*}
+
+\item Als $R$-Modul ist $M \otimes_R N$ von den Elementen der Form $x \otimes y$ erzeugt, d.h. jedes Element in $M \otimes_R N$ ist eine endliche Summe der Form $\sum_i x_i \otimes y_i$.
+
+\item $x \otimes 0 = 0 \otimes x =0$.
+
+\item In $\bZ \otimes \bZ / 2 \bZ$ gilt $2 \otimes \bar{1} = 0$, aber nicht in $2\bZ \otimes \bZ / 2 \bZ$.
+
+\end{enumerate}
+\end{remark}
+
+\begin{example}
+\
+\begin{enumerate}
+\item Sei $k$ ein Körper und $V, W$ endlich dimensionale $k$-Vektorräume. Wenn $e_1, \dots , e_n$ und $f_1, \dots, f_m$ Basen von $V$ und $W$ sind. Dann ist $\{e_i \otimes f_j\}$ eine Basis von $V \otimes_k W$. Insbesondere haben wir
+$$
+\dim_k \big( V \otimes_k W \big) = \dim_k V \cdot \dim_k W.
+$$
+
+\item Es gilt $\bZ / 2 \bZ \otimes_{\bZ} \bZ / 3 \bZ \iso 0 $. Wir haben
+\begin{align*}
+&2 ( a \otimes b ) = 0 = 3( a \otimes b ) \quad \forall a \in \bZ / 2\bZ  , \,  \forall b \in \bZ / 3 \bZ
+\end{align*}
+Somit ist jedes Element von $\bZ / 2 \bZ \otimes_{\bZ} \bZ / 3 \bZ$ gleich Null.
+
+\item Allgemeiner gilt dies $\bZ / m \bZ \otimes_{\bZ} \bZ / n \bZ \iso 0$, wenn $m$ und $n$ koprim sind (Übungsblatt 9).
+
+\item $\bZ / 2 \bZ \otimes_{\bZ} \bZ / 2 \bZ \iso \bZ / 2 \bZ $ (Übungsblatt 9).
+
+\item $\bZ / m \bZ \otimes_{\bZ} \bZ / n \bZ \iso \bZ / gcd(m,n) \bZ $ (Übungsblatt 9).
+
+\item $R / I \otimes_{R} R / J \iso R / I + J$ (Übungsblatt 9).
+
+\item $\bZ / n \bZ  \otimes_{\bZ} \bQ = 0$.
+
+\item Allgemeiner gilt $M \otimes_{R} K = 0$ für einen Torsionsmodul $M$ über einem Integritätsbereich $R$ und $K=Quot(R)$.
+\end{enumerate}
+\end{example}
+
+
 \newpage
 \bibliographystyle{plain}
 \bibliography{refs}
