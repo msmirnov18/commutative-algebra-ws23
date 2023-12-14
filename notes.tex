@@ -1942,6 +1942,341 @@ Somit ist jedes Element von $\bZ / 2 \bZ \otimes_{\bZ} \bZ / 3 \bZ$ gleich Null.
 \end{example}
 
 
+\begin{proposition}
+Seien $M_1, \dots , M_n$ Moduln über $R$. Es existiert ein $R$-Modul $T$ und eine $R$-multilineare Abbildung $g \colon M_1  \times \dots \times M_n \to T$, sodass die folgende universelle Eigenschaft erfüllt ist: für jeden $R$-Modul $P$ und jede $R$-multilineare Abbildung $f \colon M_1 \times  \dots \times M_n \to P$ existiert ein eindeutiger Homomorphismus von $R$-Moduln $\psi \colon T \to P$, sodass das Diagramm
+\begin{align*}
+\xymatrix{
+M_1 \times \dots \times M_n \ar[rr]^g \ar[rrd]_f & & T  \ar@{-->}[d]^{\exists ! \psi} \\
+           & & P
+}
+\end{align*}
+kommutiert. Das Paar $g \colon M_1 \times \dots \times M_n \to T$ ist eindeutig bis auf eine eindeutige Isomorphie definiert.
+\end{proposition}
+
+\begin{proposition}\label{satz-properties-of-tensor-product}
+Seien $M,N,P$ Moduln über $R$. Es existieren Isomorphismen von $R$-Moduln
+\begin{enumerate}
+  \item $M \otimes N \cong N \otimes M$
+  \item $(M \otimes N) \otimes P \cong M \otimes (N \otimes P) \cong M \otimes N \otimes P$
+  \item $(M \oplus N) \otimes P \cong (M \otimes P) \oplus  (N \otimes P)$
+  \item $R \otimes M \cong M$
+\end{enumerate}
+gegeben durch
+\begin{enumerate}
+  \item $x \otimes y \mapsto y \otimes x$
+  \item $(x \otimes y) \otimes z  \mapsto  x \otimes (y \otimes z)  \mapsto   x \otimes y \otimes z$
+  \item $(x, y) \otimes z  \mapsto (x \otimes z , y \otimes z)$
+  \item $a \otimes x \mapsto ax$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Siehe [AM] und Übungsblatt 9.
+\end{proof}
+
+\begin{definition}
+Seien $f \colon M \to M'$ und $g \colon N \to N'$ Homomorphismen von $R$-Moduln. Definiere einen Homomorphismus von $R$-Moduln
+\begin{align*}
+& f \otimes g \colon M \otimes N \to M' \otimes N' \\
+& (f \otimes g) (x \otimes y) = f(x) \otimes g(y).
+\end{align*}
+
+\end{definition}
+
+
+\begin{definition}
+Sei $R$ ein Ring und $N$ ein $R$-Modul. Dann definiert man einen Funktor
+\begin{align*}
+\blank \otimes_R N \colon R \mhyphen \Mod \quad &\longrightarrow  \quad R \mhyphen \Mod \\
+\qquad \qquad M  \quad  &\longmapsto  \quad   M \otimes_R N \\
+\qquad M_1 \overset{f}{\to} M_2  \quad&\longmapsto \quad  M_1 \otimes_R N \overset{f \otimes \id_N}{\to} M_2 \otimes_R N
+\end{align*}
+\end{definition}
+
+
+
+
+\subsection{Restriktion und Erweiterung der Skalare}
+
+
+
+\begin{definition}
+Sei $f \colon R \to S$ ein Ringhomomorphismus.
+\begin{enumerate}
+\item Auf jedem $S$-Modul $N$ kann man eine $R$-Modulstruktur definieren als
+$$
+a x = f(a)x.
+$$
+Betrachtet als $R$-Modul bezeichnen wir $N$ mit ${}_RN$. Dadurch erhalten wir einen Funktor
+\begin{align*}
+& S \mhyphen \Mod \to R \mhyphen \Mod \\
+& \quad N  \quad \mapsto \quad  {}_RN,
+\end{align*}
+welcher {\sf Restriktion der Skalare} genannt wird.
+
+\item Das Tensorprodukt mit $S$ über $R$ liefert einen Funktor
+\begin{align*}
+& \blank \otimes_R S: R \mhyphen \Mod \to S \mhyphen \Mod \\
+& \hspace{70pt} M \mapsto M_S:=M \otimes_R S,
+\end{align*}
+welcher {\sf Erweiterung der Skalare} genannt wird.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+Sei $f \colon R \to S$ ein Ringhomomorphismus.
+\begin{enumerate}
+\item Sei $N$ ein endlich erzeugter $S$-Modul. Wenn $S$ endlich erzeugt als Modul über $R$ ist, dann ist~${}_RN$ auch ein endlich erzeugter $R$-Modul.
+
+\item Wenn $M$ ein endlich erzeugter $R$-Modul ist, ist $M_S$ endlich erzeugt als $S$-Modul.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\
+\begin{enumerate}
+\item Seien $x_1, \dots , x_n \in N$ beliebige Erzeuger von $N$ über $S$ und $s_1, \dots , s_m \in S$ beliebige Erzeuger von $S$ über $R$. Dann wird $N$ von den Elementen $s_ix_j$ als $R$-Modul erzeugt.
+
+
+\item Seien $x_1, \dots , x_n \in M$ beliebige Erzeuger von $M$ über $R$. Dann erzeugen $x_1 \otimes 1, \dots , x_n \otimes 1$ den Modul $M \otimes_R S$ als $S$-Modul.
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+Sei $f \colon R \to S$ ein Ringhomomorphismus. Es gibt einen kanonischen Isomorphismus von $R$-Moduln
+\begin{align*}
+\Hom_S(M_S, N) \cong \Hom_R(M , {}_R N).
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+Übungsblatt 9.
+\end{proof}
+
+\begin{remark}
+In der Sprache der Kategorientheorie bedeutet das obige Lemma, dass der Skalarerweiterungsfunktor linksadjungiert zum Skalarrestriktionsfunktor ist.
+\end{remark}
+
+
+\subsection{Exaktheit des Tensorproduktes}
+
+\begin{proposition}
+Seien $M,N,P$ Moduln über $R$. Es gibt einen kanonischen Isomorphismus von $R$-Moduln
+\begin{align}\label{eq.: tensor-hom-adjunction}
+\Hom_R(M \otimes_R N , P) \cong \Hom_R(M,\Hom_R(N,P)).
+\end{align}
+\end{proposition}
+
+\begin{proof}
+Die Bijektion \eqref{eq.: tensor-hom-adjunction} ist als Komposition der Bijektion
+\begin{align*}
+& \Hom_R(M \otimes_R N , P) \overset{\cong}{\to}  \{R\text{-bilineare Abbildungen } M \times N \to P \},
+\end{align*}
+welche aus der universellen Eigenschaft des Tensorproduktes folgt, und der Bijektion
+\begin{align*}
+& \{R\text{-bilineare Abbildungen } M \times N \to P \} \overset{\cong}{\to} \Hom_R(M,\Hom_R(N,P)) \\
+& \hspace{100pt} \varphi \hspace{100pt} \mapsto \hspace{20pt} x \mapsto \varphi(x, \blank)
+\end{align*}
+gegeben.
+\end{proof}
+
+
+\begin{remark}
+In der Sprache der Kategorientheorie bedeutet Isomorphismus \eqref{eq.: tensor-hom-adjunction}, dass der Funktor $\blank \otimes_R N$ linksadjungiert zum Funktor $\Hom_R(N,\blank)$ ist.
+\end{remark}
+
+Gleich werden wir das folgende Lemma brauchen, das eine etwas stärkere Version von Satz \ref{prop.: hom-is-left-exact} ist.
+
+\begin{lemma}\label{lemma: hom-is-left-exact-iff}
+\
+\begin{enumerate}
+\item Die Sequenz von $R$-Moduln
+\begin{align*}
+M' \to M \to M'' \to 0
+\end{align*}
+ist genau dann exakt, wenn für jeden $R$-Modul $P$ die Sequenz
+\begin{align*}
+0 \to \Hom_R(M'',P) \to \Hom_R(M,P) \to \Hom_R(M',P)
+\end{align*}
+exakt ist.
+
+\item Die Sequenz von $R$-Moduln
+\begin{align*}
+0 \to M' \to M \to M''
+\end{align*}
+ist genau dann exakt, wenn für jeden $R$-Modul $P$ die Sequenz
+\begin{align*}
+0 \to \Hom_R(P, M') \to \Hom_R(P, M) \to \Hom_R(P,M'')
+\end{align*}
+exakt ist.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Übungsblatt 9.
+\end{proof}
+
+
+\begin{proposition}
+Sei $R$ ein Ring und $N$ ein $R$-Modul. Der Funktor
+\begin{align*}
+& \blank \otimes_R N \colon R \mhyphen \Mod \to R \mhyphen \Mod \\
+& \hspace{45pt} M \mapsto M \otimes_R N
+\end{align*}
+ist rechtsexakt.
+\end{proposition}
+
+\begin{proof}
+Sei $N$ ein $R$-Moduln und
+\begin{align}\label{eq.: exact-sequence-proof-1}
+0 \to M' \overset{f}{\to}  M \overset{g}{\to} M'' \to 0
+\end{align}
+eine k.e.S. von $R$-Moduln. Zu zeigen ist, dass die induzierte Sequenz
+\begin{align*}
+M' \otimes_R N \to  M \otimes_R N \to M'' \otimes_R N \to 0
+\end{align*}
+exakt ist. Dafür betrachten wir einen beliebigen $R$-Modul $P$ und wenden den Funktor $\Hom_R(\blank, \Hom_R(N,P))$ auf \eqref{eq.: exact-sequence-proof-1} an. Dadurch erhalten wir eine exakte Sequenz
+\begin{align}\label{eq.: exact-sequence-proof-2}
+0 \to \Hom_R(M'', \Hom_R(N,P)) \to \Hom_R(M, \Hom_R(N,P)) \to \Hom_R(M', \Hom_R(N,P)),
+\end{align}
+da nach Satz \ref{prop.: hom-is-left-exact} der $\Hom$-Funktor linksexakt ist. Jetzt wenden wir \eqref{eq.: tensor-hom-adjunction} an \eqref{eq.: exact-sequence-proof-2} an und bekommen eine exakte Sequenz
+\begin{align}\label{eq.: exact-sequence-proof-3}
+0 \to \Hom_R(M'' \otimes N, P) \to \Hom_R(M \otimes N, P) \to \Hom_R(M' \otimes N, P).
+\end{align}
+Jetzt folgt die Aussage aus Lemma \ref{lemma: hom-is-left-exact-iff}.
+\end{proof}
+
+
+\begin{example}
+Betrachten wir die k.e.S. $0 \to \bZ \overset{\cdot 2}{\to} \bZ \to \bZ/2 \bZ \to 0$ und tensorieren diese mit $\bZ/2 \bZ$. Dann bekommen wir die Sequenz
+\begin{align*}
+0 \to \bZ/2\bZ \overset{0}{\to} \bZ/2\bZ \to \bZ/2\bZ \otimes_{\bZ} \bZ/2\bZ \to 0,
+\end{align*}
+die keine k.e.S. ist! Also ist $\blank \otimes_{\bZ} \bZ/2\bZ$ kein exakter Funktor. Wir bekommen aber daraus den Isomorphismus $\bZ/2\bZ \otimes_{\bZ} \bZ/2\bZ \iso \bZ/2\bZ$.
+\end{example}
+
+
+\medskip
+Da der Funktor $\blank \otimes_R N$ nicht für jeden $R$-Modul $N$ exakt ist, führt man den folgenden Begriff ein.
+\begin{definition}
+Ein $R$-Modul $N$ heißt {\sf flach}, wenn der Funktor $\blank \otimes_R N$ exakt ist.
+\end{definition}
+
+\begin{example}
+$M = R^n$ ist flach.
+\end{example}
+
+
+\subsection{Tensorprodukt von Algebren}
+
+\begin{definition}
+Ein Ring $S$ ausgestattet mit einem Ringhomomorphismus $R \to S$ heißt {\sf $R$-Algebra}.
+\end{definition}
+
+\begin{remark}
+Gegeben eine $R$-Algebra $R \to S$, kann man $S$ als $R$-Modul betrachten:
+$$
+r \cdot s := f(r)s.
+$$
+Umgekehrt: Gegeben ein $R$-Modul $M$, welcher zusätzlich mit einer $R$-bilinearen Multiplikation $M \times M \to M$ ausgestattet ist (assoziativ, kommutativ und mit Eins), kann man einen Ringhomomorphismus $R \to M$ definieren
+\begin{align*}
+& R \to M \\
+& r \mapsto r1_M
+\end{align*}
+und eine $R$-Algebra Struktur auf $M$ erhalten.
+\end{remark}
+
+\begin{definition}
+Seien $f \colon R \to S$ und $g \colon R \to T$ Algebren über $R$. Die Multiplikation
+\begin{align*}
+& (S \otimes_R T) \times (S \otimes_R T) \to (S \otimes_R T) \\
+&  \quad  \left( (a \otimes b), (c \otimes d) \right) \quad \mapsto \quad ac \otimes bd
+\end{align*}
+zusammen mit dem Ringhomomorphismus
+\begin{align*}
+& R \to S \otimes_R T \\
+& r \mapsto f(r) \otimes g(r)
+\end{align*}
+stattet $S \otimes_R T$ mit der Struktur einer $R$-Algebra aus.
+\end{definition}
+
+\begin{example}
+\
+\begin{enumerate}
+\item Seien $R=k$, $S=k[x]$, $T=k[y]$. Dann gilt $k[x] \otimes_k k[y] \iso k[x,y]$.
+
+\item $k[x] \otimes_{k[x,y]} k[y] \iso k$ (Übungsblatt 9).
+
+\item $(R/I) \otimes_R (R/J) \iso R/(I+J)$ (Übungsblatt 9).
+\end{enumerate}
+\end{example}
+
+
+
+
+
+\newpage
+\section{Lokalisierung}
+
+
+\subsection{Lokalisierung von Ringen}
+
+\begin{definition}
+Sei $A$ ein Ring. Eine Teilmenge $S \subset A$ heißt {\sf multiplikativ abgeschlossen}, wenn gilt
+$$
+S \cdot S \subset S \quad \text{und} \quad 1 \in S.
+$$
+\end{definition}
+
+\begin{definition}
+Seien $A$ ein Ring und $S \subset A$ eine multiplikativ abgeschlossene Teilmenge von $A$. Definiere eine Relation auf der Menge $A \times S$ als
+\begin{align*}
+(a,s) \sim (b,t) \iff (at-bs)u = 0 \quad \text{für ein }  u \in S.
+\end{align*}
+Diese Relation ist reflexiv, symmetrisch und transitiv, und somit ist sie eine Äquivalenzrelation.\footnote{Übungsblatt 10} Wir bezeichnen mit $\frac{a}{s}$ die Äquivalenzklasse von $(a,s)$ und mit $S^{-1}A$ die Menge der Äquivalenzklassen.
+
+Man stattet $S^{-1}A$ mit einer Ringstruktur aus via
+\begin{align*}
+& \frac{a}{s} + \frac{b}{t} = \frac{at + bs}{st} \\
+& \frac{a}{s} \frac{b}{t} = \frac{ab}{st}.
+\end{align*}
+Diese ist wohldefiniert.\footnote{Übungsblatt 10} Der Ring $S^{-1}A$ wird {\sf Lokalisierung von $A$ bezüglich $S$} genannt.
+
+Es gibt einen kanonischen Ringhomomorphismus
+\begin{align*}
+\pi \colon A &\to S^{-1}A \\
+\qquad a &\mapsto \frac{a}{1}.
+\end{align*}
+\end{definition}
+
+\begin{remark}\label{remark: first-properties-of-localisation}
+Die Lokalisierung $\pi \colon A \to S^{-1}A$ hat folgende Eigenschaften:
+\begin{enumerate}
+\item $s \in S$ $\Rightarrow$ $\pi(s)$ ist invertierbar in $S^{-1}A$;
+\item $\pi(a)=0$ $\Rightarrow$ $as = 0$ für ein $s \in S$;
+\item Jedes Element von $S^{-1}A$ ist von der Form $\frac{\pi(a)}{\pi(s)}$ mit $a \in A$ und $s \in S$.
+\end{enumerate}
+\end{remark}
+
+\begin{example}
+\
+\begin{enumerate}
+\item {\bf Quotientenkörper:} Sei $A$ ein Integritätsbereich und $S = A \setminus \{0\}$. Dann wird $S^{-1}A$ Quotientenkörper von $A$ genannt.
+
+\item {\bf Lokalisierung an einem Primideal:} Sei $A$ ein Ring und $\mathfrak{p} \subset A$ ein Primideal. Dann ist $S = A \setminus \mathfrak{p}$ eine multiplikativ abgeschlossene Teilmenge. Die Lokalisierung $S^{-1}A$ bezeichnet man üblicherweise mit $A_{\mathfrak{p}}$.
+
+\item {\bf Lokalisierung an einem Element:} Sei $A$ ein Ring und $f \in A$ ein Element. Dann ist $S = \{1, f, f^2, \dots \}$ eine multiplikativ abgeschlossene Teilmenge. Die Lokalisierung $S^{-1}A$ bezeichnet man üblicherweise mit $A_f$.
+
+\item Was ist $\bC[t]_t$? Das ist der Ring von Laurent-Polynomen $\bC[t, t^{-1}]$.
+
+\item Wenn gilt $S=\{ 1 \}$, dann bekommen wir $S^{-1}A = A$.
+
+\item $S^{-1}A = 0 \quad \iff \quad 0 \in S$.
+
+\end{enumerate}
+\end{example}
+
+
 \newpage
 \bibliographystyle{plain}
 \bibliography{refs}
