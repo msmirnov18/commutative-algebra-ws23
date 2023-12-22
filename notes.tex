@@ -2276,6 +2276,217 @@ Die Lokalisierung $\pi \colon A \to S^{-1}A$ hat folgende Eigenschaften:
 \end{enumerate}
 \end{example}
 
+\begin{proposition}
+Sei $f\colon A \to B$ ein Ringhomomorphismus, sodass $f(S) \subset B^*$. Dann lässt sich $f$ eindeutig über die Lokalisierung $S^{-1}A$ faktorisieren
+\begin{align*}
+\xymatrix{
+A \ar[r]^f \ar[d]^{\pi} & B \\
+S^{-1}A \ar[ur]_{\exists ! \bar{f}}
+}
+\end{align*}
+\end{proposition}
+
+\begin{proof}
+Aus der Kommutativität des Diagramms folgt sofort, dass für den Homomorphismus $\bar{f}$ gelten muss
+\begin{align*}
+\bar{f}\Big(\frac{a}{s}\Big) = f(a)f(s)^{-1}.
+\end{align*}
+Man muss nur überprüfen, dass durch diese Formel $\bar{f}$ wohldefiniert ist, d.h. aus $a/s = b/t$ folgt $\bar{f}(a/s)=\bar{f}(b/t)$. Wir haben
+\begin{align*}
+& a/s = b/t \iff \exists u \in S \colon (at-bs)u=0 \Rightarrow  \\
+& (f(a)f(t)-f(b)f(s))f(u) = 0 \Rightarrow f(a)f(s)^{-1} = f(b)f(t)^{-1}.
+\end{align*}
+\end{proof}
+
+Aus dem Satz ziehen wir jetzt ein Korollar, welches ähnlich zu Bemerkung~\ref{remark: first-properties-of-localisation} aussieht.
+\begin{cor}
+Sei $g \colon A \to B$ ein Ringhomomorphismus mit den Eigenschaften
+\begin{enumerate}
+\item $s \in S$ $\Rightarrow$ $g(s)$ ist invertierbar in $B$;
+\item $g(a)=0$ $\Rightarrow$ $as = 0$ für ein $s \in S$;
+\item Jedes Element von $B$ ist der Form $\frac{g(a)}{g(s)}$ mit $a \in A$ und $s \in S$.
+\end{enumerate}
+Dann gibt es einen eindeutigen Isomorphismus $h \colon S^{-1}A \to B$, sodass $g = h \circ \pi$.
+\end{cor}
+
+\begin{proof}
+Übungsblatt 10.
+\end{proof}
+
+\subsection{Lokalisierung von Moduln}
+
+\begin{definition}
+Seien $A$ ein Ring, $S \subset A$ eine multiplikativ abgeschlossene Teilmenge, und $M$ ein $A$-Modul. Man definiert $S^{-1}M$ analog zu $S^{-1}A$. Erst definiert man eine Äquivalenzrelation auf $M \times S$
+\begin{align*}
+& (m,s) \sim (n,t) \iff (mt-ns)u = 0 \quad \text{für ein }  u \in S,
+\end{align*}
+dann die Gruppenstruktur
+\begin{align*}
+& \frac{m}{s} + \frac{n}{t} = \frac{mt + ns}{st},
+\end{align*}
+dann die $S^{-1}A$-Modul Struktur
+\begin{align*}
+& \frac{a}{s} \cdot \frac{m}{t} = \frac{am}{st}.
+\end{align*}
+
+Gegeben ein Homomorphismus von $A$-Moduln $f \colon M_1 \to M_2$, definiert man einen induzierten Morphismus auf Lokalisierungen als
+\begin{align*}
+& S^{-1}f \colon S^{-1}M_1 \to S^{-1}M_2 \\
+& \qquad \qquad \frac{x}{s} \mapsto \frac{f(x)}{s}
+\end{align*}
+
+Es ist leicht zu sehen, dass wir auf diese Weise einen Funktor
+\begin{align*}
+S^{-1}  \colon A \mhyphen \Mod \to S^{-1}A \mhyphen \Mod
+\end{align*}
+bekommen.
+\end{definition}
+
+\begin{example}
+Wie für Ringe gibt es zwei wichtige Klassen von Beispielen:
+\begin{enumerate}
+\item Für ein Primideal $\mathfrak{p} \subset A$ haben wir $M_{\mathfrak{p}}$;
+
+\item Für ein Element $f \in A$ haben wir $M_f$.
+\end{enumerate}
+\end{example}
+
+
+\begin{proposition}\label{satz-localization-is-exact}
+Der Lokalisierungsfunktor ist exakt.
+\end{proposition}
+
+\begin{proof}
+Betrachten wir die exakte Sequenz
+\begin{align*}
+M' \overset{f}{\to}  M \overset{g}{\to} M''.
+\end{align*}
+Aus $g \circ f = 0$ folgt $S^{-1} g \circ S^{-1} f = 0$. Somit haben wir $\Im S^{-1} f \subset \Ker S^{-1} g$.
+
+Jetzt zeigen wir die Inklusion $\Ker S^{-1} g \subset \Im S^{-1} f$. Sei $m/s \in \Ker S^{-1} g$, d.h. $g(m)/s = 0$ in $S^{-1} M''$. Dann $\exists t \in S$, sodass gilt $t g(m)=0$ in $M''$. Daraus folgt $g(tm)=0$ und somit gilt $tm \in \Ker g = \Im f$. Nun gibt es ein $m' \in M'$, sodass $f(m')=tm$. Somit gilt Folgendes in $S^{-1} M$:
+$$
+\frac{m}{s} = \frac{f(m')}{st} = (S^{-1} f)\Big(\frac{m'}{st}\Big) \in \Im S^{-1} f.
+$$
+\end{proof}
+
+\begin{proposition}\label{satz-localization-as-extension-of-scalars}
+Es gibt einen Isomorphismus von $S^{-1} A$-Moduln
+$$
+S^{-1} A \otimes_A M \cong S^{-1} M
+$$
+gegeben durch
+$$
+\frac{a}{s} \otimes m \mapsto \frac{am}{s}.
+$$
+\end{proposition}
+
+\begin{proof}
+Die Surjektivität ist klar. Wir zeigen nur die Injektivität. Sei $x \in S^{-1} A \otimes_A M$ ein beliebiges Element
+\begin{align*}
+x = \sum_{i=1}^n \frac{a_i}{s_i} \otimes m_i.
+\end{align*}
+Man kann $x$ auf folgende Weise umschreiben
+\begin{align*}
+& x = \sum_{i=1}^n \frac{a_i}{s_i} \otimes m_i = \sum_{i=1}^n \frac{1}{s_i} \otimes \widetilde{m}_i =  \sum_{i=1}^n \frac{1}{s} \otimes \widetilde{\widetilde{m}_i} = \frac{1}{s} \otimes \sum \widetilde{\widetilde{m}_i} \\
+& \widetilde{m}_i = a_i m_i \, , \quad  \widetilde{\widetilde{m}_i} = t_i \widetilde{m}_i \, , \quad  s = s_1 \dots s_n \, , \quad t_i = s_1 \dots s_{i-1} \hat{s_i} s_{i+1} \dots s_n.
+\end{align*}
+Somit reicht es, die Elemente der Form $x=\frac{1}{s} \otimes m$ zu betrachten. Das Bild von $\frac{1}{s} \otimes m$ ist $m/s$. Wir haben
+\begin{align*}
+\frac{m}{s} = 0 \iff \exists u \in S \colon mu=0 \Rightarrow \frac{1}{s} \otimes m = \frac{u}{su} \otimes m = \frac{1}{su} \otimes um = 0.
+\end{align*}
+\end{proof}
+
+\begin{cor}
+$S^{-1} A$ ist ein flacher $A$-Modul.
+\end{cor}
+
+\begin{proof}
+Nach Satz \ref{satz-localization-as-extension-of-scalars} ist der Funktor $S^{-1}A\otimes_A \blank$ isomorph zum Lokalisierungsfunktor $S^{-1}(\blank)$. Letzterer ist exakt nach Satz \ref{satz-localization-is-exact}.
+\end{proof}
+
+\begin{proposition}\label{satz-distributivity-of-localization}
+Seien $M, N$ zwei $A$-Moduln. Dann gibt es einen Isomorphismus von $S^{-1}A$-Moduln
+$$S^{-1}M\otimes_{S^{-1}A}S^{-1}N\overset{\cong}{\longrightarrow}S^{-1}(M\otimes_A N)$$
+gegeben durch (d.h.\ als lineare Fortsetzung von)
+$$\frac{m}{s}\otimes \frac{n}{t} \longmapsto \frac{m\otimes n}{st}.$$
+\end{proposition}
+\begin{proof}
+Wir wenden Satz \ref{satz-localization-as-extension-of-scalars} und die Eigenschaften des Tensorprodukts aus Satz \ref{satz-properties-of-tensor-product} an. (Man beachte, dass Assoziativität auch gilt, wenn die Tensorprodukte über verschiedenen Ringen gebildet werden, s.\ dazu [AM], Exercise 2.15 on p.~27)
+\begin{align*}
+S^{-1}M\otimes_{S^{-1}A} S^{-1}N &\cong (S^{-1}A\otimes_A M)\otimes_{S^{-1}A}(S^{-1}A\otimes_{A}N)\\
+&\cong \left((S^{-1}A\otimes_A M)\otimes_{S^{-1}A}S^{-1}A\right)\otimes_A N\\
+&\cong (S^{-1}A\otimes_A M)\otimes_A N\\
+&\cong S^{-1}A\otimes_A (M\otimes_A N)\cong S^{-1}(M\otimes_A N).
+\end{align*}
+Da wir alle diese Isomorphismen explizit kennen, lässt sich leicht sehen, dass der Isomorphismus durch obige Vorschrift gegeben ist.
+\end{proof}
+
+\begin{proposition}
+Sei $M$ ein $A$-Modul und seien $N,P\subset M$ Untermoduln. Dann gilt:
+\begin{enumerate}
+	\item $S^{-1}(N+P)=S^{-1}N+S^{-1}P$
+	\item $S^{-1}(N\cap P)=S^{-1}N\cap S^{-1}P$
+	\item $S^{-1}(M/N)\cong (S^{-1}M)/(S^{-1}N)$ als $S^{-1}A$-Moduln.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Der erste Punkt ist klar nach Definition.\\
+Zu Punkt 2: Die Inklusion $\subset$ ist klar. Sei also $w\in S^{-1}N\cap S^{-1}P$, d.h.\ wir können schreiben $w=\frac{n}{s}=\frac{p}{t}$ für gewisse $n\in N$, $p\in P$, $s,t\in S$. Somit ist $(nt-ps)u=0$ für ein $u\in S$. Es folgt $ntu=psu$ und dieses Element liegt daher in $N\cap P$. Wir sehen, dass gilt $w=\frac{ntu}{stu}$ und daher ist $w\in S^{-1}(N\cap P)$.\\
+Zu Punkt 3: Wende den exakten Funktor $S^{-1}$ auf die kurze exakte Sequenz $0\to N\to M\to M/N\to 0$ an.
+\end{proof}
+
+\subsection{Lokale Eigenschaften}
+
+Eine Eigenschaft eines Moduls (oder auch Homomorphismus) heißt \emph{lokal}, falls sich ihre Gültigkeit überprüfen lässt, indem man sie für alle Lokalisierungen an Primidealen testet. Die folgenden drei Sätze geben drei solche Eigenschaften an: Die Eigenschaft, der Nullmodul zu sein, ist lokal. Ebenso sind Injektivität und Flachheit lokale Eigenschaften.
+
+\begin{proposition}\label{satz-being-zero-is-local}
+Sei $M$ ein $A$-Modul. Die folgenden Aussagen sind äquivalent:
+\begin{enumerate}
+	\item $M=0$;
+	\item $M_\mathfrak{p}=0$ für alle Primideale $\mathfrak{p}\subset A$;
+	\item $M_\mathfrak{m}=0$ für jedes maximale Ideal $\mathfrak{m}\subset A$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Offensichtlich folgt 2.\ aus 1. Da maximale Ideale prim sind, folgt auch 3.\ aus 2. Es bleibt also zu zeigen 3.\ $\Rightarrow$ 1.:
+Angenommen, $M\neq 0$, dann existiert ein $x\in M$ mit $x\neq 0$. Sei $\mathfrak{a}:=\mathrm{ann}(x):= \{r\in R\mid rx=0\}\subset R$ das Annihilatorideal von $x$. Es gilt $ \mathfrak{a}\neq R$ (denn sonst wäre $1\cdot x=0$). Also ist $\mathfrak{a}$ in einem maximalen Ideal $\mathfrak{m}$ enthalten (nach Korollar \ref{cor-ideal-contained-in-maximal}).
+Nach Voraussetzung ist $M_\mathfrak{m}=0$, d.h.\ in $M_\mathfrak{m}$ gilt $\frac{x}{1}=\frac{0}{1}$. Dies bedeutet $(x\cdot 1 - 0\cdot 1)u=0$ (also $xu=0$) für ein $u\in R\setminus \mathfrak{m}$. Somit wäre $u$ ein Ringelement, welches $x$ annihiliert, aber nicht in $\mathfrak{m}$, also insbesondere nicht in $\mathfrak{a}$ liegt. Widerspruch, da $\mathfrak{a}$ das Annihilatorideal ist.
+\end{proof}
+
+\begin{proposition}\label{satz-injectivity-is-local}
+Sei $\varphi\colon M\to N$ ein $A$-Modulhomomorphismus. Die folgenden Aussagen sind äquivalent:
+\begin{enumerate}
+	\item $\varphi$ ist injektiv;
+	\item $\varphi_\mathfrak{p}$ ist injektiv für alle Primideale $\mathfrak{p}\subset A$;
+	\item $\varphi_\mathfrak{m}$ ist injektiv für jedes maximale Ideal $\mathfrak{m}\subset A$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+1.\ $\Rightarrow$ 2.: Sei $\varphi$ injektiv, dann ist die Sequenz $0\to M\overset{\varphi}{\to} N$ exakt, also (nach Satz \ref{satz-localization-is-exact}) auch die Sequenz $0\to M_\mathfrak{p}\overset{\varphi_\mathfrak{p}}{\to}N_\mathfrak{p}$ für ein beliebiges Primideal $\mathfrak{p}\subset A$. Also ist $\varphi_\mathfrak{p}$ injektiv.\\
+2.\ folgt offensichtlich aus 3.\\
+3.\ $\Rightarrow$ 1.: Betrachte die exakte Sequenz $0\to \Ker \varphi \to M \overset{\varphi}{\to}N$. Es ist damit auch $0\to (\Ker\varphi)_\mathfrak{m} \to M_\mathfrak{m}\overset{\varphi_\mathfrak{m}}{\to}N_\mathfrak{m}$ exakt und es folgt, dass $(\Ker \varphi)_\mathfrak{m}\cong \Ker(\varphi_\mathfrak{m})$ (für ein beliebiges maximales Ideal $\mathfrak{m}\subset A$). Nach Voraussetzung (3.) ist $\Ker(\varphi_\mathfrak{m})=0$, also folgt $\Ker\varphi=0$ nach Satz \ref{satz-being-zero-is-local}.
+\end{proof}
+Eine analoge Aussage gilt, wenn man \glqq injektiv\grqq\, jeweils an jeder Stelle ersetzt durch \glqq surjektiv\grqq, \glqq bijektiv\grqq\, oder \glqq die Nullabbildung\grqq.
+
+\begin{proposition}
+Sei $M$ ein $A$-Modul. Die folgenden Aussagen sind äquivalent:
+\begin{enumerate}
+	\item $M$ ist ein flacher $A$-Modul;
+	\item $M_\mathfrak{p}$ ist ein flacher $A_\mathfrak{p}$-Modul für alle Primideale $\mathfrak{p}\subset A$;
+	\item $M_\mathfrak{m}$ ist ein flacher $A_\mathfrak{m}$-Modul für alle maximalen Ideale $\mathfrak{m}\subset A$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+1.\ $\Rightarrow$ 2.: Sei $M$ ein flacher $A$-Modul. Wir wollen zeigen, dass der Funktor $M_\mathfrak{p}\otimes_{A_\mathfrak{p}}\blank$ exakt ist. Setzen wir $S=A\setminus \mathfrak{p}$, so gilt:
+\begin{align*}
+M_\mathfrak{p}\otimes_{A_\mathfrak{p}}\blank\cong S^{-1}M\otimes_{S^{-1}A}\blank \cong (M\otimes_A S^{-1}A)\otimes_{S^{-1}A}\blank \cong M\otimes_A(S^{-1}A\otimes_{S^{-1}A}\blank)\cong M\otimes_A \blank,
+\end{align*} also sind $M_\mathfrak{p}\otimes_{A_\mathfrak{p}}\blank$ und $M\otimes_A \blank$ isomorph als Funktoren auf $A_\mathfrak{p}$-Moduln (welche insbesondere $A$-Moduln sind, daher macht diese Aussage Sinn).
+Von letzterem Funktor war die Exaktheit vorausgesetzt.\\
+2.\ $\Rightarrow$ 3.: klar.\\
+3.\ $\Rightarrow$ 1.: Zu zeigen ist: Der Funktor $M\otimes_A\blank$ ist exakt. Da Tensorprodukte immer rechtsexakt sind, reicht es zu zeigen, dass der Funktor Injektivität erhält. Sei also $N\overset{\varphi}{\to}P$ ein injektiver $A$-Modulhomomorphismus.\\ Dann ist $N_\mathfrak{m}\overset{\varphi_\mathfrak{m}}{\to}P_\mathfrak{m}$ injektiv für alle maximalen Ideale $\mathfrak{m}\subset A$ (da Lokalisieren exakt ist). Nach Voraussetzung (3.) ist $M_\mathfrak{m}\otimes_{A_\mathfrak{m}}N_\mathfrak{m}\overset{\id_{M_\mathfrak{m}}\otimes \varphi_\mathfrak{m}}{\longrightarrow}M_\mathfrak{m}\otimes_{A_\mathfrak{m}}P_\mathfrak{m}$ immer noch injektiv, somit auch $(M\otimes_A N)_\mathfrak{m}\overset{(\id_M\otimes \varphi)_\mathfrak{m}}{\longrightarrow}(M\otimes_A P)_\mathfrak{m}$ wegen Satz \ref{satz-distributivity-of-localization}. Schließlich folgt die Injektivität von $M\otimes_A N\to M\otimes_A P$ aus Satz \ref{satz-injectivity-is-local}.
+\end{proof}
+
+
 
 \newpage
 \bibliographystyle{plain}
