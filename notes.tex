@@ -9,7 +9,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{amsmath}
+\usepackage{amsmath, mathtools}
 \usepackage{amssymb}
 \usepackage[all]{xy}
 \usepackage{hyperref}
@@ -150,6 +150,11 @@ colorlinks=true,
 urlcolor=cyan
 }
 
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fq}{\mathfrak{q}}
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fb}{\mathfrak{b}}
 
 
 
@@ -2486,6 +2491,215 @@ Von letzterem Funktor war die Exaktheit vorausgesetzt.\\
 3.\ $\Rightarrow$ 1.: Zu zeigen ist: Der Funktor $M\otimes_A\blank$ ist exakt. Da Tensorprodukte immer rechtsexakt sind, reicht es zu zeigen, dass der Funktor Injektivität erhält. Sei also $N\overset{\varphi}{\to}P$ ein injektiver $A$-Modulhomomorphismus.\\ Dann ist $N_\mathfrak{m}\overset{\varphi_\mathfrak{m}}{\to}P_\mathfrak{m}$ injektiv für alle maximalen Ideale $\mathfrak{m}\subset A$ (da Lokalisieren exakt ist). Nach Voraussetzung (3.) ist $M_\mathfrak{m}\otimes_{A_\mathfrak{m}}N_\mathfrak{m}\overset{\id_{M_\mathfrak{m}}\otimes \varphi_\mathfrak{m}}{\longrightarrow}M_\mathfrak{m}\otimes_{A_\mathfrak{m}}P_\mathfrak{m}$ immer noch injektiv, somit auch $(M\otimes_A N)_\mathfrak{m}\overset{(\id_M\otimes \varphi)_\mathfrak{m}}{\longrightarrow}(M\otimes_A P)_\mathfrak{m}$ wegen Satz \ref{satz-distributivity-of-localization}. Schließlich folgt die Injektivität von $M\otimes_A N\to M\otimes_A P$ aus Satz \ref{satz-injectivity-is-local}.
 \end{proof}
 
+
+\subsection{Erweiterung und Kontraktion von Idealen}
+
+Sei $A$ ein Ring, $S\subset A$ eine multiplikativ abgeschlossene Teilmenge und $i\colon A\to S^{-1}A, a\mapsto \frac{a}{1}$ die natürliche Abbildung.
+
+\begin{definition}
+Für ein Ideal $\mathfrak{a}\subset A$ heißt $S^{-1}\mathfrak{a}\subset S^{-1}A$ seine {\sf Erweiterung} in $S^{-1}A$.
+
+Für ein Ideal $\mathfrak{b}\subset S^{-1}A$ heißt $i^{-1}\mathfrak{b}\subset A$ seine {\sf Kontraktion} in $A$.
+\end{definition}
+
+Man beachte hierbei, dass ein Ideal $\mathfrak{a}\subset A$ ein $A$-Modul ist (genauer ein $A$-Untermodul von $A$ selbst). Somit meint $S^{-1}\mathfrak{a}$ die Lokalisierung als Modul.
+
+Es ist leicht zu sehen, dass Erweiterung und Kontraktion wieder Ideale sind.
+
+\begin{proposition}
+\begin{enumerate}
+	\item Jedes Ideal $\mathfrak{b}\subset S^{-1}A$ ist von der Form $\mathfrak{b}=S^{-1}\mathfrak{a}$ für ein $\mathfrak{a}\subset A$.
+	\item Es gibt eine 1:1-Korrespondenz (Bijektion von Mengen), gegeben durch Kontraktion und Erweiterung
+	\begin{align*}
+	\{\text{Primideale in $S^{-1}A$}\}&\overset{\text{1:1}}{\longleftrightarrow}\{\text{zu $S$ disjunkte Primideale in $A$}\}\\
+	\mathfrak{q}&\longmapsto i^{-1}(\mathfrak{q})\\
+	S^{-1}\mathfrak{p}&\longmapsfrom \mathfrak{p}
+	\end{align*}
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Zu 1.: Setze $\mathfrak{a}:=i^{-1}(\mathfrak{b})$. Wir zeigen die Gleichheit $\mathfrak{b}=S^{-1}(\mathfrak{a})$. Sei also $b=\frac{x}{s}\in \mathfrak{b}$. Dann gilt (da $\mathfrak{b}$ ein Ideal ist) $\frac{x}{1}=s\cdot \frac{x}{s}\in \mathfrak{b}$ und damit $x\in \mathfrak{a}$. Also ist $\frac{x}{s}\in S^{-1}\mathfrak{a}$. Die andere Inklusion ist noch einfacher: Ist $\frac{x}{s}\in S^{-1}(i^{-1}(\mathfrak{b}))$ für ein ein $x\in i^{-1}(\mathfrak{b})$ (d.h.\ $\frac{x}{1}\in \mathfrak{b}$), dann ist auch $\frac{x}{s}=\frac{1}{s}\cdot \frac{x}{1}\in \mathfrak{b}$, da $\mathfrak{b}$ ein Ideal in $S^{-1}A$ ist.\\
+Zu 2.: Wir zeigen zunächst die Wohldefiniertheit der beiden Abbildungen.
+Die Abbildung von links nach rechts ist wohldefiniert, da die Kontraktion eines Primideals $\mathfrak{q}$ wieder ein Primideal ist (Satz \ref{satz-preimages-of-prime-ideals}). Außerdem kann dieses keine Elemente aus $S$ enthalten, sonst wäre $1 \in \mathfrak{q}$.\\
+Die Abbildung von rechts nach links ist wohldefiniert, d.h.\ $S^{-1}\mathfrak{p}$ ist ein Primideal: Seien $\frac{a}{s},\frac{b}{t}\in S^{-1}A$ ($a,b\in A$, $s,t\in S$) mit $\frac{ab}{st}\in S^{-1}\mathfrak{p}$. Das bedeutet, dass $\frac{ab}{st}=\frac{p}{u}$ für ein $p\in \mathfrak{p}$ und ein $u\in S$, also gilt $(abu-pst)v=0$ in $A$ für ein $v\in S$. Es folgt somit $abuv=pstv$ und die rechte Seite liegt sicher in $\mathfrak{p}$. Da $\mathfrak{p}$ Primideal war, muss einer der Faktoren $a,b,u,v$ in $\mathfrak{p}$ liegen. Für $u$ und $v$ ist das nicht möglich, da diese in $S$ liegen und $\mathfrak{p}$ disjunkt zu $S$ vorausgesetzt war. Schließlich folgt $\frac{a}{s}\in S^{-1}\mathfrak{p}$ oder $\frac{b}{t}\in S^{-1}\mathfrak{p}$.\\
+Die beiden Abbildungen sind invers zueinander: $S^{-1}(i^{-1}(\mathfrak{q}))$ gilt nach Teil 1. Außerdem ist $i^{-1}(S^{-1}\mathfrak{p})$ für ein zu $S$ disjunktes Primideal $\mathfrak{p}$ (Übungsblatt 11).
+\end{proof}
+
+Insbesondere bedeutet dies für die Lokalisierung an einem Primideal das Folgende.
+\begin{cor}
+Sei $\mathfrak{p}\subset A$ ein Primideal. Kontraktion und Erweiterung geben eine Bijektion
+$$\{\text{Primideale in $A_\mathfrak{p}$}\}\overset{\text{1:1}}{\longleftrightarrow}\{\text{Primideale $I$ in $A$ mit $I\subset \mathfrak{p}$}\}$$
+\end{cor}
+
+\newpage
+
+\section{Das Spektrum eines Rings}
+\subsection{Zariski-Topologie}
+
+Sei $R$ ein kommutativer Ring mit $1$. In Abschnitt \ref{subsection-Spektrum} haben wir bereits die Zariski-Topologie auf der Menge aller Primideale $\Spec R$ gesehen, deren abgeschlossene Mengen genau solche von der Form
+$$V(I)=\{ \mathfrak{p}\in \Spec R\mid I\subset \mathfrak{p} \}$$
+für ein beliebiges Ideal $I\subset R$ sind.
+
+Die offenen Mengen der Zariski-Topologie sind folglich genau solche von der Form
+$$D(I):=\Spec R\setminus V(I)=\{ \mathfrak{p}\in \Spec R\mid I\not\subset \mathfrak{p} \}.$$
+Für diese gilt analog zu Lemma \ref{lemma-V(I)-define-topology}:
+\begin{lemma}
+\begin{align*}
+& D(0) = \emptyset \quad \text{und}\quad D(R) = \Spec R \\
+& \cup_s D(I_i)  = D (\sum_s I_s) \\
+& D(I) \cap D(J) = D(IJ) \\
+\end{align*}
+\end{lemma}
+Ist $f\in R$ und $(f)\subset R$ das von $f$ erzeugte Ideal, so schreiben wir $D(f):=D((f))=\{ \mathfrak{p}\in \Spec R\mid f\notin \mathfrak{p} \}$. Offene Mengen dieser Form haben die folgende schöne Eigenschaft:
+\begin{proposition}
+Die Mengen der Form $D(f)$ für ein $f\in R$ bilden eine {\sf Basis} der Zariski-Topologie, d.h.\ jede offene Menge lässt sich als Vereinigung von Mengen der Form $D(f)$ schreiben.
+\end{proposition}
+\begin{proof}
+Der Beweis ist eine einfache Rechnung: Sei $I\subset R$ ein Ideal. Dann ist
+$$D(I)=D(\sum_{f\in I}(f))=\cup_{f\in I}D(f).$$
+\end{proof}
+
+\begin{remark}
+	Die Zariski-Topologie hat folgende Eigenschaften:
+\begin{itemize}
+	\item Die einpunktige Menge $\{ \mathfrak{p} \}$ ist genau dann abgeschlossen, wenn $\mathfrak{p}$ ein maximales Ideal ist.
+	\item Ist $R$ nullteilerfrei, so ist $(0)$ ein Primideal und es gilt: Der Abschluss der einpunktigen Menge $\{(0)\}$ ist ganz $\Spec R$.
+	\item Die Zariski-Topologie ist im Allgemeinen nicht Hausdorff (d.h.\ für zwei verschiedene Punkte gibt es keine offenen Umgebungen, welche disjunkt sind).
+\end{itemize}
+\end{remark}
+
+\subsection{Garben}
+
+Sei $X$ ein topologischer Raum. Wir führen in diesem Kapitel den Begriff einer Garbe ein, mit dessen Hilfe wir lokale Informationen (z.B.\ lokale Funktionen auf einem Raum) besser handhaben können.
+
+\begin{definition}
+Sei $X$ ein topologischer Raum. Die {\sf Kategorie der offenen Mengen} $\mathbf{Op}_X$ ist gegeben durch die Objekte
+$$Obj(\mathbf{Op}_X):=\{ U\subset X\mid U \text{ offen} \}$$
+und für je zwei Objekte $U,V$ der Morphismenmenge
+$$\mathrm{Hom}_{\mathbf{Op}_X}(U,V):=\begin{cases}
+\{U\hookrightarrow V\}& \text{falls $U\subset V$}\\
+\emptyset &\text{sonst}
+\end{cases}$$
+\end{definition}
+
+\begin{definition}
+Eine {\sf Prägarbe} $\mathcal{F}$ auf $X$ (mit Werten in einer Kategorie $\cC$) ist ein kontravarianter Funktor von $\mathbf{Op}_X$ nach $\cC$.
+\end{definition}
+Meist wird $\cC$ eine Kategorie von Mengen mit Struktur (abelsche Gruppen, Ringe, $R$-Moduln etc.) sein. Ist z.B.\ $\cC=\mathit{Ab}$, so besteht eine Prägarbe $\mathcal{F}$ auf $X$ mit Werten in $\cC$ aus:
+\begin{itemize}
+	\item einer abelschen Gruppe $\mathcal{F}(U)$ für jede offene Teilmenge $U\subset X$,
+	\item einem Gruppenhomomorphismus $r_{UV}=\mathcal{F}(U\hookrightarrow V)\colon \mathcal{F}(V)\to \mathcal{F}(U)$
+	für jede Teilmengenbeziehung $U\subset V$,
+\end{itemize}
+sodass gilt (Funktoraxiome):
+\begin{itemize}
+	\item $r_{UU}=\id_{\mathcal{F}(U)}$,
+	\item $r_{UV}\circ r_{VW}=r_{UW}$ für jede Teilmengenbeziehung $U\subset V\subset W$.
+\end{itemize}
+Elemente von $\mathcal{F}(U)$ heißen {\sf Schnitte} von $\mathcal{F}$ auf $U$ und $r_{UV}$ wird oft als {\sf Restriktionsabbildung} bezeichnet.
+
+\begin{example}\label{beispiel-presheaf}\text{}\vspace*{-0.8cm}\\
+\begin{enumerate}
+	\item konstante Prägarbe:\\ $\mathcal{F}(U):=\mathbb{Z}$ für alle $U\subset X$ offen.\\ Restriktionsabbildungen sind Identitäten. (Anstelle von $\mathbb{Z}$ kann ein beliebiges Objekt verwendet werden.)
+	\item Prägarbe der stetigen reellwertigen Funktionen:\\ $\mathcal{F}(U):=\{ f\colon U\to \mathbb{R} \mid f \text{ ist stetig} \}$\\
+	und für $U\subset V$ ist $r_{UV}\colon \mathcal{F}(V)\to \mathcal{F}(U)$ gegeben durch $f\mapsto f|_U$.
+	\item Prägarbe der beschränkten Funktionen (analog zu 2.)
+\end{enumerate}
+\end{example}
+Erfüllt eine Prägarbe ein zusätzliches Axiom, so bezeichnen wir sie als Garbe. Wir formulieren dieses Axiom nun in der Situation, dass $\cC$ die Kategorie abelscher Gruppen (oder Ringen) ist. In diesem Fall können wir von \emph{Elementen} von $\mathcal{F}(U)$ sprechen und die Nullgruppe (oder der Nullring), das terminale Objekt von $\cC$ ist.
+\footnote{For more general categories see \url{https://en.wikipedia.org/wiki/Sheaf_(mathematics)}}
+
+\begin{definition}\label{def-sheaf}
+Eine Prägarbe $\mathcal{F}$ (auf $X$ mit Werten in $\cC$) heißt {\sf Garbe}, falls gilt:\\
+Ist $U\subset X$ eine offene Teilmenge und $U=\bigcup_{i\in I}U_i$ eine beliebige offene Überdeckung von $U$ und ist weiter $s_i\in \mathcal{F}(U_i)$ gegeben für alle $i\in I$, sodass die $s_i$ eine \emph{kompatible Familie} bilden, d.h.\ für alle $i,j\in I$ gelte $r_{U_i\cap U_j,U_i}(s_i)=r_{U_i\cap U_j,U_j}(s_j)$,
+dann existiert ein eindeutiges $s\in \mathcal{F}(U)$, sodass $r_{U_i,U}(s)=s_i$.
+
+\smallskip
+
+Insbesondere für die leere Teilmenge gilt es immer $\mathcal{F}(\emptyset) = 0$.
+\end{definition}
+Die Idee dieser Eigenschaft ist also: \glqq Aus lokalen Daten lässt sich das globale Datum (eindeutig) rekonstruieren\grqq. Man sagt auch oft: Lokale Schnitte (welche kompatibel sind, also jeweils auf der Überlappung $U_i\cap U_j$ übereinstimmen) lassen sich eindeutig zum einem globalen Schnitt \glqq verkleben\grqq.
+
+\begin{example}
+\
+\begin{enumerate}
+	\item Die konstante Prägarbe aus Beispiel \ref{beispiel-presheaf} ist keine Garbe: $F(\emptyset) \neq 0$.
+	
+	\smallskip
+	
+	Sogar wenn wir die Definition der konstanten Prägarbe anpassen würden, sodass gilt $F(\emptyset) = 0$.
+	Dann können wir folgendes Argument anwenden.
+	 Betrachte dazu eine unzusammenhängende Menge $U=U_1\cup U_2$ (mit $U_1\cap U_2=\emptyset$). Ein lokaler Schnitt $s_1\in\mathcal{F}(U_1)$ ist eine ganze Zahl, ebenso $s_2\in \mathcal{F}(U_2)$ (Kompatibilität ist hier eine leere Bedingung, also immer erfüllt). Sind aber $s_1$ und $s_2$ verschieden, so gibt es kein passendes $s\in \mathcal{F}(U)$ (denn dies müsste auch eine (einzelne) ganze Zahl sein).
+	 
+ 	\smallskip
+	 
+	 Im Buch von Ravi Vakil \cite{Va} im Abschnitt 2.2.10 gibt es eine interessant Diskussion zu diesem Beispiel.
+	 In Abschnitten 2.2.1--2.2.10 finden Sie mehr zu Garben.
+
+	Es gibt allerdings auch die sogenannte \emph{konstante Garbe}: Sie kann zum Beispiel definiert werden als die (Prä-)Garbe der lokal konstanten Funktionen. Dann wäre in obigem Beispiel $\mathcal{F}(U)=\mathbb{Z}^2$, die Restriktionsabbildungen zu $\mathcal{F}(U_1)$ und $\mathcal{F}(U_2)$ wären die Projektionen auf die erste bzw.\ zweite Komponente und wir könnten somit $s:=(s_1,s_2)$ wählen.
+	\item Die Prägarbe der stetigen Funktionen ist eine Garbe.
+	\item Die Prägarbe der beschränkten Funktionen erfüllt das Garbenaxiom nicht: Sei z.B.\ $X=\mathbb{R}$, wähle $U=\mathbb{R}$, die Überdeckung $U=\bigcup_{k\in \mathbb{Z}} U_k$, wobei $U_k$ das Intervall $(k,k+2)$ bezeichnet, und sei $s_k\in \mathcal{F}(U_k)$ gegeben durch die Funktion $f(x)=x^2$. Dann würden die $s_k$ sich zwar eindeutig zu einer Funktion $U\to \mathbb{R}$ verkleben lassen (nämlich zur Funktion $x^2$), diese ist aber nicht beschränkt auf ganz $U$ und somit existiert kein passendes $s\in \mathcal{F}(U)$.
+\end{enumerate}
+\end{example}
+Grundsätzlich gilt: Prägarben von Funktionen mit bestimmten Eigenschaften bilden genau dann eine Garbe, wenn die entsprechende Eigenschaft \emph{lokal} ist (d.h.\ lokal überprüft werden kann). Das ist beispielsweise bei Stetigkeit der Fall (\glqq Eine Funktion ist genau dann stetig, wenn sie an jedem Punkt stetig ist.\grqq), aber nicht bei Beschränktheit (eine lokal beschränkte Funktion muss nicht global beschränkt sein).
+
+\begin{remark}
+Das Garbenaxiom aus Definition \ref{def-sheaf} lässt sich auch anders formulieren:
+Für jede offene Überdeckung $U=\bigcup_{i\in I}U_i$ ist die Sequenz
+$$0\longrightarrow \mathcal{F}(U)\longrightarrow \prod_{i \in I}\mathcal{F}(U_i)\longrightarrow \prod_{i,j \in I} \mathcal{F}(U_i\cap U_j)$$
+exakt.
+Die Abbildungen sind hierbei gegeben durch $s\mapsto (r_{U_i,U}(s))_{i\in I}$ und $(s_i)_{i\in I}\mapsto (r_{U_i\cap U_j,U_i}(s_i)-r_{U_i\cap U_j,U_j}(s_j))$.\\ Ist $\cC$ keine Kategorie von Mengen mit Struktur (d.h.\ können wir nicht über Elemente sprechen), aber eine Kategorie, in der Produkte existieren, so kann man diese Abbildungen ebenfalls definieren (mithilfe der universellen Eigenschaft von Produkten).
+\end{remark}
+
+Unser Ziel ist es nun, $\Spec R$ mit einer Garbe $\mathcal{O}_{\Spec R}$ von \glqq guten\grqq\, Funktionen auszustatten. Betrachten wir das Beispiel $R=k[x]$ für einen algebraisch abgeschlossenen Körper $k$. Dann ist $\Spec R=\{ (x-a)\mid a\in k \}\cup \{ (0) \}$, d.h.\ abgesehen vom sogenannten generischen Punkt $(0)$ besteht das Spektrum aus einen Punkt für jedes Element von $k$. Funktionen auf ganz $\Spec R$ sollen Polynomfunktionen sein, d.h. $\mathcal{O}_{\Spec R}(\Spec R):=R$.\\ Jetzt fragen wir uns, was eine sinnvolle Definition für Funktionen auf kleineren offenen Mengen wäre, beispielsweise auf $D(f)$, $f\in k[x]$. $D(f)$ ist die Menge aller Primideale, die $f$ nicht enthalten. Abgesehen vom Ideal $(0)$ sind das alle $(x-a)$, wo $a$ keine Nullstelle von $f$ ist (beachte. dass $k$ algebraisch abgeschlossen ist und $f$ somit in Linearfaktoren zerfällt). Anschaulich hat $f$ also auf $D(f)$ keine Nullstelle. Eine sinnvolle Definition könnte also die folgende sein: Lokale Funktionen auf $D(f)$ sind gebrochen-rationale Funktionen, bei denen eine Potenz von $f$ im Nenner steht. Dies entspricht genau der Lokalisierung von $R$ an $f$ also $\mathcal{O}_{\Spec R}(D(f)):=R_f$.
+
+
+\subsection{Strukturgarbe auf $\Spec A$}
+
+Let us now define the structure sheaf of $\cO$ on $\Spec A$.
+We define the sections of $\cO$ over an open subset $U \subset \Spec A$ as
+\begin{equation*}
+  s \colon U \to \sqcup_{\fp \in U} A_{\fp},
+\end{equation*}
+such that
+\begin{enumerate}
+  \item $s(\fp) \in A_{\fp}$ for all $\fp \in U$;
+  \item locally it is given by a fraction of elements in $A$, i.e. for any $\fp \in U$
+  there exists a neighborhood $V \subset U$ of $\fp$ and elements $a,f \in A$
+  such that $s(\fq) = \frac{a}{f}$ and $f \notin \fq$ for all $\fq \in V$.
+\end{enumerate}
+
+Using pointwise addition, multiplication and unit, we see that the set $\cO(U)$
+is a commutaive ring. We also have the natural restrictions $\cO(U) \to \cO(V)$
+for $V \subset U$, which obviously satisfy the sheaf condition. Thus, we have
+defined the structure sheaf
+\begin{equation*}
+  \cO \quad \text{or} \quad \cO_{\Spec A}.
+\end{equation*}
+
+
+\begin{definition}
+  The pair $(\Spec A, \cO_{\Spec A})$ is called the \emph{spectrum of $A$.}
+\end{definition}
+
+
+\begin{proposition}\label{proposition:spec-A-structure-sheaf}
+  Let $A$ be a ring and $(\Spec A, \cO)$ its spectrum. We have
+  \begin{enumerate}
+    \item For any $\fp \in \Spec A$ we have $\cO_{\fp} \cong A_{\fp}$.
+
+    \item For any $f \in A$ we have $\cO(D(f)) \cong A_f$.
+
+    \item In particular, we have $\Gamma(\Spec A, \cO) \cong A$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  Maybe later. See \cite[Chapter II, Proposition 2.2]{Ha}.
+\end{proof}
+
+Above we used $\cO_{\fp}$, which stands for the stalk of $\cO$ at $\fp$.
+See \cite[p.~62]{Ha} for details.
 
 
 \newpage
