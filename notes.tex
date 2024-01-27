@@ -2701,6 +2701,464 @@ defined the structure sheaf
 Above we used $\cO_{\fp}$, which stands for the stalk of $\cO$ at $\fp$.
 See \cite[p.~62]{Ha} for details.
 
+\newpage
+\section{Kettenbedingungen}
+
+\subsection{Definitionen und erste Eigenschaften}
+\begin{lemma}\label{lemma-poset-chain-conditions}
+Sei $\Sigma$ eine partiell geordnete Menge (die Relation bezeichnen wir mir $\leq$). Dann sind die folgenden Aussagen äquivalent:
+\begin{enumerate}
+\item Jede aufsteigende Sequenz $x_1 \leq x_2 \leq \dots$ in $\Sigma$ wird stationär.
+\item Jede nichtleere Teilmenge von $\Sigma$ hat ein maximales Element.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+1) $\Rightarrow$ 2) Nehmen wir an, dass 2) nicht gilt, d.h. es existiert eine nichtleere Teilmenge $T \subset \Sigma$ ohne maximalen Elemente. Dann können wir induktiv eine streng aufsteigende Sequenz in $T$ konstruieren.
+
+2) $\Rightarrow$ 1) Sei $x_1, x_2, \dots$ eine aufsteigende Sequenz in $\Sigma$. Da die Menge $(x_i)_{i \geq 1}$ ein maximales Element hat, wird diese Sequenz stationär.
+\end{proof}
+
+
+\begin{definition}
+Sei $M$ ein Modul über einem Ring $R$.
+\begin{enumerate}
+\item $M$ heißt {\sf noethersch}\footnote{\href{https://en.wikipedia.org/wiki/Emmy_Noether}{Nach Emmy Noether.}} $\iff$ jede aufsteigende Kette von Untermoduln wird stationär.
+\item $M$ heißt {\sf artinsch}\footnote{\href{https://en.wikipedia.org/wiki/Emil_Artin}{Nach Emil Artin.}} $\iff$ jede absteigende Kette von Untermoduln wird stationär.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\
+\begin{enumerate}
+\item Endliche abelsche Gruppen (als $\bZ$-Moduln betrachtet) sind noethersch und artinsch.
+\item Der Ring $\bZ$ betrachtet als $\bZ$-Modul ist noethersch, aber nicht artinsch (z.B. $(2) \supset (4) \supset (8) \supset \dots$).
+\item Der Ring $k[x]$ betrachtet als Modul über sich selbst ist noethersch, aber nicht artinsch.
+\item Der Polynomring in unendlich vielen Variablen $k[x_1, x_2, \dots ]$ ist weder noethersch noch artinsch.
+\end{enumerate}
+\end{example}
+
+
+
+\begin{proposition}\label{proposition-noetherian-finitely-generated-submodules}
+$M$ ist noethersch $\iff$ jeder Untermodul von $M$ ist endlich erzeugt.
+\end{proposition}
+
+\begin{proof}
+$\Rightarrow$) Sei $N \subset M$ ein beliebiger Untermodul und $\Sigma$ die Menge aller endlich erzeugten Untermoduln von $N$. Da der Nullmodul in $\Sigma$ liegt, ist $\Sigma$ nichtleer und hat nach Lemma \ref{lemma-poset-chain-conditions} ein maximales Element $N_0$. Gälte $N_0 \neq N$, könnten wir $N_0$ vergrößern, indem wir den Untermodul $N_0 + Rx$ mit $x \in N \setminus N_0$ betrachten und dadurch einen Widerspruch zur Maximalität von $N_0$ erhalten. Somit gilt $N_0=N$ und der Modul $N$ ist endlich erzeugt.
+
+
+$\Leftarrow$) Sei $M_1 \subset M_2 \subset \dots$ eine aufsteigende Kette von Untermoduln. Betrachten wir den Untermodul $N=\bigcup_i M_i$, welcher nach Voraussetzung endlich erzeugt ist, und seien $x_1, \dots , x_r$ beliebige Erzeuger von $N$. Es ist klar, dass es $n_i \geq 1$ existieren, sodass $x_i \in M_{n_i}$. Somit gilt $N=M_n$ mit $n = max_i (n_i)$ und die Kette wird stationär.
+\end{proof}
+
+\begin{remark}
+\
+\begin{enumerate}
+\item Insbesondere folgt aus dem obigen Satz, dass jeder noetherscher Modul $M$ endlich erzeugt ist.
+\item Ein Untermodul von einem endlich erzeugten Modul ist nicht immer endlich erzeugt (z.B. $(x_1, x_2, \dots) \subset k[x_1, x_2, \dots ]$).
+\item Sogar wenn ein Untermodul $N$ von einem endlich erzeugten Modul $M$ endlich erzeugt ist, ist die minimale Anzahl der Erzeuger von $N$ nicht unbedingt durch die minimale Anzahl der Erzeuger von $M$ begrenzt.
+\end{enumerate}
+
+\end{remark}
+
+
+\begin{proposition}\label{proposition-noetherian-artinian-short-exact-sequence}
+Sei $0 \to M' \overset{\alpha}{\to} M \overset{\beta}{\to} M'' \to 0$ eine kurze exakte Sequenz von $R$-Moduln. Dann gilt:
+\begin{enumerate}
+\item $M$ ist noethersch $\iff$ $M'$ und $M''$ sind noethersch.
+\item $M$ ist artinsch $\iff$ $M'$ und $M''$ sind artinsch.
+\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+Wir beweisen nur die erste Aussage. Die zweite ist analog.
+
+$\Rightarrow$) Eine aufsteigende Kette von Untermoduln von $M'$ (bzw. $M''$) definiert eine aufsteigende Kette von Untermoduln von $M$. Somit wird diese stationär.
+
+$\Leftarrow$) Sei $(L_i)$ eine aufsteigende Kette von Untermoduln von $M$. Dann ist $\alpha^{-1}(M)$ ist eine aufsteigende Kette von Untermoduln von $M'$ und $\beta(M)$ ist eine aufsteigende Kette von Untermoduln von $M''$. Da die beide induzierte Ketten stationär werden, wird auch $L_n$ stationär.
+\end{proof}
+
+
+
+\begin{cor}\label{corollary-finite-direct-sums-noetherian-artinian}
+Eine endliche direkte Summe von noetherschen (bzw. artinschen) Moduln ist noethersch (bzw. artinsch).
+\end{cor}
+
+\begin{proof}
+Benutzen Sie Satz \ref{proposition-noetherian-artinian-short-exact-sequence} und die kurze exakte Sequenz
+\begin{align*}
+0 \to M_n \to \oplus_{i=1}^n M_i \to \oplus_{i=1}^{n-1} M_i \to 0,
+\end{align*}
+um die Aussage induktiv zu beweisen.
+\end{proof}
+
+
+\begin{definition}
+Ein Ring $R$ heißt {\sf noethersch} (bzw. {\sf artinsch}), wenn er noethersch (bzw. artinsch) als Modul über sich selbst ist.
+\end{definition}
+
+\begin{example}
+\
+\begin{enumerate}
+\item Jeder Körper ist noethersch und artinsch.
+\item $\bZ$ ist noethersch, aber nicht artinsch.
+\item $k[x]$ ist noethersch, aber nicht artinsch.
+\item $k[x_1, x_2, \dots ]$ ist weder noethersch noch artinsch.
+\item Hauptidealringe sind noethersch (nach Satz \ref{proposition-noetherian-finitely-generated-submodules}), aber nicht unbedingt artinsch.
+\end{enumerate}
+\end{example}
+
+
+\begin{proposition}\label{proposition-finitely-generated-modules-over-noetherian-artinian-rings}
+Seien $R$ ein noetherscher (bzw. artinscher) Ring und $M$ ein endlich erzeugter $R$-Modul. Dann ist $M$ noethersch (bzw. artinsch).
+\end{proposition}
+
+\begin{proof}
+Da $M$ endlich erzeugt ist, existiert $n > 0$ und ein surjektiver Homomorphismus von $R$-Moduln $R^n \to M$. Somit ist $M$ ein Faktormodul von $R^n$. Der Modul $R^n$ ist noethersch (bzw. artinsch) nach Korollar \ref{corollary-finite-direct-sums-noetherian-artinian} und als Faktormodul von einem noetherschen (bzw. artinschen) Modul ist $M$ nach Satz \ref{proposition-noetherian-artinian-short-exact-sequence} auch noethersch (bzw. artinsch).
+\end{proof}
+
+
+\begin{proposition}\label{proposition-quotient-ring-noetherian-artinian}
+Seien $R$ ein noetherscher (bzw. artinscher) Ring und $I \subset R$ ein Ideal. Dann ist der Faktorring $R/I$ auch noethersch (bzw. artinsch).
+\end{proposition}
+
+\begin{proof}
+Als $R$-Modul ist $R/I$ noethersch (bzw. artinsch) nach Satz \ref{proposition-noetherian-artinian-short-exact-sequence}. Daraus folgt, dass er auch als $R/I$-Modul noethersch (bzw. artinsch) ist.
+\end{proof}
+
+
+
+
+\vspace{10pt}
+
+\subsection{Moduln endlicher Länge}
+\begin{definition}
+Sei $R$ ein Ring und $M$ ein $R$-Modul.
+\begin{enumerate}
+\item $M$ heißt {\sf einfach} $\iff$ die einzige Untermoduln von $M$ sind $0$ und $M$.
+\item Eine {\sf Kompositionsreihe} von $M$ ist eine absteigende Kette von echten Untermoduln der Form
+\begin{align*}
+M = M_0 \supset M_1 \supset \dots \supset M_n=0,
+\end{align*}
+sodass die Quotienten $M_i/M_{i+1}$ einfache Moduln sind. Die Zahl $n$ wird {\sf Länge} der Kompositionsreihe genannt. Die Quotienten $M_i/M_{i+1}$ nennt man {\sf Kompositionsfaktoren}.
+\end{enumerate}
+\end{definition}
+
+
+
+\begin{example}
+\
+\begin{enumerate}
+\item Sei $k$ ein Körper und $V$ ein endlich dimensionaler $k$-Vektorraum. Es gilt
+\begin{align*}
+V \, \text{ist einfach} \iff \dim_k V = 1.
+\end{align*}
+
+
+\item Eine abelsche Gruppe $A$ ist genau dann einfach (als $\bZ$-Modul), wenn gilt $A \iso \bZ /p \bZ$ mit $p$ Primzahl. Nach Satz von Lagrange ist die Gruppe $\bZ /p \bZ$ einfach. Somit ist eine Richtung sofort klar. Umgekehrt: sei $x \in A$ ein Element $\neq 0$. Dann erzeugt dieses Element eine Untergruppe $(x) \subset A$ (ein Untermodul) der Form $\bZ / n \bZ$ (der Fall $n=0$ ist auch erlaubt). Da $A$ einfach ist, gilt $\bZ / n \bZ = A$ mit $n$ Primzahl.
+\end{enumerate}
+\end{example}
+
+
+\newpage
+\begin{proposition}\label{proposition-composition-series-have-the-same-length}
+Wenn $M$ eine Kompositionsreihe der Länge $n$ hat, dann ist jede Kompositionsreihe von $M$ der Länge $n$, und jede Kette von Untermoduln in $M$ zu einer Kompositionsreihe erweitert werden kann.
+\end{proposition}
+
+\begin{proof}
+Sei $l(M)$ die Länge der kürzesten Kompositionsreihe von $M$. Der Beweis geht in drei Schritten:
+
+\medskip
+
+\noindent 1)  {\it Sei $N \subset M$ ein echter Untermodul. Dann gilt $l(N) < l(M)$.}  Sei $M_{\bullet}$ eine Kompositionsreihe von $M$ der Länge $l(M)$. Betrachten wir die Untermoduln $N_i := N \cap M_i$. Dann ist $N_{\bullet}$ eine Kette von Untermoduln von $N$. Die natürliche Inklusion $N_i/N_{i+1} \subset M_i/M_{i+1}$ zusammen mit der Tatsache, dass $M_i/M_{i+1}$ einfach ist, implizieren, dass gilt $N_i/N_{i+1} = 0$ oder $N_i/N_{i+1} = M_i/M_{i+1}$. Wenn gilt $N_i/N_{i+1} = 0$, dann lassen wir diesen Schritt weg. Auf diese Weise erhalten wir eine Kompositionsreihe von $N$ mit der Länge $\leq l(M)$. Somit haben wir gezeigt $l(N) \leq l(M)$.
+
+Sei nun $l(N)=l(M)$, dann haben wir $N_{i+1}/N_i = M_{i+1}/M_i$ für alle $i$. Daraus folgt sofort $M_{n-1} = N_{n-1}$. Induktiv kann man weiter zeigen, dass gilt $M=N$ (Übung).
+
+
+\medskip
+
+\noindent 2)  {\it Jede Kette in $M$ ist der Länge $\leq l(M)$.}  Sei $M = M_0 \supset M_1 \supset \dots \supset M_k=0$ eine Kette der Länge $k$. Dann gilt $l(M) > l(M_1) > \dots > l(M_k) = 0$. Daraus folgt sofort $k \leq l(M)$.
+
+
+\medskip
+
+\noindent 3) Betrachten wir eine beliebige Kompositionsreihe von $M$. Nach Teil 2 ist die Länge dieser Kompositionsreihe $\leq l(M)$. Da $l(M)$ schon die kleinste Länge ist, bekommen wir $= l(M)$.
+
+\smallskip
+
+Betrachten wir nun eine beliebige echt absteigende Kette von Untermoduln von $M$. Wir wenden Teil 2 an. Die Kompositionsreihen von $M$ sind genau die Ketten der Länge $\ell(M)$. Wenn die Länge $< l(M)$ ist, dann ist diese Kette keine Kompositionsreihe und wir können noch weitere neue Terme einfügen bis die Länge $= l(M)$ ist.
+\end{proof}
+
+
+\begin{proposition}\label{proposition-composition-series-existence}
+Ein $R$-Modul $M$ hat eine Kompositionsreihe $\iff$ $M$ ist artinsch und noethersch.
+\end{proposition}
+
+\begin{proof}
+$\Rightarrow$) Wenn $M$ eine Kompositionsreihe hat, sind alle Ketten in $M$ endlich. Somit ist $M$ noethersch und artinsch.
+
+\smallskip
+
+$\Leftarrow$) Wir konstruieren eine Kompositionsreihe für $M$. Da $M$ noethersch ist, hat er nach Lemma \ref{lemma-poset-chain-conditions} ein maximales Untermodul $M_1$. Der Modul $M_1$ ist auch noethersch nach Satz \ref{proposition-noetherian-artinian-short-exact-sequence} und hat analog ein maximales Untermodul $M_1$. Auf diese Weise erhalten wir eine echt absteigende Kette $M=M_0 \supset M_1 \supset M_2 \supset \dots$, welche stationär wird, da $M$ nach Voraussetzung auch artinsch ist.
+\end{proof}
+
+
+\begin{definition}
+Ein $R$-Modul $M$ heißt {\sf Modul endlicher Länge}, wenn er eine Kompositionsreihe hat. Nach Satz \ref{proposition-composition-series-existence} gilt es genau dann, wenn $M$ noethersch und artinsch ist. Nach Satz \ref{proposition-composition-series-have-the-same-length} haben alle Kompositionsreihen von $M$ die gleiche Länge, welche wir mit $\ell_R(M)$ bezeichnen und die {\sf Länge von $M$} nennen.
+\end{definition}
+
+\begin{example}
+\
+\begin{enumerate}
+\item Sei $V$ ein endlich dimensionaler $k$-Vektorraum. Dann gilt $\ell_k(V) = \dim_k V$.
+\item Für $\bZ/p \bZ$ als $\bZ$-Modul gilt $\ell_{\bZ}(\bZ/p \bZ) = 1$.
+\item Sei $M$ ein einfacher $R$-Modul. Dann gilt $\ell_R(M) = 1$.
+\item Sei $R=\bC[x,y]$ und $M = \bC[x,y]/(x,y) \iso \bC$. Dann gilt $\ell_{R}(M) = 1$.
+\end{enumerate}
+\end{example}
+
+\begin{lemma}
+Die Länge ist additiv auf kurzen exakten Sequenzen.
+\end{lemma}
+
+\begin{proof}
+Sei $0 \to M' \overset{\alpha}{\to} M \overset{\beta}{\to} M'' \to 0$ eine kurze exakte Sequenz von Moduln endlicher Länge. Zu zeigen: $\ell(M) = \ell(M') + \ell(M'')$.
+
+Gegeben eine Kompositionsreihe für $M'$ bekommen wir eine Kette in $M$ indem wir $\alpha$ darauf anwenden. Gegeben eine Kompositionsreihe für $M''$ bekommen wir eine Kette in $M$ indem wir $\beta^{-1}$ darauf anwenden. Die zwei Ketten zusammen geben eine Kompositionsreihe für $M$.
+\end{proof}
+
+
+
+
+
+\begin{thm}[Jordan-Hölder]
+Sei $M$ ein Modul endlicher Länge. Seien $(A_i)_{0 \leq i \leq n}$ und $(B_i)_{0 \leq i \leq n}$ zwei Kompositionsreihen. Dann gibt es eine Bijektion zwischen den Mengen von Kompositionsfaktoren $\{ A_i/A_{i+1} \}$ und $\{ B_i/B_{i+1} \}$, sodass die entsprechende Kompositionsfaktoren isomorph sind.
+\end{thm}
+
+\begin{proof}
+Der Beweis geht induktiv nach $\ell(M)$. Wir betrachten einen konkreten Fall und die allgemeine Aussage wird dem Leser als Übung gelassen.
+
+\begin{enumerate}
+\item $\ell(M) = 0 \iff M = 0$.
+\item $\ell(M) = 1 \iff$  $M$ ist einfach.
+\item $\ell(M) = 2$ --- der erste interessante Fall.
+
+Seien
+\begin{align*}
+& M = A_0 \supset A_1 \supset A_2 = 0 \\
+& M = B_0 \supset B_1 \supset B_2 = 0 \\
+\end{align*}
+zwei unterschiedliche Kompositionsreihen von $M$. Aus der Definition von Kompositionsreihen folgt sofort, dass die Moduln $A_1, B_1, M/A_1, M/B_1$ einfach sind. Daraus bekommen wir: $A_1 \cap B_1 = 0$ und $A_1 + B_1 = M$. Nun haben wir
+\begin{align*}
+& M/A_1 = (A_1 + B_1)/A_1 \iso B_1/(A_1 \cap B_1) = B_1 \\
+& M/B_1 \iso A_1.
+\end{align*}
+
+\item $\ell(M) = 3$ --- der Induktionsschritt.
+
+Seien
+\begin{align}\label{eq-two-composition-series-1}
+& M = A_0 \supset A_1 \supset A_2 \supset A_3 = 0 \\ \notag
+& M = B_0 \supset B_1 \supset B_2 \supset B_3 = 0
+\end{align}
+zwei Kompositionsreihen. Wir unterscheiden zwei Fälle: $A_1 = B_1$ und $A_1 \neq B_1$. Wenn gilt $A_1 = B_1$, dann sind wir sofort fertig, da wir die Aussage für Moduln der Länge 2 schon kennen und $\ell(A_1)=2$.
+
+Sei nun $A_1 \neq B_1$. Genau wie früher haben wir $A_1 + B_1 = M$. Wir definieren zwei neue Ketten
+\begin{align}\label{eq-two-composition-series-2}
+& M \overset{\neq}{\supset} A_1 \overset{\neq}{\supset} A_1 \cap B_1 \supset A_2 \cap B_1 \supset 0 \\ \notag
+& M \underset{\neq}{\supset} B_1 \underset{\neq}{\supset} B_1 \cap A_1 \supset B_2 \cap A_1 \supset 0
+\end{align}
+Die Länge dieser Kette ist 4. Da gilt $\ell(M)=3$, sind diese Ketten nicht strikt absteigend (und können keine Kompositionsreihen sein). Aus der Definition sehen wir, dass die erste zwei Inklusionen (von der linken Seite) strikt sind. Also nur in den letzten zwei Inklusionen können nicht strikte Inklusionen vorkommen. Schauen wir diese nun genauer an:
+\begin{align}\label{eq-two-composition-series-3}
+&A_1 \cap B_1 \supset A_2 \cap B_1 \supset 0 \\ \notag
+&B_1 \cap A_1 \supset B_2 \cap A_1 \supset 0
+\end{align}
+Da gilt $\ell(A_1 \cap B_1) = 1$, muss eine von den beiden Inklusionen in jeder Kette von \eqref{eq-two-composition-series-3} eine Gleichheit sein. Somit sehen wir, dass die Kompositionsfaktoren von \eqref{eq-two-composition-series-3} isomorph sind (bis auf eine Permutation).
+
+Jetzt schauen wir uns die Kompositionsfaktoren von \eqref{eq-two-composition-series-2} an. Wie früher bekommen wir
+\begin{align*}
+& M/A_1 \iso B_1 / (A_1 \cap B_1) \quad \text{und} \quad M/B_1 \iso A_1 / (A_1 \cap B_1).
+\end{align*}
+Somit sind auch die Kompositionsfaktoren von \eqref{eq-two-composition-series-2} isomorph (bis auf eine Permutation).
+
+Um den Beweis zu beenden, merken wir, dass man die Kompositionsfaktoren von \eqref{eq-two-composition-series-1} bekommt, wenn man aus den Kompositionsfaktoren von \eqref{eq-two-composition-series-2} den Null-Modul rauswirft.
+\end{enumerate}
+\end{proof}
+
+
+
+\newpage
+\section{Noethersche Ringe}
+
+
+
+\begin{lemma}
+Ein Ring $R$ ist noethersch genau dann, wenn eine der folgenden äquivalenten Eigenschaften erfüllt ist.
+\begin{enumerate}
+\item Jede nichtleere Menge von Idealen von $R$ hat ein maximales Element.
+\item Jede aufsteigende Kette von Idealen von $R$ wird stationär.
+\item Jedes Ideal von $R$ ist endlich erzeugt.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Die Aussage folgt aus Lemma \ref{lemma-poset-chain-conditions} und Satz \ref{proposition-noetherian-finitely-generated-submodules}.
+\end{proof}
+
+
+\begin{proposition}\label{proposition-homomorphic-image-noetherian}
+Sei $R$ ein noetherscher Ring und $f \colon R \to S$ ein surjektiver Ringhomomorphismus. Dann ist $S$ auch noethersch.
+\end{proposition}
+
+\begin{proof}
+Die Aussage folgt aus Satz \ref{proposition-quotient-ring-noetherian-artinian}, da gilt $S \iso R/\Ker f$.
+\end{proof}
+
+\begin{proposition}
+Sei $R \subset S$ ein Unterring. Wenn $R$ noethersch ist und $S$ als $R$-Modul endlich erzeugt ist, dann ist $S$ auch ein noetherscher Ring.
+\end{proposition}
+
+\begin{proof}
+Nach Satz \ref{proposition-finitely-generated-modules-over-noetherian-artinian-rings} ist $S$ noethersch als $R$-Modul. Somit ist er auch als $S$-Modul noethersch.
+\end{proof}
+
+
+\begin{example}
+\
+\begin{enumerate}
+\item Nach dem obigen Satz ist der Ring $\bZ[i]$ noethersch.
+
+\item Sei $k$ ein Körper. Wir werden gleich beweisen, dass der Polynomring $k[x_1, \dots, x_n]$ noethersch ist. Somit nach Satz \ref{proposition-homomorphic-image-noetherian} bekommen wir viele Beispiele von noetherschen Ringen, indem wir Faktorringe von $k[x_1, \dots, x_n]$ betrachten.
+\end{enumerate}
+
+\end{example}
+
+\begin{proposition}
+Sei $R$ ein noetherscher Ring und $T \subset R$ ein multiplikatives System. Dann ist $T^{-1}R$ auch noethersch.
+\end{proposition}
+
+\begin{proof}
+Übungsblatt 13.
+\end{proof}
+
+
+\begin{cor}
+Sei $R$ ein noetherscher Ring und $\mathfrak{p} \subset R$ ein Primideal. Dann ist $R_{\mathfrak{p}}$ auch noethersch.
+\end{cor}
+
+
+
+\begin{thm}[Hilbertscher Basissatz]\label{theorem-hilbert-basis}
+Sei $R$ ein noetherscher Ring. Dann ist der Polynomring $R[x]$ auch noethersch.
+\end{thm}
+
+\begin{proof}
+Sei $I \subset R[x]$ ein Ideal. Die Leitkoeffizienten von Polynomen in $I$ bilden ein Ideal $J \subset R$ (Übungsblatt 13). Da $R$ noethersch ist, ist das Ideal $J$ endlich erzeugt. Seien $a_1, \dots, a_n$ Erzeuger von $J$. Für jedes $i \in [1,n]$ existiert ein Polynom $f_i \in R[x]$ der Form $f_i = a_ix^{r_i} + \text{(Terme von kleinerem Grad)}$. Die Polynome $f_i$ erzeugen ein Ideal $I' \subset J \subset R[x]$.
+
+Sei $f = a x^m + \text{(Terme von kleinerem Grad)}$ ein Element von $I$. Wenn gilt $m \geq r := \max_i \, (r_i)$, dann können wir folgendes machen: 1) wir schreiben $a$ als $a = \sum_i u_i a_i$ mit $u_i \in R$; 2) die Differenz $f - \sum_i u_i f_i x^{m-r_i}$ liegt in $I$ und ist vom Grad $< m$. Wenn wir dieses Prozedere mehrmals iterieren, bekommen wir ein Polynom $g$ vom Grad $< r$. Somit haben wir eine Zerlegung $f = g + h$ mit $h \in I'$.
+
+Sei $M$ der $R$-Untermodul von $R[x]$ erzeugt durch $1, x , \dots, x^{r-1}$.
+Wir haben eben gezeigt, dass gilt $I = (I \cap M) + I'$. Da $M$ endlich erzeugt ist, ist er auch noethersch nach Satz
+\ref{proposition-finitely-generated-modules-over-noetherian-artinian-rings}.
+Somit ist sein Untermodul $I \cap M$ auch endlich erzeugt als $R$-Modul nach Satz
+\ref{proposition-noetherian-finitely-generated-submodules}. Wenn $g_1, \dots, g_m$ den $R$-Modul $I \cap M$ erzeugen,
+folgt sofort daraus, dass $f_1, \dots, f_n$ und $g_1, \dots, g_m$ das Ideal $I$ erzeugen. Somit ist $I$ endlich erzeugt und $R[x]$ ist noethersch.
+\end{proof}
+
+\begin{cor}
+Wenn $R$ noethersch ist, ist auch $R[x_1, \dots, x_n]$ noethersch.
+\end{cor}
+
+\begin{proof}
+Induktion.
+\end{proof}
+
+\begin{definition}
+Sei $S$ eine $R$-Algebra, d.h. der Ring $S$, welcher mit einem Ringhomomorphismus $R \to S$ ausgestattet ist. Die Algebra $S$ heißt {\sf endlich erzeugt} über $R$, wenn eine der folgenden äquivalenten Aussagen erfüllt ist:
+\begin{enumerate}
+\item Es gibt endliche viele Elemente $a_1, \dots, a_n$ in $S$, sodass jedes Element in $S$ als Polynom in $a_i$'s mit Koeffizienten in $R$ geschrieben werden kann.
+
+\item Es existiert ein surjektiver Homomorphismus von $R$-Algebren $f \colon R[x_1, \dots, x_n] \to S$, d.h. $f$ ist ein Ringhomomorphismus und das Diagramm
+\begin{align*}
+\xymatrix{
+R[x_1, \dots, x_n] \ar[rr]^f && S \\
+& \ar[ul] R \ar[ur]
+}
+\end{align*}
+soll kommutieren, wobei die diagonalen Pfeile die entsprechenden $R$-Algebra Strukturen auf $R[x_1, \dots, x_n]$ und $S$ definieren.
+\end{enumerate}
+
+\noindent Aus der Definition folgt sofort, dass $S$ zur Faktoralgebra $R[x_1, \dots, x_n]/I$ (als $R$-Algebra) isomorph ist.
+
+\end{definition}
+
+
+\begin{cor}\label{corollary-finitely-generated-algebra-over-noetherian-ring-is-noetherian}
+Sei $S$ eine endlich erzeugte $R$-Algebra. Ist $R$ noethersch, dann ist auch $S$ noethersch. Insbesondere, jede endlich erzeugte Algebra über einem Körper ist noethersch.
+\end{cor}
+
+\begin{proof}
+Es existieren ein $n$ und ein surjektiver Ringhomomorphismus $R[x_1, \dots, x_n] \to S$. Da~$R[x_1, \dots, x_n]$ noethersch ist (Theorem \ref{theorem-hilbert-basis}), ist auch $S$ noethersch (Satz \ref{proposition-homomorphic-image-noetherian}).
+\end{proof}
+
+
+
+\begin{proposition}\label{proposition-8.11}
+Seien $R \subset S \subset T$ Ringe. Weiter, sei $R$ noethersch, $T$ endlich erzeugt als $R$-Algebra und endlich erzeugt als $S$-Modul. Dann ist $S$ endlich erzeugt als $R$-Algebra.
+\end{proposition}
+
+
+\begin{proof}
+Seien $x_1, \dots, x_m$ Erzeuger von $T$ als $R$-Algebra und $y_1, \dots , y_n$ Erzeuger von $T$ als $S$-Modul. Dann gilt
+\begin{align}\label{eq-proof-noetherian-1}
+& x_i = \sum_j a_{ij} y_j \qquad a_{ij} \in S  \\ \label{eq-proof-noetherian-2}
+& y_iy_j = \sum_k b_{ijk} y_k  \qquad b_{ijk} \in S
+\end{align}
+Sei nun $S_0 \subset S$ die $R$-Algebra erzeugt durch alle $a_{ij}$ und $b_{ijk}$. Da $R$ noethersch ist und $S_0$ endlich erzeugt als $R$-Algebra ist, folgt nach Korollar \ref{corollary-finitely-generated-algebra-over-noetherian-ring-is-noetherian}, dass $S_0$
+noethersch ist.
+
+Sei nun $x \in T$ ein Element. Aus Formeln \eqref{eq-proof-noetherian-1} und \eqref{eq-proof-noetherian-2} folgt sofort, dass gilt
+$$
+x = \sum_i \alpha_i y_i \qquad \alpha_i \in S_0.
+$$
+Somit ist $T$ endlich erzeugt als $S_0$-Modul. Da $S_0$ noethersch ist, bekommen wir nach Satz~\ref{proposition-finitely-generated-modules-over-noetherian-artinian-rings}, dass $T$ ein noetherscher $S_0$-Modul ist. Somit ist dann auch $S$ ein noetherscher $S_0$-Modul (Satz~\ref{proposition-noetherian-finitely-generated-submodules}). Endlich, da $S_0$ eine endlich erzeugte $R$-Algebra ist, ist auch $S$ endlich erzeugt als $R$-Algebra.
+\end{proof}
+
+
+
+
+\begin{proposition}
+Seien $k$ ein Körper und $E/k$ eine endlich erzeugte $k$-Algebra. Ist $E$ ein Körper, dann ist die Körpererweiterung $E/k$ eine endliche algebraische Erweiterung von $k$.
+\end{proposition}
+
+\begin{proof}
+
+Es genügt zu zeigen, dass $E/k$ algebraisch ist. Die Endlichkeit folgt dann automatisch, da $E$ eine endlich erzeugte $k$-Algebra ist.
+
+\smallskip
+
+\noindent {\it Widerspruchsbeweis:} Nehmen wir an, dass die Körpererweiterung $E/k$ nicht algebraisch ist. Seien $x_1, \dots, x_n$ Erzeuger von $E$ als $k$-Algebra. Dann kann man die $x_i$'s so umnummerieren, dass $x_1, \dots, x_r$ algebraisch unabhängig über $k$ sind, und die restlichen $x_{r+1}, \dots, x_n$ algebraisch über $F=k(x_1, \dots, x_r)$ sind. Die Körpererweiterung $E/F$ ist dann automatisch endlich (und natürlich algebraisch). Nun können wir auf $k \subset F \subset E$ Satz \ref{proposition-8.11} anwenden. Somit ist $F=k(x_1, \dots, x_r)$ endlich erzeugt als $k$-Algebra. Widerspruch!
+\end{proof}
+
+
+
+\begin{cor}\label{weak-nullstellensatz}
+Seien $k$ ein Körper, $R/k$ eine endlich erzeugte $k$-Algebra und $\mathfrak{m} \subset R$ ein maximales Ideal. Dann ist der Körper $R/\mathfrak{m}$ eine endliche algebraische Erweiterung von $k$. Insbesondere, wenn $k$ algebraisch abgeschlossen ist, gilt $R/\mathfrak{m} \iso k$.
+\end{cor}
+
+\begin{proof}
+Satz 8.12 auf $R/\mathfrak{m} \iso k$ anwenden.
+\end{proof}
+
+\begin{cor}
+Sei $k = \bar{k}$. Dann ist jedes maximale Ideal von $\mathfrak{m} \subset k[x_1, \dots, x_n]$ der Form $(x-a_1, \dots, x_n-a_n)$ mit $a_i \in k$.
+\end{cor}
+
+\begin{proof}
+Übung.
+\end{proof}
+
 
 \newpage
 \bibliographystyle{plain}
