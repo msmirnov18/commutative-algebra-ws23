@@ -3156,8 +3156,209 @@ Sei $k = \bar{k}$. Dann ist jedes maximale Ideal von $\mathfrak{m} \subset k[x_1
 \end{cor}
 
 \begin{proof}
-Übung.
+Gemacht in der Vorlesung.
 \end{proof}
+
+
+\newpage
+\section{Hilbertscher Nullstellensatz}
+
+
+Dieses Kapitel basiert sich auf [Hartshorne, Kapitel I, §1].
+
+\smallskip
+
+In der klassischen algebraischen Geometrie arbeitet man über einem algebraisch abgeschlossenen Körper. Somit setzen wir in diesem Kapitel immer $k = \bar{k}$ voraus (z.~B. $k = \bC$).
+
+
+\begin{definition}
+{\sf Affiner Raum} $\bA^n$ über dem Körper $k$ ist $k^n$ (als Menge, keine Vektorraumstruktur). Also ein Punkt von $\bA^n$ ist ein $n$-Tupel $(a_1, \dots, a_n)$ mit $a_i \in k$.
+\end{definition}
+
+Jedes Polynom $f \in k[x_1, \dots, x_n]$ kann man als eine Funktion
+\begin{align*}
+& \qquad \bA^n \to k  \\
+& (a_1, \dots, a_n)\mapsto f(a_1, \dots, a_n)
+\end{align*}
+betrachten und seine {\sf Verschwindungsmenge}
+\begin{align*}
+& V(f) \coloneqq \{P \in \bA^n \mid f(P)=0 \}
+\end{align*}
+definieren. Analog definiert man auch die Verschwindungsmenge einer Familie von Polynomen
+\begin{align*}
+& V(f_1, \dots , f_m) \coloneqq \{P \in \bA^n \mid f_i(P)=0 \quad \forall i \},
+\end{align*}
+oder sogar eines Ideals $J \subset k[x_1, \dots, x_n]$
+\begin{align*}
+& V(J) \coloneqq \{P \in \bA^n \mid f(P)=0 \quad \forall f \in J \}.
+\end{align*}
+
+\begin{remark}
+\
+\begin{enumerate}
+\item Es gilt
+\begin{align*}
+& V(f) = V((f)) \\
+& V(f_1, \dots, f_n) = V((f_1, \dots, f_n))
+\end{align*}
+
+\item Da nach Theorem \ref{theorem-hilbert-basis} jedes Ideal von $k[x_1, \dots, x_n]$ endlich erzeugt ist, genügt es, Verschwindungsmengen der Form $V(f_1, \dots , f_m)$ anzuschauen.
+\end{enumerate}
+\end{remark}
+
+\begin{definition}
+Eine Teilmenge von $Y \subset \bA^n$ heißt {\sf algebraisch}, wenn es ein Ideal $J$ mit $Y = V(J)$ gibt.
+\end{definition}
+
+
+\begin{proposition}
+Die folgenden Eigenschaften folgen sofort aus der Definition.
+\begin{enumerate}
+\item $V(J_1) \cup V(J_2) = V(J_1 J_2)$.
+\item $\cap_{\alpha} V(J_{\alpha}) = V(\sum_{\alpha} J_{\alpha})$.
+\item $\bA^n = V(0)$ und $\emptyset = V(k[x_1, \dots, x_n])$.
+\end{enumerate}
+\end{proposition}
+
+Dieser Satz zeigt, dass man die algebraischen Teilmengen benutzen kann, um eine Topologie auf $\bA^n$ zu definieren.
+\begin{definition}
+Die {\sf Zariski-Topologie} auf $\bA^n$ ist die Topologie, deren abgeschlossene Teilmengen genau die algebraischen Teilmengen sind.
+\end{definition}
+
+\begin{example}
+Eine abgeschlossene Teilmenge von $\bA^1$ ist eine Vereinigung von endlich vielen Punkten.
+\end{example}
+
+\begin{definition}
+Sei $X$ ein topologischer Raum. Eine nichtleere Teilmenge $Y \subset X$ heißt irreduzibel, wenn es keine echten abgeschlossenen Teilmengen $Y_{1,2} \subset Y$ mit der Eigenschaft $Y = Y_1 \cup Y_2$ gibt.
+\end{definition}
+
+\begin{example}
+
+\begin{enumerate}
+\item Die {\sf affine Gerade} $\bA^1$ ist irreduzibel (auch $\bA^n$).
+\item Die algebraische Menge $V(xy) \subset \bA^2$ ist nicht irreduzibel.
+\end{enumerate}
+\end{example}
+
+
+\begin{definition}
+Eine {\sf affine algebraische Varietät} ist eine irreduzible abgeschlossene Teilmenge von $\bA^n$ (mit der induzierten Topologie).
+\end{definition}
+
+
+Jetzt möchten wir einer Teilmenge von $\bA^n$ ein Ideal von $k[x_1, \dots, x_n]$ zuordnen.
+\begin{definition}
+Einer Teilmenge $Y \subset \bA^n$ ordnen wir das Ideal
+\begin{align*}
+I(Y) \coloneqq \{f \in k[x_1, \dots, x_n] \mid f(P) = 0 \quad \forall P \in Y\}.
+\end{align*}
+\end{definition}
+
+
+\begin{proposition}
+Die Zuordnungen $J \mapsto V(J)$ und $Y \mapsto I(Y)$ besitzen die folgenden grundlegenden Eigenschaften.
+\begin{enumerate}
+\item $J_1 \subset J_2$ $\Rightarrow$ $V(J_1) \supset V(J_2)$.
+\item $Y_1 \subset Y_2$ $\Rightarrow$ $I(Y_1) \supset I(Y_2)$.
+\item $\forall Y_{1,2} \subset \bA^n$ gilt $I(Y_1 \cup Y_2) = I(Y_1) \cap I(Y_2)$.
+\item $\forall J \subset k[x_1, \dots, x_n]$ gilt $I(V(J)) = \sqrt{J}$.
+\item $\forall Y \subset \bA^n$ gilt $V(I(Y)) = \bar{Y}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Die Aussagen (1), (2) und (3) sind klar. Die Aussage (4) ist als Hilbertscher Nullstellensatz bekannt. Die Aussage (5) lassen wir als eine Übung (Blatt 14).
+\end{proof}
+
+\begin{thm}[Hilbertscher Nullstellensatz]
+Seien $k = \bar{k}$ und $J \subset k[x_1, \dots, x_n]$ ein Ideal. Dann gilt
+$$
+I(V(J)) = \sqrt{J}.
+$$
+\end{thm}
+
+\begin{proof}
+Die Definition von $\sqrt{J}$ lautet
+\begin{align*}
+& \sqrt{J} = \{f \in k[x_1, \dots, x_n] \mid \exists n \colon f^n \in J\}.
+\end{align*}
+Somit ist die Inklusion
+\begin{align*}
+\sqrt{J} \subset I(V(J))
+\end{align*}
+sofort klar. Weiter, für ein $f \notin \sqrt{J}$ werden wir gleich einen Punkt $P \in V(J)$ mit $f(P) \neq 0$ finden.
+
+Sei nun $f \notin \sqrt{J}$. Somit existiert nach Satz \ref{satz-nilradical} ein Primideal $\mathfrak{p} \subset k[x_1, \dots, x_n]$ mir den Eigenschaften $J \subset \mathfrak{p}$ und $f \notin \mathfrak{p}$. Betrachten wir nun die Homomorphismen von $k$-Algebren
+\begin{align*}
+&  k[x_1, \dots, x_n] \to k[x_1, \dots, x_n]/\mathfrak{p} \to  (k[x_1, \dots, x_n]/\mathfrak{p})_{\bar{f}},
+\end{align*}
+wobei der erste Homomorphismus die kanonische Projektion auf den Faktorring ($g \mapsto \bar{g} \coloneqq g + \mathfrak{p}$) ist, und der zweite die Lokalisierung ist.
+
+Alle drei $k$-Algebren sind endlich erzeugte $k$-Algebren\footnote{Warum!?}. Sei $\mathfrak{m} \subset C = (k[x_1, \dots, x_n]/\mathfrak{p})_{\bar{f}}$ ein maximales Ideal. Nach Korollar \ref{weak-nullstellensatz} haben wir $C/\mathfrak{m} \iso k$. Somit haben wir nun die folgenden Homomorphismen von $k$-Algebren
+\begin{align*}
+&  k[x_1, \dots, x_n] \to k[x_1, \dots, x_n]/\mathfrak{p} \to  (k[x_1, \dots, x_n]/\mathfrak{p})_{\bar{f}} \to C/\mathfrak{m} \iso k.
+\end{align*}
+Das Bild von $x_i$ unter der Komposition dieser Abbildungen bezeichnen wir mit $a_i$. Auf diese Weise erhalten wir einen Punkt $P=(a_1, \dots, a_n) \in \bA^n$. Einerseits, da (das Bild von) $\bar{f}$ in $C$ invertierbar ist, liegt es nicht in $\mathfrak{m}$. Somit gilt $f(P) \neq 0$. Andererseits, haben wir $P \in V(J)$, da für jedes Polynom $g \in J$ gilt $g(P)=0$.
+\end{proof}
+
+\begin{cor}
+Die Zuordnungen $J \mapsto V(J)$ und $Y \mapsto I(Y)$ geben eine inklusionsumkehrende Bijektion zwischen den radikalen Idealen von $k[x_1, \dots, x_n]$ und den algebraischen Teilmengen von $\bA^n$. Unter dieser Bijektion entsprechen die irreduziblen algebraischen Teilmengen den Primidealen.
+\end{cor}
+
+\begin{proof}
+  Die erste Aussage folgt sofort. Die zweite Aussage haben wir in der Vorlesung bewiesen.
+\end{proof}
+
+\newpage
+\section{Artinsche Ringe}
+
+\begin{proposition}\label{proposition-artinian-primes-are-maximal}
+Sei $R$ ein artinscher Ring. Dann ist jedes Primideal maximal.
+\end{proposition}
+
+\begin{proof}
+Sei $\mathfrak{p} \subset R$ ein Primideal. Dann ist $S = R/\mathfrak{p}$ ein artinscher Integritätsbereich. Sei $x \neq 0$ ein Element von $S$. wir haben eine absteigende Kette von Idealen
+\begin{align*}
+(x) \supset (x^2) \supset \dots.
+\end{align*}
+Da $S$ artinsch ist, wird diese Kette stationär: $(x^n) = (x^{n+1}) = \dots $. Dann haben wir $x^n = x^{n+1} y$ mit $y \in S$. Da $S$ ein Integritätsbereich ist, können wir $x^n$ kürzen und bekommen $1= xy$. Somit ist $x$ invertierbar in $S$. Da $x$ ein beliebiges Element war, ist $S$ ein Körper. Somit ist $\mathfrak{p}$ ein maximales Ideal.
+\end{proof}
+
+
+\begin{proposition}\label{proposition-artinian-finite-number-maximal}
+Sei $R$ ein artinscher Ring. Dann hat $R$ nur endlich viele maximale Ideale.
+\end{proposition}
+
+\begin{proof}
+Sei $\Sigma$ die Menge von endlichen Schnitten $\mathfrak{m}_1 \cap \dots \cap \mathfrak{m}_r$ von maximalen Idealen. Da $R$ artinsch ist, hat diese Menge ein minimales Element $\mathfrak{m}_1 \cap \dots \cap \mathfrak{m}_n$ (Lemma \ref{lemma-poset-chain-conditions}). Sei nun  $\mathfrak{m}$
+ein belibiges maximales Ideal. Wegen Minimalität von $\mathfrak{m}_1 \cap \dots \cap \mathfrak{m}_n$ gilt
+$$
+\mathfrak{m} \cap (\mathfrak{m}_1 \cap \dots \cap \mathfrak{m}_n) = \mathfrak{m}_1 \cap \dots \cap \mathfrak{m}_n.
+$$
+Daraus folgt sofort
+$$
+(\mathfrak{m}_1 \cap \dots \cap \mathfrak{m}_n) \subset \mathfrak{m}.
+$$
+Nach Lemma \ref{lemma-intersection-lies-in-prime-ideal} gibt es ein $l$, sodass gilt $\mathfrak{m}_l \subset \mathfrak{m}$. Somit bekommen wir $\mathfrak{m}_l = \mathfrak{m}$.
+\end{proof}
+
+
+
+\begin{lemma}\label{lemma-intersection-lies-in-prime-ideal}
+Sei $R$ ein Ring, $I_1, \dots, I_n$ Ideale und $\mathfrak{p}$ ein Primideal. Falls gilt $I_1 \cap \dots \cap I_n \subset \mathfrak{p}$, dann existiert ein $l$, sodass $I_l \subset \mathfrak{p}$.
+\end{lemma}
+
+\begin{proof}
+Nehmen wir das Gegenteil an, d.h. für jedes $l$ gibt es ein $x_l \in I_l$ mit $x_l \notin \mathfrak{p}$. Dann haben wir $x_1 \dots x_n \in \prod_l I_l \subset \cap_l I_l \subset \mathfrak{p}$ und erhalten ein Widerspruch, da $\mathfrak{p}$ ein Primideal ist.
+\end{proof}
+
+
+
+\begin{proposition}\label{proposition-artinian-radical-nilpotent}
+Sei $R$ ein artinscher Ring. Dann ist das Nilradikal $\mathfrak{N}$ nilpotent.
+\end{proposition}
+
 
 
 \newpage
