@@ -3359,6 +3359,311 @@ Nehmen wir das Gegenteil an, d.h. für jedes $l$ gibt es ein $x_l \in I_l$ mit $
 Sei $R$ ein artinscher Ring. Dann ist das Nilradikal $\mathfrak{N}$ nilpotent.
 \end{proposition}
 
+\begin{proof}
+Da $R$ artinsch ist, wird die Kette
+$$
+\mathfrak{N}  \supset \mathfrak{N}^2 \supset \mathfrak{N}^3 \supset \dots
+$$
+stationär. D.h. es existiert ein $k$, sodass $\mathfrak{N}^k = \mathfrak{N}^{k+1} = \dots = I$. Wir müssen zeigen, dass gilt $I=0$.
+
+Wir werden annehmen, dass gilt $I \neq 0$ und bekommen ein Widerspruch.
+
+Sei $I \neq 0$. Dann ist die Menge
+$$
+\Sigma \coloneqq \{ J \subset R \mid JI \neq 0 \}
+$$
+nichtleer, da gilt $I \in \Sigma$. Sei $J$ ein minimales Element in $\Sigma$ ($R$ ist artinsch). Dann gibt es ein $x \in J$, sodass gilt $xI \neq 0$. Somit gilt auch $(x)I \neq 0$. Aus der Inklusion $(x) \subset J$ und Minimalität von $J$ bekommen wir $(x) = J$. Weiter, für das Ideal $xI$ aus der Gleichung
+$$
+(xI)I = x I^2 = xI \neq 0,
+$$
+und aus der Inklusion $xI \subset J=(x)$ bekommen wir $xI=(x)$ (nochmal Minimalität von $J$ benutzen). Somit gilt
+$$
+x = xy \quad \text{mit} \quad y \in I.
+$$
+
+Nun haben wir
+$$
+x = xy = xy^2 = xy^3 = \dots.
+$$
+Da gilt $I = \mathfrak{N}^k \subset \mathfrak{N}$, ist $y$ ein Nilpotent. D.h. es gibt ein $n$, sodass $x = xy^n = 0$. Und wir bekommen ein Wiederspruch mit $xI \neq 0$.
+\end{proof}
+
+
+\begin{definition}
+Sei $R$ ein Ring ($\neq 0$) und $\mathfrak{p}_0 \subset \mathfrak{p}_1 \subset \dots \subset \mathfrak{p}_n$ eine Kette von Primidealen (echte Inklusionen). Die Zahl $n$ nennt man {\sf Länge} der Kette. Die {\sf Krulldimension} von $R$ ist Supremum der Längen von Ketten von Primidealen.
+\end{definition}
+
+
+
+\begin{example}
+\
+\begin{enumerate}
+\item $\dim k = 0$
+\item $\dim \bZ = 1 = \dim k[x]$
+\item $\dim k[x]/(x^2) = 0$
+\end{enumerate}
+\end{example}
+
+
+
+\begin{thm}\label{thm-artinitan-noetherian-and-dim-zero}
+$R$ ist artinsch $\iff$ $R$ ist noethersch und $\dim R = 0$.
+\end{thm}
+
+Um dieses Theorem zu beweisen brauchen wir noch ein paar Vorbereitungen.
+
+\begin{lemma}\label{lemma:acc-dcc-vector-spaces}
+Sei $V$ ein $k$-Vektorraum. Dann sind die folgenden Bedingungen äquivalent:
+\begin{enumerate}
+\item $V$ hat endliche Dimension;
+\item $V$ hat endliche Länge;
+\item jede aufsteigende Kette von $k$-Unterräumen in $V$ wird stationär;
+\item jede absteigende Kette von $k$-Unterräumen in $V$ wird stationär.
+\end{enumerate}
+Wenn diese Bedingungen erfüllt sind, dann gilt $\dim_{k} V = \ell_k(V)$.
+\end{lemma}
+
+\begin{proof}
+Blatt 15.
+\end{proof}
+
+
+\begin{lemma}\label{lemma-AM-Corollary-11.6}
+Sei $R$ ein Ring, in welchem das Nullideal ein Produkt $\mathfrak{m}_1 \dots  \mathfrak{m}_n$ von Kopien von maximalen Idealen ist (Wiederholungen erlaubt). Dann ist $R$ noethersch genau dann, wenn $R$ artinsch ist.
+\end{lemma}
+
+\begin{proof}
+Betrachten wir die Kette
+\begin{equation*}
+R \supset \mathfrak{m}_1 \supset \mathfrak{m}_1\mathfrak{m}_2 \supset \dots \supset \mathfrak{m}_1 \dots  \mathfrak{m}_n = 0.
+\end{equation*}
+Jeder Quotient $\mathfrak{m}_1 \dots  \mathfrak{m}_{i-1}/\mathfrak{m}_1 \dots  \mathfrak{m}_i$
+ist ein $R/ \mathfrak{m}_i$-Vektorraum. Jetzt folgt die Aussage aus
+Lemma \ref{lemma:acc-dcc-vector-spaces} und
+Satz \ref{proposition-noetherian-artinian-short-exact-sequence}.
+\end{proof}
+
+
+\begin{definition}
+Sei $R$ ein Ring und $I \subset R$ ein Ideal. Das Ideal $I$ heißt {\sf irreduzibel}, wenn aus $I = J_1 \cap J_2$ folgt $I=J_1$ oder $I=J_2$.
+\end{definition}
+
+\begin{lemma}\label{lemma-noetherian-every-ideal-intersection-irred}
+Sei $R$ ein noetherscher Ring. Dann ist jedes Ideal ein endlicher Schnitt von irrduziblen Idealen.
+\end{lemma}
+
+\begin{proof}
+Sei $\Sigma$ die Menge der Idealen von $R$, welche als endlicher Schnitt von irreduziblen Idealen nicht dargestellt werden können. Wir möchten zeigen, dass $\Sigma$ leer ist.
+
+Angenommen $\Sigma$ ist nicht leer. Da $R$ noethersch ist, hat $\Sigma$ ein maximales Element $I$. Das Ideal $I$ ist dann automatisch reduzibel, d.h. $I = J_1 \cap J_2$ mit $J_l \neq I$. Da jedes $J_l$ nicht in $\Sigma$  liegt (wegen Maximalität von $I$), d.h. jedes $J_l$ ist ein endlicher Schnitt von irreduziblen Idealen, ist auch $I$ ein endlicher Schnitt von irreduziblen Idealen. Widerspruch.
+\end{proof}
+
+
+\begin{lemma}
+Sei $R$ ein noetherscher Ring und $I$ ein irreduzibles Ideal. Dann ist das Radikal $\sqrt{I}$ ein Primideal.
+\end{lemma}
+
+\begin{proof}
+Es genügt den Fall $I = (0)$ zu betrachten (warum?). In diesem Fall gilt $\sqrt{(0)} = \mathfrak{N}$.
+
+\smallskip
+
+\noindent {\it Beweisstrategie:} wir nehmen an, dass $\sqrt{(0)}$ kein Primideal ist, und folgern daraus, dass das Ideal $(0)$ reduzibel sein muss. Seien $x,y \notin \sqrt{(0)}$ mit $xy \in \sqrt{(0)}$, d.h. $xy$ ist ein Nilpotent, aber weder $x$ noch $y$ ist Nilpotent. Somit gibt es ein $n$, sodass $(xy)^n = 0$, aber $x^n \neq 0$ und $y^n \neq 0$. Schauen wir uns nun die folgende aufsteigende Kette von Idealen
+\begin{align*}
+Ann(x^n) \subset Ann(x^{n+1}) \subset \dots
+\end{align*}
+an. Da $R$ noethersch ist, wird diese Kette stationär, d.h. es existiert ein $m$, sodass $Ann(x^m) = Ann(x^{m+1}) = \dots$.
+
+Wir möchten nun zeigen, dass gilt $(x^m) \cap (y^n) = (0)$. Dazu betrachten wir erst ein Element $a \in (y^n)$. Aus $(xy)^n = 0$ folgt sofort $ax^m=0$. Jetzt, nehmen wir zusätzlich an, dass gilt $a \in (x^m)$, d.h. $a = bx^m$ mit $b \in R$. Daraus folgt sofort $ax^m = b x^{2m} = 0$. Somit liegt $b$ in $Ann(x^{2m})=Ann(x^m)$. Jetzt gilt also $bx^m=0$ und somit auch $a = bx^m = 0$.
+
+Wir haben gezeigt, dass gilt $(x^m) \cap (y^n) = (0)$ mit $(x^m) \neq 0$ und $(y^n) \neq (0)$. Somit ist das Ideal $(0)$ reduzibel.
+\end{proof}
+
+
+\begin{lemma}\label{lemma:noetherien-ideal-power-radical}
+Sei $R$ ein noetherscher Ring. Dann enthält jedes Ideal eine Potenz seines Radikals.
+\end{lemma}
+
+\begin{proof}
+Blatt 15
+\end{proof}
+
+\bigskip
+
+\noindent {\bf Beweis von Theorem 10.7:}
+
+$\Rightarrow)$ Nach Satz \ref{proposition-artinian-primes-are-maximal} sind alle Primideale in $R$ maximal. Daraus folgt sofort $\dim R = 0$. Seien $\mathfrak{m}_1 , \dots , \mathfrak{m}_n$ die maximale Ideale von $R$ (nach Satz \ref{proposition-artinian-finite-number-maximal} gibt es nur endlich viele). Für eine positive Zahl $k$ gilt
+$$
+\prod_{i=1}^n \mathfrak{m}_i^k \subset (\mathfrak{m}_1  \dots  \mathfrak{m}_n)^k \subset (\cap_{i=1}^n  \mathfrak{m}_i)^k = \mathfrak{N}^k.
+$$
+Nach Satz \ref{proposition-artinian-radical-nilpotent} ist $\mathfrak{N}$ Nilpotent und somit existiert es ein $k$, sodass gilt $(\mathfrak{m}_1  \dots  \mathfrak{m}_n)^k=(0)$. Jetzt ist $R$ noetersch nach Lemma \ref{lemma-AM-Corollary-11.6}.
+
+\smallskip
+
+$\Leftarrow)$ Da $R$ noethersch ist, können wir das Nullideal als schnitt von irreduziblen Idealen schreiben (Lemma \ref{lemma-noetherian-every-ideal-intersection-irred})
+$$
+(0) = I_1 \cap \dots \cap I_n.
+$$
+Sei nun $\mathfrak{p}$ ein beliebiges Primideal. Wir haben
+\begin{align*}
+\mathfrak{p} \supset (0) \Rightarrow \sqrt{\mathfrak{p}} = \mathfrak{p} \supset \sqrt{(0)} = \cap_l \sqrt{I_l}.
+\end{align*}
+Nach Lemma \ref{lemma-intersection-lies-in-prime-ideal} gibt es ein $l$, sodass gilt $\sqrt{I_l} \subset \mathfrak{p}$. Somit liegt einer von $\sqrt{I_l}$'s in jedem Primideal. Daher sind $\sqrt{I_l}$'s die minimale Primideale.
+
+Aus $\dim R = 0$ folgt nun, dass es in $R$ nur endlich viele Primideale gibt $\mathfrak{m}_1, \dots, \mathfrak{m}_s$  (alle automatisch maximal).
+
+Betrachten wir jetzt das Nilradikal $\mathfrak{N} = \cap_i \mathfrak{m}_i$. Nach Lemma \ref{lemma:noetherien-ideal-power-radical} ist $\mathfrak{N}$ Nilpotent, d.h. es gibt ein $k$, sodass gilt $\mathfrak{N}^k=0$. Daher folgern wir
+$$
+(\cap_i \mathfrak{m}_i)^k = 0 \Rightarrow \prod_i  \mathfrak{m}_i^k = 0.
+$$
+Jetzt nach Lemma \ref{lemma-AM-Corollary-11.6} folgt, dass $R$ artinsch ist.
+
+
+\newpage
+\section{Diskrete Bewertungsringe}
+
+
+\begin{definition}
+Eine {\sf diskrete Bewertung} auf einem Körper $K$ ist ein surjektiver Gruppenhomomorphismus $v \colon K^* \to \bZ$ mit der Eigenschaft
+\begin{align}\label{eq-discrete-valuation}
+v(x+y) \geq min (v(x),v(y)).
+\end{align}
+Die Teilmenge von $K$
+\begin{align*}
+R \coloneqq \{x \in K^* \mid v(x) \geq 0 \}  \cup \{0\}
+\end{align*}
+ist ein Ring, genannt {\sf Bewertungsring von $v$ oder von $K$}. Manchmal ist es nützlich $v(0) \coloneqq + \infty$ zu setzen.
+\end{definition}
+
+
+\begin{example}
+Hier sind ein paar Standardbeispiele.
+\begin{enumerate}
+\item Sei $K = \bQ$. Dann für jede Primzahl $p \in \bZ$ kann man eine diskrete Bewertung auf $\bQ$ definieren. Dafür schreiben wir ein $x \in \bQ^*$ als
+$$
+x = p^m y,
+$$
+mit $y$ koprim zu $p$ und setzen
+\begin{align*}
+v_p(x) \coloneqq m.
+\end{align*}
+Der Bewertungsring ist der lokale Ring $\bZ_{(p)}$.
+
+\item Sei $K=\bC(x)$. Dann für jedes $a \in \bC$ definieren wir eine diskrete Bewertung auf $K$, indem wir die Potenz von $(x-a)$ in dem Element $\frac{P(x)}{Q(x)} \in \bC(x)$ nehmen. Zum Beispiel:
+\begin{align*}
+v_0 \Big(\frac{1}{x^2}\Big) = -2.
+\end{align*}
+
+\item $K = \bC((x))$.
+\end{enumerate}
+\end{example}
+
+
+\begin{definition}
+Ein Integritätsbereich $R$ heißt {\sf diskreter Bewertungsring}, wenn $R$ der Bewertungsring einer diskreten Bewertung auf dem Quotientenkörper $Quot(R)$ ist.
+\end{definition}
+
+\begin{lemma}\label{lemma-properties-of-dvr}
+Sei $R$ ein diskreter Bewertungsring.\footnote{Notation: $K=Quot(R)$, $v$ die entsprechende diskrete Bewertung.} Dann gilt:
+\begin{enumerate}
+\item $R$ ist ein lokaler Ring mit dem maximalen Ideal $\mathfrak{m} = \{x \in K \mid v(x) > 0 \}$;
+\item $\mathfrak{m}$ ist ein Hauptideal;
+\item Jedes Ideal $I \neq 0$ ist der Form $\mathfrak{m}^k$;
+\item $R$ ist noethersch;
+\item $\dim R = 1$
+\item $\dim_k \mathfrak{m}/\mathfrak{m}^2 = 1$;
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\
+\begin{enumerate}
+\item Es genügt zu zeigen, dass jedes $x \in R \setminus \mathfrak{m}$ invertierbar ist. Dazu betrachten wir ein $x \in R \setminus \mathfrak{m}$. Sei nun $x^{-1}$ sein Inverses in $K$. Wir zeigen, dass $x^{-1}$ in $R$ liegt. Wir haben
+\begin{align*}
+x \in R \setminus \mathfrak{m} \iff v(x) = 0 \Rightarrow v(x^{-1}) = 0 \Rightarrow x^{-1} \in R.
+\end{align*}
+
+\item Sei $I \neq 0$ ein Ideal. Sei $x \in I$ ein Element mit der Eigenschaft
+$$
+v(x) = min_{y \in I} v(y).
+$$
+
+Nun bemerken wir Folgendes. Seien $a,b \in R$ mit $v(a)=v(b)$. Dann gilt $a = u b$ mit $u$ invertierbar. Da in $R$ ein Element $z$ mit $v(z)=1$ gibt, bekommen wir
+\begin{align*}
+I = \{ y \in R \mid v(y) \geq v(x) \}.
+\end{align*}
+
+
+\item Wir haben alle Ideale explizit beschrieben und sehen sofort, dass jede aufsteigende Kette stationär wird.
+
+\item Es gibt nur zwei Primideale: $(0)$ und $\mathfrak{m}$. Die Aussage folgt.
+
+\item Einerseits, wir haben $\mathfrak{m}/\mathfrak{m}^2 \neq 0$. Andererseits, die Klasse $x + \mathfrak{m}^2$ erzeugt $\mathfrak{m}/\mathfrak{m}^2$ als $k$-Vektorraum. Die Aussage folgt.
+\end{enumerate}
+\end{proof}
+
+
+
+
+
+\begin{thm}
+Sei $R$ ein noetherscher lokaler Integritätsbereich von Dimension $1$, $\mathfrak{m}$ sein maximales Ideal und $k = R/\mathfrak{m}$ der Quotientenkörper. Die folgenden Eigenschaften sind äquivalent:
+\begin{enumerate}
+\item $R$ ist ein diskreter Bewertungsring;
+\item $\mathfrak{m}$ ist ein Hauptideal;
+\item $\dim_k (\mathfrak{m} / \mathfrak{m}^2) = 1$;
+\item Jedes Ideal $I \neq 0$ in $R$ ist der Form $\mathfrak{m}^k$;
+\item Es gibt $x \in R$, sodass jedes Ideal $I \neq 0$ in $R$ ist der Form $(x^k)$ mit $k \geq 0$.
+\end{enumerate}
+\end{thm}
+
+
+\begin{proof}
+\
+
+$1) \Rightarrow 2)$: Lemma \ref{lemma-properties-of-dvr}.(2).
+
+\smallskip
+
+$2) \Rightarrow 3)$: Einerseits, wie in Lemma \ref{lemma-properties-of-dvr}.(6)
+erzeugt $x + \mathfrak{m}^2$ den Quotient $\mathfrak{m} / \mathfrak{m}^2$ als $k$-Vektorraum.
+Andererseits, nach Lemma \ref{lemma-powers-of-maximal-ideal}, haben wir $\mathfrak{m} / \mathfrak{m}^2 \neq 0$.
+
+\smallskip
+
+$3) \Rightarrow 4)$: Übung \smiley{}
+\smallskip
+
+$4) \Rightarrow 5)$: Nach Lemma \ref{lemma-powers-of-maximal-ideal} gibt es ein $x \in \mathfrak{m} \setminus \mathfrak{m}^2$. Nun folgt es sofort aus 4), dass $\mathfrak{m} = (x)$. Somit haben wir $\mathfrak{m}^k = (x^k)$.
+
+\smallskip
+
+$5) \Rightarrow 1)$: Natürlich gilt für das maximale Ideal $\mathfrak{m}=(x)$ und für alle andere Ideale ($\neq 0$) $(x^k)$. Definiere nun die Bewertung von $a \in R$
+\begin{align*}
+v(a) = k,
+\end{align*}
+wobei $k$ ist das einzige $k$ mit der Eigenschaft $(a)=(x^k)$.
+\end{proof}
+
+
+
+\begin{lemma}\label{lemma-powers-of-maximal-ideal}
+Sei $R$ ein lokaler notherscher Ring mit dem maximalen Ideal $\mathfrak{m}$. Dann haben wir zwei Möglichkeiten:
+\begin{enumerate}
+\item $\mathfrak{m}^n \neq \mathfrak{m}^{n+1}$   für alle $n$;
+\item $\exists n$ sodass $\mathfrak{m}^n = 0$ und in diesem Fall ist $R$ artinsch.
+\end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+Nehmen wir an, dass es ein $n$ mit $\mathfrak{m}^n = \mathfrak{m}^{n+1}$ gibt. Nach Nakayama folgern wir sofort $\mathfrak{m}^n = 0$. Sei
+$\mathfrak{p} \subset R$ ein Primideal. Wir haben
+\begin{align*}
+0=\mathfrak{m}^n  \subset \mathfrak{p} \Rightarrow \sqrt{\mathfrak{m}^n} = \mathfrak{m} \subset \sqrt{\mathfrak{p}} = \mathfrak{p} \Rightarrow \mathfrak{p} = \mathfrak{m}.
+\end{align*}
+Somit gibt es in $R$ nur ein Primideal und $\dim R = 0$. Nach Theorem \ref{thm-artinitan-noetherian-and-dim-zero} ist $R$ artinsch.
+\end{proof}
 
 
 \newpage
