@@ -18,9 +18,9 @@ jobs:
           root_file: notes.tex
 
       - name: Prepare deploy folder
-              run: |
-                mkdir deploy
-                cp notes.pdf deploy/
+        run: |
+          mkdir deploy
+          cp notes.pdf deploy/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
